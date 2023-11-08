@@ -38,6 +38,11 @@ end)
             return self.DataTable[index]
         end
     end
+    function miraculous_machine_secret_scroll:Set(index,value)
+        if type(index) == "string"  then
+            self.DataTable[index] = value
+        end
+    end
 -----------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------
 

@@ -46,7 +46,7 @@
 
 return function(inst,key,down)
     -- print("test 6666666",key,down)
-    if not down and key >= KEY_A and key <= KEY_F12 then    --- 按键抬起
+    if not down and (  (key >= KEY_A and key <= KEY_Z) or (key >= KEY_F1 and key <= KEY_F12)  ) then    --- 按键抬起
         -- print("key up",key)
         inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("key_up",key)
     end

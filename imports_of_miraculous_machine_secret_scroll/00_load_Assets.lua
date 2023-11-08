@@ -32,6 +32,9 @@ local temp_assets = {
 	-- Asset("ANIM", "anim/kriby_action_test.zip"),
 	-- Asset("ANIM", "anim/xzkb_xin_donghua_fuhuo.zip"),
 
+
+	Asset("IMAGE", "images/ui_images/miraculous_machine_secret_scroll_icon.tex"),
+	Asset("ATLAS", "images/ui_images/miraculous_machine_secret_scroll_icon.xml"),
 }
 
 for k, v in pairs(temp_assets) do

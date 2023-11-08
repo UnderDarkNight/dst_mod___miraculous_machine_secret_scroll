@@ -1,17 +1,37 @@
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 ---- 模块分割初始化
 ---- 主入口函数 在 server 和 client 都执行，注册相关的切换函数
+--[[
+
+    · 标记位命名格式注意事项：
+        · 武器当前模式储存于 ： inst.components.miraculous_machine_secret_scroll:Get("type")
+        · 启用该模式的的PushEvent事件为   "weapon_type.start"
+        · 关闭该模式的的PushEvent事件为   "weapon_type.stop"
+    
+    · reticule 组件笔记：该模块应该是用来辅助手柄/鼠标 在指定位置可交互使用，只在client端生效，不用担心组件在server端缺失造成崩溃。
+
+    · 目前已经定义的模式名：
+        switch.orange_staff   懒人法杖（橙色法杖）
+        switch.purple_staff   传送法杖（紫色法杖）
+
+]]--
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 return function(inst)
     
     ------------------------------------------------------------------------------------
     ---- 注册各个模块应有的函数
         local modules = {
-            "miraculous_machine_secret_scroll_modules/00_rpc_channel_register",                 --- 注册RPC的API 给组件，方便调用
+            "miraculous_machine_secret_scroll_modules/00_00_rpc_channel_register",                 --- 注册RPC的API 给组件，方便调用
+            "miraculous_machine_secret_scroll_modules/00_01_type_switcher",                        --- 模式切换器
+            "miraculous_machine_secret_scroll_modules/00_02_keyboard_listener_rigister",           --- 键盘监听
+            "miraculous_machine_secret_scroll_modules/00_04_widget_controller",                    --- 界面图标控制
+
+
             "miraculous_machine_secret_scroll_modules/01_acceptable",                           --- 物品接受组件
             "miraculous_machine_secret_scroll_modules/02_container",                            --- 容器组件
-            "miraculous_machine_secret_scroll_modules/03_keyboard_listener_rigister",           --- 键盘监听
             "miraculous_machine_secret_scroll_modules/04_tools",                                --- 工具
+            "miraculous_machine_secret_scroll_modules/05_orange_staff",                         --- 橙色法杖
+            "miraculous_machine_secret_scroll_modules/06_purple_staff",                         --- 紫色法杖
 
         }
         local replica_modules_fn = {}
@@ -44,15 +64,21 @@ return function(inst)
             end
             inst.OnEntityReplicated = nil
         end
-        inst:DoTaskInTime(0,function()  --- 没洞穴的存档居然不会执行 OnEntityReplicated ？？？？？？
+        inst:DoTaskInTime(0,function()  --- 没洞穴的存档居然不会执行 OnEntityReplicated ？？？？？？ 科雷这是在搞毛。
             if inst.OnEntityReplicated then
                 inst:OnEntityReplicated()
             end
         end)
     ------------------------------------------------------------------------------------
-
-
-
+    ------ 存档读取、洞穴跨越的时候，读取武器的状态，下发事件切换。
+        inst:ListenForEvent("scroll_data_load_end",function()
+            inst:DoTaskInTime(0,function()
+                local type_event_name = inst.components.miraculous_machine_secret_scroll:Get("type")
+                if type(type_event_name) == "string" then
+                    inst:PushEvent(type_event_name..".start")
+                end
+            end)
+        end)
     ------------------------------------------------------------------------------------
 
 

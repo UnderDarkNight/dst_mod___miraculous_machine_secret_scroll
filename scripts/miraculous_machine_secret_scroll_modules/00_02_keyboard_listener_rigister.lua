@@ -21,14 +21,21 @@ return {
             end
         end)
 
-        inst:ListenForEvent("key_up",function(_,key) 
-            print("info weapon switch key up",key)
-        end)
+        -- inst:ListenForEvent("key_up",function(_,key) 
+        --     print("info weapon switch key up",key)
+
+        --     if key == KEY_F1 then
+        --         inst:PushEvent("switch.orange_staff.start")
+        --     elseif key == KEY_F3 then
+        --         inst:PushEvent("switch.orange_staff.stop")
+        --     end
+
+        -- end)
 
     end,
     -----------------------------------------------------------------------------------------------------------------
     replica = function(inst)
-        local key_event_fn = require("miraculous_machine_secret_scroll_modules/03_key_events") or function(...) print(...) end
+        local key_event_fn = require("miraculous_machine_secret_scroll_modules/00_03_key_events") or function(...) print(...) end
 
         inst:ListenForEvent("start_keyboard_listener",function(_,userid)
             -- print("start_keyboard_listener",userid)

@@ -9,7 +9,7 @@ local flg,error_code = pcall(function()
         local inst = TheSim:FindFirstEntityWithTag("miraculous_machine_secret_scroll")
         if inst then
             -- inst.components.miraculous_machine_secret_scroll:Set("test",true)
-            print(inst.replica.miraculous_machine_secret_scroll:Get("test"))
+            print(inst,inst.replica.miraculous_machine_secret_scroll:Get("type"))
         end
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 

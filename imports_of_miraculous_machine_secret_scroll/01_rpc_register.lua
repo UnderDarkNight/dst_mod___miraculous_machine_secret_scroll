@@ -9,7 +9,7 @@
         if inst and data then
             local _table = json.decode(data)
             if _table and _table.event_name then
-                print("info pushevent.server2client ",inst,_table.event_name,_table.cmd_table)
+                -- print("info pushevent.server2client ",inst,_table.event_name,_table.cmd_table)
                 inst:PushEvent(_table.event_name,_table.cmd_table or {})
             end
         end
