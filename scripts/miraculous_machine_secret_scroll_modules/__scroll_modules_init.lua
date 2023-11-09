@@ -35,7 +35,7 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/06_purple_staff",                         --- 紫色法杖
             "miraculous_machine_secret_scroll_modules/07_blink_map",                            --- 地图跃迁
             "miraculous_machine_secret_scroll_modules/08_fishingrod",                           --- 池钓
-            "miraculous_machine_secret_scroll_modules/09_ocean_fishingrod",                     --- 海钓
+            -- "miraculous_machine_secret_scroll_modules/09_ocean_fishingrod",                     --- 海钓
             "miraculous_machine_secret_scroll_modules/10_bugnet",                               --- 虫网
             "miraculous_machine_secret_scroll_modules/11_trident",                              --- 三叉戟
 

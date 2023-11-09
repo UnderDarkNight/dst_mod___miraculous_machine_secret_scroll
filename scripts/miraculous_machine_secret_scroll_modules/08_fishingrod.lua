@@ -10,7 +10,13 @@ return {
             
         end
 
-        -- inst:RemoveTag("fishingrod")
+        inst:AddTag("fishingrod")
+        inst:AddTag("allow_action_on_impassable")
+        inst:AddComponent("fishingrod")
+        inst.components.fishingrod:SetWaitTimes(4, 40)
+        inst.components.fishingrod:SetStrainTimes(0, 5)
+        inst:ListenForEvent("fishingcollect",inst.___fishingcollect_event_fn)
+        inst:RemoveTag("fishingrod")
 
 
 
@@ -22,12 +28,12 @@ return {
             inst:AddTag("switch.fishingrod")
             print("info fishingrod on")
             -----------------------------------------------------------------------------
-                inst:AddTag("fishingrod")
-                inst:AddTag("allow_action_on_impassable")
-                inst:AddComponent("fishingrod")
-                inst.components.fishingrod:SetWaitTimes(4, 40)
-                inst.components.fishingrod:SetStrainTimes(0, 5)
-                inst:ListenForEvent("fishingcollect",inst.___fishingcollect_event_fn)
+                -- inst:AddTag("fishingrod")
+                -- inst:AddTag("allow_action_on_impassable")
+                -- inst:AddComponent("fishingrod")
+                -- inst.components.fishingrod:SetWaitTimes(4, 40)
+                -- inst.components.fishingrod:SetStrainTimes(0, 5)
+                -- inst:ListenForEvent("fishingcollect",inst.___fishingcollect_event_fn)
             -----------------------------------------------------------------------------
 
             inst.components.miraculous_machine_secret_scroll:RPC_PushEvent("switch.fishingrod.start.replica")
@@ -41,10 +47,10 @@ return {
             inst:RemoveTag("switch.fishingrod")
             print("info fishingrod off")
             ------------------------------------------------------------------------
-                inst:RemoveTag("fishingrod")
-                inst:RemoveTag("allow_action_on_impassable")
-                inst:RemoveComponent("fishingrod")
-                inst:RemoveEventCallback("fishingcollect",inst.___fishingcollect_event_fn)
+                -- inst:RemoveTag("fishingrod")
+                -- inst:RemoveTag("allow_action_on_impassable")
+                -- inst:RemoveComponent("fishingrod")
+                -- inst:RemoveEventCallback("fishingcollect",inst.___fishingcollect_event_fn)
             ------------------------------------------------------------------------
             inst.components.miraculous_machine_secret_scroll:RPC_PushEvent("switch.fishingrod.stop.replica")
 
@@ -53,18 +59,20 @@ return {
     -----------------------------------------------------------------------------------------------------------------
     replica = function(inst)
 
-        -- inst:DoTaskInTime(0,function()
+        inst:DoTaskInTime(0,function()
             
-        --                 ------------- hook 关键函数
-        --                     rawset(inst.replica.fishingrod,"HasCaughtFish",function(self,...)
-        --                         if not self.inst:HasTag("switch.fishingrod") then
-        --                             return true
-        --                         end                                
-        --                         return self._hascaughtfish:value()
-        --                     end)
+            ------------- hook 关键函数
+                rawset(inst.replica.fishingrod,"HasCaughtFish",function(self,...)
+                    if not self.inst:HasTag("switch.fishingrod") then
+                        return true
+                    end                                
+                    return self._hascaughtfish:value()
+                end)
 
 
-        -- end)
+        end)
+
+        
         inst:ListenForEvent("switch.fishingrod.start.replica",function()
             print("switch.fishingrod.start.replica")
             ----------------------------------------------------------------------------------

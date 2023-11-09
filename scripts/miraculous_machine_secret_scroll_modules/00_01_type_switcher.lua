@@ -75,8 +75,8 @@ return {
                 inst:TypeSwitchByCooldown("switch.orange_staff")
             elseif key == KEY_F3 then
                 inst:TypeSwitchByCooldown("switch.purple_staff")
-            -- elseif key == KEY_F4 then
-            --     inst:TypeSwitchByCooldown("switch.fishingrod")
+            elseif key == KEY_F4 then
+                inst:TypeSwitchByCooldown("switch.fishingrod")
             -- elseif key == KEY_F5 then
             --     inst:TypeSwitchByCooldown("switch.ocean_fishingrod")
             elseif key == KEY_F6 then
