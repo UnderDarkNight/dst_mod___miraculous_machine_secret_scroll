@@ -43,12 +43,12 @@ return {
             ----------------------------------------------------------------------------------
                 
             ----------------------------------------------------------------------------------
-            inst.replica.miraculous_machine_secret_scroll:Set("type","switch.trident")
+            inst.replica.miraculous_machine_secret_scroll:Set("type","switch.bugnet")
         end)
         inst:ListenForEvent("switch.bugnet.stop.replica",function()
             print("switch.bugnet.stop.replica")
             ----------------------------------------------------------------------------------
-                inst:RemoveTag("tool")
+
             ----------------------------------------------------------------------------------
         end)
     end

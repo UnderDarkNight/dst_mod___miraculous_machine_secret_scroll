@@ -53,7 +53,7 @@ return {
             self:DoTaskInTime(0.5,function()
                 inst:PushEvent(weapon_type..".start")
                 self.target_type = nil
-                print("info switch 2 ",weapon_type)
+                print("info TypeSwitchByCooldown switch ",current_type,weapon_type)
 
                     local owner = inst.components.inventoryitem:GetGrandOwner()
                     if owner then
@@ -77,8 +77,8 @@ return {
                 inst:TypeSwitchByCooldown("switch.purple_staff")
             -- elseif key == KEY_F4 then
             --     inst:TypeSwitchByCooldown("switch.fishingrod")
-            elseif key == KEY_F5 then
-                inst:TypeSwitchByCooldown("switch.ocean_fishingrod")
+            -- elseif key == KEY_F5 then
+            --     inst:TypeSwitchByCooldown("switch.ocean_fishingrod")
             elseif key == KEY_F6 then
                 inst:TypeSwitchByCooldown("switch.bugnet")
             elseif key == KEY_F7 then
