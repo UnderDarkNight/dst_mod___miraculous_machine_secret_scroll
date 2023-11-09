@@ -5,9 +5,9 @@ local assets =
 }
 
 local function onequip(inst, owner)
-    owner.AnimState:OverrideSymbol("swap_object", "swap_cane", "swap_cane")
-    owner.AnimState:Show("ARM_carry")
-    owner.AnimState:Hide("ARM_normal")
+    -- owner.AnimState:OverrideSymbol("swap_object", "swap_cane", "swap_cane")
+    -- owner.AnimState:Show("ARM_carry")
+    -- owner.AnimState:Hide("ARM_normal")
 end
 
 local function onunequip(inst, owner)
@@ -66,6 +66,7 @@ local function fn()
         inst:AddComponent("equippable")
         inst.components.equippable:SetOnEquip(onequip)
         inst.components.equippable:SetOnUnequip(onunequip)
+        inst.components.equippable.restrictedtag = "player"
         -- inst.components.equippable.walkspeedmult = TUNING.CANE_SPEED_MULT
         MakeHauntableLaunch(inst)
     end

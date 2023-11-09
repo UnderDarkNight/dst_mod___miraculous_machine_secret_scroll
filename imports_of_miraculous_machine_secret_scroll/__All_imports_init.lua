@@ -11,3 +11,8 @@ modimport("imports_of_miraculous_machine_secret_scroll/03_action_acceptable.lua"
 
 modimport("imports_of_miraculous_machine_secret_scroll/04_widget_weapon_type_icon.lua")	---- 武器图标
 
+modimport("imports_of_miraculous_machine_secret_scroll/05_action_blink_map.lua")	---- 地图跃迁
+
+modimport("imports_of_miraculous_machine_secret_scroll/06_action_fix_for_fishing.lua")	---- 钓鱼相关动作修正参数
+
+

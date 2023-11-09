@@ -12,12 +12,17 @@ return {
 
         inst:ListenForEvent("equipped",function(_,_table)
             if _table and _table.owner and _table.owner.userid then
-                inst.components.miraculous_machine_secret_scroll:RPC_PushEvent("start_keyboard_listener",_table.owner.userid)
+                inst:DoTaskInTime(0,function()
+                    inst.components.miraculous_machine_secret_scroll:RPC_PushEvent("start_keyboard_listener",_table.owner.userid)
+                end)
+
             end
         end)
         inst:ListenForEvent("unequipped",function(_,_table)
             if _table and _table.owner and _table.owner.userid then
-                inst.components.miraculous_machine_secret_scroll:RPC_PushEvent("stop_keyboard_listener",_table.owner.userid)
+                inst:DoTaskInTime(0,function()
+                    inst.components.miraculous_machine_secret_scroll:RPC_PushEvent("stop_keyboard_listener",_table.owner.userid)
+                end)
             end
         end)
 

@@ -11,7 +11,7 @@ return {
             inst.components.container.canbeopened = false
         end)
         inst:ListenForEvent("equipped",function()
-            inst.components.container.canbeopened = false            
+            inst.components.container.canbeopened = false
         end)        
     end,
     -----------------------------------------------------------------------------------------------------------------

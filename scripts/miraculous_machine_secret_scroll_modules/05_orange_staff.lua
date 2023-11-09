@@ -1,6 +1,7 @@
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 ---- 橙色法杖
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 return {
     -----------------------------------------------------------------------------------------------------------------
     main = function(inst)
@@ -13,11 +14,11 @@ return {
             -----------------------------------------------------------------------------
                     local function onblink(staff, pos, caster)
                         if caster then
-                            if caster.components.staffsanity then
-                                caster.components.staffsanity:DoCastingDelta(-TUNING.SANITY_MED)
-                            elseif caster.components.sanity ~= nil then
-                                caster.components.sanity:DoDelta(-TUNING.SANITY_MED)
-                            end
+                            -- if caster.components.staffsanity then
+                            --     caster.components.staffsanity:DoCastingDelta(-TUNING.SANITY_MED)
+                            -- elseif caster.components.sanity ~= nil then
+                            --     caster.components.sanity:DoDelta(-TUNING.SANITY_MED)
+                            -- end
                         end            
                     end
                     inst.fxcolour = {1, 145/255, 0}
@@ -51,6 +52,7 @@ return {
     -----------------------------------------------------------------------------------------------------------------
     replica = function(inst)
         inst:ListenForEvent("switch.orange_staff.start.replica",function()
+            print("switch.orange_staff.start.replica")
             local function NoHoles(pt)
                 return not TheWorld.Map:IsGroundTargetBlocked(pt)
             end
@@ -92,7 +94,9 @@ return {
 
             inst.replica.miraculous_machine_secret_scroll:Set("type","switch.orange_staff")
         end)
-        inst:ListenForEvent("switch.orange_staff.stop.replica",function ()
+        inst:ListenForEvent("switch.orange_staff.stop.replica",function()
+            print("switch.orange_staff.stop.replica")
+
             inst:RemoveComponent("reticule")
         end)
     end

@@ -162,6 +162,10 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                         ["NONE"] = "NONE",
                         ["switch.orange_staff"] = "懒人",
                         ["switch.purple_staff"] = "传送",
+                        ["switch.fishingrod"]   = "池钓",
+                        ["switch.ocean_fishingrod"]   = "海钓",
+                        ["switch.bugnet"]   = "虫网",
+                        ["switch.trident"]   = "三叉",
                     }
                     self.miraculous_machine_secret_scroll_widget_inst:DoPeriodicTask(0.3,function()
                         if weapon_inst and weapon_inst:IsValid() then

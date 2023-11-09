@@ -25,6 +25,7 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/00_01_type_switcher",                        --- 模式切换器
             "miraculous_machine_secret_scroll_modules/00_02_keyboard_listener_rigister",           --- 键盘监听
             "miraculous_machine_secret_scroll_modules/00_04_widget_controller",                    --- 界面图标控制
+            "miraculous_machine_secret_scroll_modules/00_05_goto_state",                           --- 角色做动画瞬间把外观套上去
 
 
             "miraculous_machine_secret_scroll_modules/01_acceptable",                           --- 物品接受组件
@@ -32,6 +33,11 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/04_tools",                                --- 工具
             "miraculous_machine_secret_scroll_modules/05_orange_staff",                         --- 橙色法杖
             "miraculous_machine_secret_scroll_modules/06_purple_staff",                         --- 紫色法杖
+            "miraculous_machine_secret_scroll_modules/07_blink_map",                            --- 地图跃迁
+            "miraculous_machine_secret_scroll_modules/08_fishingrod",                           --- 池钓
+            "miraculous_machine_secret_scroll_modules/09_ocean_fishingrod",                     --- 海钓
+            "miraculous_machine_secret_scroll_modules/10_bug_net",                              --- 虫网
+            "miraculous_machine_secret_scroll_modules/11_trident",                              --- 三叉戟
 
         }
         local replica_modules_fn = {}

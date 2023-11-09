@@ -16,8 +16,9 @@ local miraculous_machine_secret_scroll = Class(function(self, inst)
         self._simple_data_table_json_str = net_string(self.inst.GUID, "miraculous_machine_secret_scroll_net_json_str","miraculous_machine_secret_scroll_net_json_str") 
         if not TheWorld.ismastersim then
             self.inst:ListenForEvent("miraculous_machine_secret_scroll_net_json_str",function()
-                -- print("replica: get data from net_vars")
                 local str = self._simple_data_table_json_str:value()
+                -- print("info replica: get data from net_vars",str)
+
                 local crash_flag , temp_table = pcall(json.decode, str)
                 if crash_flag then
                     self.DataTable  = temp_table

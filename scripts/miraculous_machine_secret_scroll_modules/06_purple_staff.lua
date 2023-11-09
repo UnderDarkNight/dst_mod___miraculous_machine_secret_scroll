@@ -146,11 +146,11 @@
             end
 
             if caster ~= nil then
-                if caster.components.staffsanity then
-                    caster.components.staffsanity:DoCastingDelta(-TUNING.SANITY_HUGE)
-                elseif caster.components.sanity ~= nil then
-                    caster.components.sanity:DoDelta(-TUNING.SANITY_HUGE)
-                end
+                -- if caster.components.staffsanity then
+                --     caster.components.staffsanity:DoCastingDelta(-TUNING.SANITY_HUGE)
+                -- elseif caster.components.sanity ~= nil then
+                --     caster.components.sanity:DoDelta(-TUNING.SANITY_HUGE)
+                -- end
             end
 
             ground:PushEvent("ms_deltamoisture", TUNING.TELESTAFF_MOISTURE)
@@ -232,7 +232,11 @@ return {
     -----------------------------------------------------------------------------------------------------------------
     replica = function(inst)
         inst:ListenForEvent("switch.purple_staff.start.replica",function()
+            print("switch.purple_staff.start.replica")
             inst.replica.miraculous_machine_secret_scroll:Set("type","switch.purple_staff")
+        end)
+        inst:ListenForEvent("switch.purple_staff.stop.replica",function()
+            print("switch.purple_staff.stop.replica")
         end)
     end
     -----------------------------------------------------------------------------------------------------------------

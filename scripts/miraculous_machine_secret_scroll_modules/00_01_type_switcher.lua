@@ -1,21 +1,70 @@
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 ---- 模式切换器
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
+local function forbid_type_switch(inst,weapon_type)
+    if inst:HasTag("forbid_type_switch") then
+        return true
+    end
+    if inst.components.fishingrod and inst.components.fishingrod:IsFishing() then
+        return true
+    end
+    -----------------------------------------------------------------------
+    -------- 根据玩家sg状态屏蔽切换
+        local owner = inst.components.inventoryitem:GetGrandOwner()
+        if owner and owner.sg  then
+
+                        local sg_state_tags = {
+                            ["working"] = true,
+                            ["fishing"] = true,
+                            ["busy"] = true,
+                            ["doing"] = true,
+                        }
+                        for tag, flag in pairs(sg_state_tags) do
+                            if owner.sg:HasStateTag(tag) then
+                                return true
+                            end
+                        end
+        end
+    -----------------------------------------------------------------------
+    return false
+end
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 return {
     -----------------------------------------------------------------------------------------------------------------
     main = function(inst)
 
         function inst:TypeSwitchByCooldown(weapon_type)
+
+            if forbid_type_switch(inst,weapon_type) then  --- 禁止武器切换的状态
+                return
+            end
+
             if self.target_type == weapon_type then
                 return
-            end            
+            end
             self.target_type = weapon_type
             local current_type = inst.components.miraculous_machine_secret_scroll:Get("type") or "..."
+
+            if current_type == self.target_type then
+                return
+            end
+
             self:PushEvent(current_type..".stop")
             self:DoTaskInTime(0.5,function()
                 inst:PushEvent(weapon_type..".start")
                 self.target_type = nil
                 print("info switch 2 ",weapon_type)
+
+                    local owner = inst.components.inventoryitem:GetGrandOwner()
+                    if owner then
+                        owner.SoundEmitter:PlaySound("dontstarve/common/together/celestial_orb/active")
+
+                        if owner._miraculous_machine_secret_scroll__unequipt_fn then
+                            owner._miraculous_machine_secret_scroll__unequipt_fn()
+                            owner._miraculous_machine_secret_scroll__unequipt_fn = nil
+                        end
+                    end
+
             end)
         end
 
@@ -26,6 +75,14 @@ return {
                 inst:TypeSwitchByCooldown("switch.orange_staff")
             elseif key == KEY_F3 then
                 inst:TypeSwitchByCooldown("switch.purple_staff")
+            -- elseif key == KEY_F4 then
+            --     inst:TypeSwitchByCooldown("switch.fishingrod")
+            elseif key == KEY_F5 then
+                inst:TypeSwitchByCooldown("switch.ocean_fishingrod")
+            elseif key == KEY_F6 then
+                inst:TypeSwitchByCooldown("switch.bugnet")
+            elseif key == KEY_F7 then
+                inst:TypeSwitchByCooldown("switch.trident")
             end
 
 
