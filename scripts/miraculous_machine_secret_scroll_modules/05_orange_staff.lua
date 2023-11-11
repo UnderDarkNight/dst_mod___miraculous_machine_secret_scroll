@@ -12,6 +12,9 @@ return {
             inst:AddTag("switch.orange_staff")
             print("info orange_staff on")
             -----------------------------------------------------------------------------
+                    local cool_down_time = 10
+                    inst.components.rechargeable:SetMaxCharge(cool_down_time)
+
                     local function onblink(staff, pos, caster)
                         if caster then
                             -- if caster.components.staffsanity then
@@ -27,6 +30,16 @@ return {
                     inst:AddComponent("blinkstaff")
                     inst.components.blinkstaff:SetFX("sand_puff_large_front", "sand_puff_large_back")
                     inst.components.blinkstaff.onblinkfn = onblink
+
+                    ---- hook 原始函数
+                    inst.components.blinkstaff.Blink_mms_scroll_old = inst.components.blinkstaff.Blink
+                    inst.components.blinkstaff.Blink = function(self, pt, caster) 
+                        if not self.inst.components.rechargeable:IsCharged() then
+                            return false
+                        end
+                        self.inst.components.rechargeable:Discharge(cool_down_time)
+                        return self:Blink_mms_scroll_old(pt, caster)
+                    end
             -----------------------------------------------------------------------------
 
             inst.components.miraculous_machine_secret_scroll:RPC_PushEvent("switch.orange_staff.start.replica")

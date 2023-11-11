@@ -18,7 +18,7 @@ local weapon_in_hand_cd_time = 10
 local weapon_type_with_fn = {
     ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     --------- 橙色法杖
-        ["switch.orange_staff"] = function(owner,statename,weapon_type)
+        ["switch.orange_staff"] = function(weapon_inst,owner,statename,weapon_type)
             if statename == "quicktele" and owner._miraculous_machine_secret_scroll_state ~= statename then
                         owner._miraculous_machine_secret_scroll_state = statename
                         if owner._miraculous_machine_secret_scroll_task then
@@ -52,7 +52,7 @@ local weapon_type_with_fn = {
     ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     --------- 紫色法杖
-        ["switch.purple_staff"] = function(owner,statename,weapon_type)
+        ["switch.purple_staff"] = function(weapon_inst,owner,statename,weapon_type)
             if statename == "castspell" and owner._miraculous_machine_secret_scroll_state ~= statename then
                         owner._miraculous_machine_secret_scroll_state = statename
                         if owner._miraculous_machine_secret_scroll_task then
@@ -87,7 +87,7 @@ local weapon_type_with_fn = {
     ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     --------- 池钓
-        ["switch.fishingrod"] = function(owner,statename,weapon_type)
+        ["switch.fishingrod"] = function(weapon_inst,owner,statename,weapon_type)
             if statename == "fishing_pre" and owner._miraculous_machine_secret_scroll_state ~= statename then
                         owner._miraculous_machine_secret_scroll_state = statename
                         if owner._miraculous_machine_secret_scroll_task then
@@ -126,7 +126,7 @@ local weapon_type_with_fn = {
     ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     --------- 海钓
-        ["switch.ocean_fishingrod"] = function(owner,statename,weapon_type)
+        ["switch.ocean_fishingrod"] = function(weapon_inst,owner,statename,weapon_type)
             if statename == "oceanfishing_cast" and owner._miraculous_machine_secret_scroll_state ~= statename then
                         owner._miraculous_machine_secret_scroll_state = statename
                         if owner._miraculous_machine_secret_scroll_task then
@@ -163,7 +163,7 @@ local weapon_type_with_fn = {
     ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     --------- 捕虫网
-        ["switch.bugnet"] = function(owner,statename,weapon_type)
+        ["switch.bugnet"] = function(weapon_inst,owner,statename,weapon_type)
             if statename == "bugnet_start" and owner._miraculous_machine_secret_scroll_state ~= statename then
                         owner._miraculous_machine_secret_scroll_state = statename
                         if owner._miraculous_machine_secret_scroll_task then
@@ -197,7 +197,7 @@ local weapon_type_with_fn = {
     ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     --------- 三叉戟
-        ["switch.trident"] = function(owner,statename,weapon_type)
+        ["switch.trident"] = function(weapon_inst,owner,statename,weapon_type)
             if statename == "play_strum" and owner._miraculous_machine_secret_scroll_state ~= statename then
                         owner._miraculous_machine_secret_scroll_state = statename
                         if owner._miraculous_machine_secret_scroll_task then
@@ -229,13 +229,83 @@ local weapon_type_with_fn = {
             end
         end,
     ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    --------- 远程武器
+        ["switch.long_range_weapon"] = function(weapon_inst,owner,statename,weapon_type)
+            if statename == "slingshot_shoot" and owner._miraculous_machine_secret_scroll_state ~= statename then
+                        owner._miraculous_machine_secret_scroll_state = statename
+                        if owner._miraculous_machine_secret_scroll_task then
+                            owner._miraculous_machine_secret_scroll_task:Cancel()
+                        end
+                        ---------------------------------------------------------------------------------------------------------------------
+                            -- owner.AnimState:OverrideSymbol("swap_object", "swap_trident", "swap_trident")
+                            owner.AnimState:OverrideSymbol("swap_object", "swap_slingshot", "swap_slingshot")
+                            owner.AnimState:Show("ARM_carry")
+                            owner.AnimState:Hide("ARM_normal")
+                        ---------------------------------------------------------------------------------------------------------------------
+
+
+            elseif state_leave_states[statename] and owner._miraculous_machine_secret_scroll_state ~= nil then
+                        owner._miraculous_machine_secret_scroll_state = nil
+                        if owner._miraculous_machine_secret_scroll_task then
+                            owner._miraculous_machine_secret_scroll_task:Cancel()
+                        end
+                        owner._miraculous_machine_secret_scroll__unequipt_fn = function()
+                            ---------------------------------------------------------------------------------------------------------------------
+                            owner.AnimState:Hide("ARM_carry")
+                            owner.AnimState:Show("ARM_normal")
+                            owner.AnimState:ClearOverrideSymbol("swap_object")
+                            ---------------------------------------------------------------------------------------------------------------------
+                            owner._miraculous_machine_secret_scroll__unequipt_fn = nil
+                        
+                        end
+                        owner._miraculous_machine_secret_scroll_task = owner:DoTaskInTime(weapon_in_hand_cd_time,owner._miraculous_machine_secret_scroll__unequipt_fn)
+
+            end
+        end,
+    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    --------- 近战武器
+        ["switch.short_range_weapon"] = function(weapon_inst,owner,statename,weapon_type)
+            if statename == "attack" and owner._miraculous_machine_secret_scroll_state ~= statename then
+                        owner._miraculous_machine_secret_scroll_state = statename
+                        if owner._miraculous_machine_secret_scroll_task then
+                            owner._miraculous_machine_secret_scroll_task:Cancel()
+                        end
+                        ---------------------------------------------------------------------------------------------------------------------
+                            -- owner.AnimState:OverrideSymbol("swap_object", "swap_trident", "swap_trident")
+                            owner.AnimState:OverrideSymbol("swap_object", "swap_nightmaresword", "swap_nightmaresword")
+                            owner.AnimState:Show("ARM_carry")
+                            owner.AnimState:Hide("ARM_normal")
+                        ---------------------------------------------------------------------------------------------------------------------
+
+
+            elseif state_leave_states[statename] and owner._miraculous_machine_secret_scroll_state ~= nil then
+                        owner._miraculous_machine_secret_scroll_state = nil
+                        if owner._miraculous_machine_secret_scroll_task then
+                            owner._miraculous_machine_secret_scroll_task:Cancel()
+                        end
+                        owner._miraculous_machine_secret_scroll__unequipt_fn = function()
+                            ---------------------------------------------------------------------------------------------------------------------
+                            owner.AnimState:Hide("ARM_carry")
+                            owner.AnimState:Show("ARM_normal")
+                            owner.AnimState:ClearOverrideSymbol("swap_object")
+                            ---------------------------------------------------------------------------------------------------------------------
+                            owner._miraculous_machine_secret_scroll__unequipt_fn = nil
+                        
+                        end
+                        owner._miraculous_machine_secret_scroll_task = owner:DoTaskInTime(weapon_in_hand_cd_time,owner._miraculous_machine_secret_scroll__unequipt_fn)
+
+            end
+        end,
+    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 }
 
 
-local function player_statename(owner,statename,weapon_type)
-    -- print("info  player  statename",statename)
+local function player_statename(weapon_inst,owner,statename,weapon_type)
+    print("info  player  statename",statename)
     if weapon_type_with_fn[weapon_type] then        
-        weapon_type_with_fn[weapon_type](owner,statename,weapon_type)
+        weapon_type_with_fn[weapon_type](weapon_inst,owner,statename,weapon_type)
     end
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -247,7 +317,7 @@ return {
         inst.___newstate_event_fn = function(player,_table)
             if _table and _table.statename then
                 local weapon_type = inst.components.miraculous_machine_secret_scroll:Get("type")
-                player_statename(player, _table.statename,weapon_type)
+                player_statename(inst,player,_table.statename,weapon_type)
             end
         end
 
@@ -259,8 +329,28 @@ return {
         inst:ListenForEvent("unequipped",function(_,_table)
             if _table and _table.owner and _table.owner.userid then
                 _table.owner:RemoveEventCallback("newstate",inst.___newstate_event_fn)
+
+                if _table.owner._miraculous_machine_secret_scroll__unequipt_fn then
+                    _table.owner._miraculous_machine_secret_scroll__unequipt_fn()
+                    _table.owner._miraculous_machine_secret_scroll__unequipt_fn = nil
+                end
+                
             end
         end)
+
+        ---- 切模式的时候瞬间清掉手上动画
+        inst:ListenForEvent("weapon_type_changed",function(_,_table)
+            if _table and _table.owner and _table.owner.userid then
+
+                if _table.owner._miraculous_machine_secret_scroll__unequipt_fn then
+                    _table.owner._miraculous_machine_secret_scroll__unequipt_fn()
+                    _table.owner._miraculous_machine_secret_scroll__unequipt_fn = nil
+                end
+                
+            end
+        end)
+
+
         
     end,
     -----------------------------------------------------------------------------------------------------------------

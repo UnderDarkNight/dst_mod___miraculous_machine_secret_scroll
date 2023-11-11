@@ -38,6 +38,8 @@ return function(inst)
             -- "miraculous_machine_secret_scroll_modules/09_ocean_fishingrod",                     --- 海钓
             "miraculous_machine_secret_scroll_modules/10_bugnet",                               --- 虫网
             "miraculous_machine_secret_scroll_modules/11_trident",                              --- 三叉戟
+            "miraculous_machine_secret_scroll_modules/12_long_range_weapon",                    --- 远程武器
+            "miraculous_machine_secret_scroll_modules/13_short_range_weapon",                   --- 近战武器
 
         }
         local replica_modules_fn = {}

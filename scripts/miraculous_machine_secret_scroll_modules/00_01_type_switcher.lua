@@ -53,20 +53,25 @@ return {
             self:DoTaskInTime(0.5,function()
                 inst:PushEvent(weapon_type..".start")
                 self.target_type = nil
-                print("info TypeSwitchByCooldown switch ",current_type,weapon_type)
+                -- print("info TypeSwitchByCooldown switch ",current_type,weapon_type)
 
                     local owner = inst.components.inventoryitem:GetGrandOwner()
                     if owner then
                         owner.SoundEmitter:PlaySound("dontstarve/common/together/celestial_orb/active")
+                        self:PushEvent("weapon_type_changed",{owner=owner})
 
-                        if owner._miraculous_machine_secret_scroll__unequipt_fn then
-                            owner._miraculous_machine_secret_scroll__unequipt_fn()
-                            owner._miraculous_machine_secret_scroll__unequipt_fn = nil
-                        end
                     end
 
             end)
+
         end
+
+        ----------- 默认模式
+        inst:DoTaskInTime(0.1,function()
+            if inst.components.miraculous_machine_secret_scroll:Get("type") == nil then
+                inst:TypeSwitchByCooldown("switch.short_range_weapon")
+            end
+        end)
 
         inst:ListenForEvent("key_up",function(_,key)    ------ RPC 回传的 玩家按键监听. A - Z     F1 - F12
             -- print("info weapon switch key up",key)
@@ -83,6 +88,10 @@ return {
                 inst:TypeSwitchByCooldown("switch.bugnet")
             elseif key == KEY_F7 then
                 inst:TypeSwitchByCooldown("switch.trident")
+            elseif key == KEY_F8 then
+                inst:TypeSwitchByCooldown("switch.long_range_weapon")
+            elseif key == KEY_F9 then
+                inst:TypeSwitchByCooldown("switch.short_range_weapon")
             end
 
 
