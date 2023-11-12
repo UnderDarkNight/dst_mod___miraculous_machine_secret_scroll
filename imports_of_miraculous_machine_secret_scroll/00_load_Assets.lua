@@ -35,6 +35,19 @@ local temp_assets = {
 
 	Asset("IMAGE", "images/ui_images/miraculous_machine_secret_scroll_icon.tex"),
 	Asset("ATLAS", "images/ui_images/miraculous_machine_secret_scroll_icon.xml"),
+
+
+
+	Asset("ANIM", "anim/mms_scroll_sword_red.zip"),
+	Asset("ANIM", "anim/mms_scroll_sword_blue.zip"),
+
+	Asset("ANIM", "anim/mms_scroll_axe_red.zip"),
+	Asset("ANIM", "anim/mms_scroll_axe_blue.zip"),
+
+	Asset("ANIM", "anim/mms_scroll_bow.zip"),
+	Asset("ANIM", "anim/mms_scroll_bow_red.zip"),
+	Asset("ANIM", "anim/mms_scroll_bow_blue.zip"),
+
 }
 
 for k, v in pairs(temp_assets) do

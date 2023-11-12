@@ -92,6 +92,8 @@ return {
                 inst:TypeSwitchByCooldown("switch.long_range_weapon")
             elseif key == KEY_F9 then
                 inst:TypeSwitchByCooldown("switch.short_range_weapon")
+            elseif key == KEY_F10 then
+                inst:TypeSwitchByCooldown("switch.tools")
             end
 
 

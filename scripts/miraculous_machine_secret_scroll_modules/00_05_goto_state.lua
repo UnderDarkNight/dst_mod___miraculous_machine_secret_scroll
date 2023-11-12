@@ -238,8 +238,9 @@ local weapon_type_with_fn = {
                             owner._miraculous_machine_secret_scroll_task:Cancel()
                         end
                         ---------------------------------------------------------------------------------------------------------------------
-                            -- owner.AnimState:OverrideSymbol("swap_object", "swap_trident", "swap_trident")
-                            owner.AnimState:OverrideSymbol("swap_object", "swap_slingshot", "swap_slingshot")
+                            owner.AnimState:OverrideSymbol("swap_object", "mms_scroll_bow_blue", "swap_object")
+                            -- owner.AnimState:OverrideSymbol("swap_object", "mms_scroll_bow_red", "swap_object")
+                            -- owner.AnimState:OverrideSymbol("swap_object", "swap_slingshot", "swap_slingshot")
                             owner.AnimState:Show("ARM_carry")
                             owner.AnimState:Hide("ARM_normal")
                         ---------------------------------------------------------------------------------------------------------------------
@@ -274,7 +275,7 @@ local weapon_type_with_fn = {
                         end
                         ---------------------------------------------------------------------------------------------------------------------
                             -- owner.AnimState:OverrideSymbol("swap_object", "swap_trident", "swap_trident")
-                            owner.AnimState:OverrideSymbol("swap_object", "swap_nightmaresword", "swap_nightmaresword")
+                            owner.AnimState:OverrideSymbol("swap_object", "mms_scroll_sword_blue", "swap_object")
                             owner.AnimState:Show("ARM_carry")
                             owner.AnimState:Hide("ARM_normal")
                         ---------------------------------------------------------------------------------------------------------------------
@@ -290,6 +291,77 @@ local weapon_type_with_fn = {
                             owner.AnimState:Hide("ARM_carry")
                             owner.AnimState:Show("ARM_normal")
                             owner.AnimState:ClearOverrideSymbol("swap_object")
+                            ---------------------------------------------------------------------------------------------------------------------
+                            owner._miraculous_machine_secret_scroll__unequipt_fn = nil
+                        
+                        end
+                        owner._miraculous_machine_secret_scroll_task = owner:DoTaskInTime(weapon_in_hand_cd_time,owner._miraculous_machine_secret_scroll__unequipt_fn)
+
+            end
+        end,
+    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    --------- 工具
+        ["switch.tools"] = function(weapon_inst,owner,statename,weapon_type)
+            local states = {
+                ["chop_start"] = "chop",        --- 斧头
+                ["mine_start"] = "mine",        --- 矿锄
+                ["hammer_start"] = "hammer",    --- 锤子
+                ["dig_start"] = "dig",          --- 铲子
+                ["till_start"] = "till",        --- 园艺锄
+            }
+            ----------------------------------------------------------
+            --- 园艺锄的动作有点特殊
+                if statename == "till_start" then
+                    owner.AnimState:PlayAnimation("till_pre")
+                elseif statename == "till" then
+                    owner.AnimState:PlayAnimation("till_loop")                
+                end
+            ----------------------------------------------------------
+            
+            if states[statename] and owner._miraculous_machine_secret_scroll_state ~= statename then
+                        owner._miraculous_machine_secret_scroll_state = statename
+                        if owner._miraculous_machine_secret_scroll_task then
+                            owner._miraculous_machine_secret_scroll_task:Cancel()
+                        end
+                        ---------------------------------------------------------------------------------------------------------------------
+                            local fns = {
+                                ["chop"] = function()   --- 斧头
+                                    owner.AnimState:OverrideSymbol("swap_object", "mms_scroll_axe_blue", "swap_object")
+                                end,
+                                ["mine"] = function()   --- 矿锄
+                                    owner.AnimState:OverrideSymbol("swap_object", "swap_pickaxe", "swap_pickaxe")
+                                end,
+                                ["hammer"] = function()   --- 锤子
+                                    owner.AnimState:OverrideSymbol("swap_object", "swap_hammer", "swap_hammer")
+                                end,
+                                ["dig"] = function()   --- 铲子
+                                    owner.AnimState:OverrideSymbol("swap_object", "swap_shovel", "swap_shovel")
+                                end,
+                                ["till"] = function()   --- 园艺锄
+                                    owner.AnimState:OverrideSymbol("swap_object", "swap_goldenhoe", "swap_goldenhoe")
+                                end,
+                            }
+                            -- owner.AnimState:OverrideSymbol("swap_object", "swap_trident", "swap_trident")
+                            -- owner.AnimState:OverrideSymbol("swap_object", "mms_scroll_sword_blue", "swap_object")
+                            if fns[tostring(states[statename])] then
+                                fns[tostring(states[statename])]()
+                            end
+                            owner.AnimState:Show("ARM_carry")
+                            owner.AnimState:Hide("ARM_normal")
+                        ---------------------------------------------------------------------------------------------------------------------
+
+
+            elseif state_leave_states[statename] and owner._miraculous_machine_secret_scroll_state ~= nil then
+                        owner._miraculous_machine_secret_scroll_state = nil
+                        if owner._miraculous_machine_secret_scroll_task then
+                            owner._miraculous_machine_secret_scroll_task:Cancel()
+                        end
+                        owner._miraculous_machine_secret_scroll__unequipt_fn = function()
+                            ---------------------------------------------------------------------------------------------------------------------
+                                owner.AnimState:Hide("ARM_carry")
+                                owner.AnimState:Show("ARM_normal")
+                                owner.AnimState:ClearOverrideSymbol("swap_object")
                             ---------------------------------------------------------------------------------------------------------------------
                             owner._miraculous_machine_secret_scroll__unequipt_fn = nil
                         

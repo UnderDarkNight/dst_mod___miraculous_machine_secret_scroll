@@ -168,6 +168,7 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                         ["switch.trident"]   = "三叉",
                         ["switch.long_range_weapon"]   = "远程",
                         ["switch.short_range_weapon"]   = "近战",
+                        ["switch.tools"]   = "工具",
                     }
                     self.miraculous_machine_secret_scroll_widget_inst:DoPeriodicTask(0.3,function()
                         if weapon_inst and weapon_inst:IsValid() then
