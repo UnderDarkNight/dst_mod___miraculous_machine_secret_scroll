@@ -15,9 +15,20 @@ local flg,error_code = pcall(function()
         -- inst:PushEvent("switch.bugnet.start")
 
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+            -- for k, v in pairs(ThePlayer.HUD.children) do
+            --     print(k,v)
+            -- end
+            -- -- ThePlayer.HUD.mapcontrols.minimapBtn.onclick()
+            -- ThePlayer.HUD.controls:HideMap()
+            local map = TheFrontEnd:GetOpenScreenOfType("MapScreen")
+            map:Hide()
+            TheFrontEnd:PopScreen(map)
+            -- if map ~= nil and ThePlayer.HUD.controls ~= nil then
+                
+            -- end
 
-
-
+            -- ThePlayer.HUD.controls:HideMap()
+            -- ThePlayer.HUD.controls:ShowMap(Vector3(0,0,0))
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

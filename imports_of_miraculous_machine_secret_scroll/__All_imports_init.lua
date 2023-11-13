@@ -16,3 +16,4 @@ modimport("imports_of_miraculous_machine_secret_scroll/05_action_blink_map.lua")
 modimport("imports_of_miraculous_machine_secret_scroll/06_action_fix_for_fishing.lua")	---- 钓鱼相关动作修正参数
 
 
+modimport("imports_of_miraculous_machine_secret_scroll/07_playercontroller.lua")	---- 地图跃迁相关的组件hook
