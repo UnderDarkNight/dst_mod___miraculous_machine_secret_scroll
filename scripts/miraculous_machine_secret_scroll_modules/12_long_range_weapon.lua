@@ -26,8 +26,18 @@ return {
                     inst.components.weapon:SetRange(TUNING.SLINGSHOT_DISTANCE, TUNING.SLINGSHOT_DISTANCE_MAX)
                     inst.components.weapon:SetOnProjectileLaunch(SetOnProjectileLaunch)    --- 子弹发射前
                     inst.components.weapon:SetOnProjectileLaunched(OnProjectileLaunched)    --- 子弹发射后
-                    inst.components.weapon:SetProjectile("bishop_charge")   --- 弹药的prefab
-                    inst.components.weapon:SetProjectileOffset(1)
+                    -- inst.components.weapon:SetProjectile("bishop_charge")   --- 弹药的prefab
+                    inst.components.weapon:SetProjectile("mms_scroll_arrow")   --- 弹药的prefab
+                    -- inst.components.weapon:SetProjectileOffset(1)
+
+                    inst._mms_scroll_arrow_init_fn = function(arrow_inst)       --- 箭创建的时候初始化,用于外观修改
+                        arrow_inst:PushEvent("color","red")
+                    end
+                    inst._mms_scroll_arrow_onhit_fn = function(arrow_inst, attacker, target)    --- 给弹药 onhit 的函数（配合 弹药prefab ）
+                        if target.components.combat then
+                            target.components.combat:GetAttacked(attacker,30,inst)
+                        end
+                    end
                 -----------------------------------------------------------------------------
 
                 inst.components.miraculous_machine_secret_scroll:RPC_PushEvent("switch.long_range_weapon.start.replica")
@@ -45,6 +55,8 @@ return {
                     inst:RemoveTag("slingshot")
                     inst:RemoveTag("weapon")
                     inst.components.weapon:_scroll_init()
+                    inst._mms_scroll_arrow_init_fn = nil
+                    inst._mms_scroll_arrow_onhit_fn = nil
                 ------------------------------------------------------------------------
 
                 inst.components.miraculous_machine_secret_scroll:RPC_PushEvent("switch.long_range_weapon.stop.replica")

@@ -29,6 +29,8 @@ local weapon_type_with_fn = {
                             owner.AnimState:Show("ARM_carry")
                             owner.AnimState:Hide("ARM_normal")
                         ---------------------------------------------------------------------------------------------------------------------
+                            weapon_inst:PushEvent("weapon_in_hand","switch.orange_staff")
+                        ---------------------------------------------------------------------------------------------------------------------
 
 
             elseif state_leave_states[statename] and owner._miraculous_machine_secret_scroll_state ~= nil then
@@ -41,6 +43,8 @@ local weapon_type_with_fn = {
                                 owner.AnimState:Hide("ARM_carry")
                                 owner.AnimState:Show("ARM_normal")
                                 owner.AnimState:ClearOverrideSymbol("swap_object")
+                            ---------------------------------------------------------------------------------------------------------------------
+                                weapon_inst:PushEvent("weapon_in_hand","off")
                             ---------------------------------------------------------------------------------------------------------------------
                             owner._miraculous_machine_secret_scroll__unequipt_fn = nil
                         end
@@ -63,7 +67,9 @@ local weapon_type_with_fn = {
                             owner.AnimState:Show("ARM_carry")
                             owner.AnimState:Hide("ARM_normal")
                         ---------------------------------------------------------------------------------------------------------------------
-
+                            weapon_inst:PushEvent("weapon_in_hand","switch.purple_staff")
+                        ---------------------------------------------------------------------------------------------------------------------
+                        
 
             elseif state_leave_states[statename] and owner._miraculous_machine_secret_scroll_state ~= nil then
                         owner._miraculous_machine_secret_scroll_state = nil
@@ -75,6 +81,8 @@ local weapon_type_with_fn = {
                                 owner.AnimState:Hide("ARM_carry")
                                 owner.AnimState:Show("ARM_normal")
                                 owner.AnimState:ClearOverrideSymbol("swap_object")
+                            ---------------------------------------------------------------------------------------------------------------------
+                                weapon_inst:PushEvent("weapon_in_hand","off")
                             ---------------------------------------------------------------------------------------------------------------------
                             owner._miraculous_machine_secret_scroll__unequipt_fn = nil
 
@@ -100,6 +108,8 @@ local weapon_type_with_fn = {
                             owner.AnimState:Show("ARM_carry")
                             owner.AnimState:Hide("ARM_normal")
                         ---------------------------------------------------------------------------------------------------------------------
+                            weapon_inst:PushEvent("weapon_in_hand","switch.fishingrod")
+                        ---------------------------------------------------------------------------------------------------------------------
 
 
             elseif state_leave_states[statename] and owner._miraculous_machine_secret_scroll_state ~= nil then
@@ -115,6 +125,8 @@ local weapon_type_with_fn = {
                                 owner.AnimState:ClearOverrideSymbol("fishingline")
                                 owner.AnimState:ClearOverrideSymbol("FX_fishing")
                                 owner.AnimState:ClearOverrideSymbol("swap_object")
+                            ---------------------------------------------------------------------------------------------------------------------
+                                weapon_inst:PushEvent("weapon_in_hand","off")
                             ---------------------------------------------------------------------------------------------------------------------
                             owner._miraculous_machine_secret_scroll__unequipt_fn = nil                            
                         end
@@ -174,6 +186,8 @@ local weapon_type_with_fn = {
                             owner.AnimState:Show("ARM_carry")
                             owner.AnimState:Hide("ARM_normal")
                         ---------------------------------------------------------------------------------------------------------------------
+                            weapon_inst:PushEvent("weapon_in_hand","switch.bugnet")
+                        ---------------------------------------------------------------------------------------------------------------------
 
 
             elseif state_leave_states[statename] and owner._miraculous_machine_secret_scroll_state ~= nil then
@@ -187,6 +201,8 @@ local weapon_type_with_fn = {
                                 owner.AnimState:Hide("ARM_carry")
                                 owner.AnimState:Show("ARM_normal")
                                 owner.AnimState:ClearOverrideSymbol("swap_object")
+                            ---------------------------------------------------------------------------------------------------------------------
+                                weapon_inst:PushEvent("weapon_in_hand","off")
                             ---------------------------------------------------------------------------------------------------------------------
                             owner._miraculous_machine_secret_scroll__unequipt_fn = nil
                         end
@@ -208,6 +224,8 @@ local weapon_type_with_fn = {
                             owner.AnimState:Show("ARM_carry")
                             owner.AnimState:Hide("ARM_normal")
                         ---------------------------------------------------------------------------------------------------------------------
+                            weapon_inst:PushEvent("weapon_in_hand","switch.trident")
+                        ---------------------------------------------------------------------------------------------------------------------
 
 
             elseif state_leave_states[statename] and owner._miraculous_machine_secret_scroll_state ~= nil then
@@ -217,9 +235,11 @@ local weapon_type_with_fn = {
                         end
                         owner._miraculous_machine_secret_scroll__unequipt_fn = function()
                             ---------------------------------------------------------------------------------------------------------------------
-                            owner.AnimState:Hide("ARM_carry")
-                            owner.AnimState:Show("ARM_normal")
-                            owner.AnimState:ClearOverrideSymbol("swap_object")
+                                owner.AnimState:Hide("ARM_carry")
+                                owner.AnimState:Show("ARM_normal")
+                                owner.AnimState:ClearOverrideSymbol("swap_object")
+                            ---------------------------------------------------------------------------------------------------------------------
+                                weapon_inst:PushEvent("weapon_in_hand","off")
                             ---------------------------------------------------------------------------------------------------------------------
                             owner._miraculous_machine_secret_scroll__unequipt_fn = nil
                         
@@ -244,6 +264,8 @@ local weapon_type_with_fn = {
                             owner.AnimState:Show("ARM_carry")
                             owner.AnimState:Hide("ARM_normal")
                         ---------------------------------------------------------------------------------------------------------------------
+                            weapon_inst:PushEvent("weapon_in_hand","switch.long_range_weapon")
+                        ---------------------------------------------------------------------------------------------------------------------
 
 
             elseif state_leave_states[statename] and owner._miraculous_machine_secret_scroll_state ~= nil then
@@ -256,6 +278,8 @@ local weapon_type_with_fn = {
                             owner.AnimState:Hide("ARM_carry")
                             owner.AnimState:Show("ARM_normal")
                             owner.AnimState:ClearOverrideSymbol("swap_object")
+                            ---------------------------------------------------------------------------------------------------------------------
+                            weapon_inst:PushEvent("weapon_in_hand","off")
                             ---------------------------------------------------------------------------------------------------------------------
                             owner._miraculous_machine_secret_scroll__unequipt_fn = nil
                         
@@ -279,6 +303,8 @@ local weapon_type_with_fn = {
                             owner.AnimState:Show("ARM_carry")
                             owner.AnimState:Hide("ARM_normal")
                         ---------------------------------------------------------------------------------------------------------------------
+                            weapon_inst:PushEvent("weapon_in_hand","switch.short_range_weapon")
+                        ---------------------------------------------------------------------------------------------------------------------
 
 
             elseif state_leave_states[statename] and owner._miraculous_machine_secret_scroll_state ~= nil then
@@ -291,6 +317,8 @@ local weapon_type_with_fn = {
                             owner.AnimState:Hide("ARM_carry")
                             owner.AnimState:Show("ARM_normal")
                             owner.AnimState:ClearOverrideSymbol("swap_object")
+                            ---------------------------------------------------------------------------------------------------------------------
+                            weapon_inst:PushEvent("weapon_in_hand","off")
                             ---------------------------------------------------------------------------------------------------------------------
                             owner._miraculous_machine_secret_scroll__unequipt_fn = nil
                         
@@ -350,6 +378,8 @@ local weapon_type_with_fn = {
                             owner.AnimState:Show("ARM_carry")
                             owner.AnimState:Hide("ARM_normal")
                         ---------------------------------------------------------------------------------------------------------------------
+                            weapon_inst:PushEvent("weapon_in_hand","switch.tools")
+                        ---------------------------------------------------------------------------------------------------------------------
 
 
             elseif state_leave_states[statename] and owner._miraculous_machine_secret_scroll_state ~= nil then
@@ -362,6 +392,8 @@ local weapon_type_with_fn = {
                                 owner.AnimState:Hide("ARM_carry")
                                 owner.AnimState:Show("ARM_normal")
                                 owner.AnimState:ClearOverrideSymbol("swap_object")
+                            ---------------------------------------------------------------------------------------------------------------------
+                                weapon_inst:PushEvent("weapon_in_hand","off")
                             ---------------------------------------------------------------------------------------------------------------------
                             owner._miraculous_machine_secret_scroll__unequipt_fn = nil
                         

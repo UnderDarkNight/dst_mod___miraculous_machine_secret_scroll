@@ -71,8 +71,11 @@ AddComponentPostInit("playercontroller", function(self)
                 SendRPCToServer(RPC.DoActionOnMap, actioncode, position.x, position.z)                
             end
 
+            -- for k, v in pairs(act or {}) do
+            --     print(k,v)
+            -- end
             pcall(function()    --- 关闭地图
-                        if act.rmb and TheFrontEnd then
+                        if act.rmb and act.id == "MMS_SCROLL_BLINK_MAP" and TheFrontEnd then
                             local map = TheFrontEnd:GetOpenScreenOfType("MapScreen")
                             map:Hide()
                             TheFrontEnd:PopScreen(map)

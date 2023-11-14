@@ -8,12 +8,39 @@ local function onequip(inst, owner)
     -- owner.AnimState:OverrideSymbol("swap_object", "swap_cane", "swap_cane")
     -- owner.AnimState:Show("ARM_carry")
     -- owner.AnimState:Hide("ARM_normal")
+
+    if inst.__fx == nil then
+        inst.__fx = SpawnPrefab("miraculous_machine_secret_scroll_fx")
+        local offset_x = math.random(10,50)/10
+        local offset_z = math.random(10,50)/10
+        if math.random(100) < 50 then
+            offset_x = -offset_x
+        end
+        if math.random(100) < 50 then
+            offset_z = -offset_z
+        end
+        local x,y,z = owner.Transform:GetWorldPosition()
+        inst.__fx:PushEvent("Set",{
+            pt = Vector3(x+offset_x,0,z+offset_z),
+            target = owner,
+            owner = inst,
+            speed = 6,
+            range = 5,
+        })
+
+    end
+
 end
 
 local function onunequip(inst, owner)
     owner.AnimState:ClearOverrideSymbol("swap_object")
     owner.AnimState:Hide("ARM_carry")
     owner.AnimState:Show("ARM_normal")
+
+    if inst.__fx ~= nil then
+        inst.__fx:Remove()
+        inst.__fx = nil
+    end
 end
 
 local function fn()
@@ -86,6 +113,20 @@ local function fn()
     if not TheWorld.ismastersim then
         return inst
     end
+
+    --------------------------------------------------------------------------------------------------------------
+    ----- 外观特效切换
+            inst:ListenForEvent("weapon_in_hand",function(_,cmd)
+                if inst.__fx then
+                    if cmd == "off" then
+                        inst.__fx:PushEvent("weapon_in_hand","off")
+                    else
+                        local weapon_type = inst.components.miraculous_machine_secret_scroll:Get("type")
+                        inst.__fx:PushEvent("weapon_in_hand",weapon_type)
+                    end
+                end
+            end)
+    --------------------------------------------------------------------------------------------------------------
 
     return inst
 end

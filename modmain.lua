@@ -10,6 +10,8 @@ modimport("imports_of_miraculous_machine_secret_scroll/__All_imports_init.lua")	
 PrefabFiles = 
 {
 	"_miraculous_machine_secret_scroll",	---- 穿戴的物品
+	"01_miraculous_machine_secret_scroll_fx",	---- 卷轴特效
+	"02_arrow_projetile",	---- 弓箭弹药
 }
 
 
