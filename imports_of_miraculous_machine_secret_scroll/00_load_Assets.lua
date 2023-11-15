@@ -48,6 +48,13 @@ local temp_assets = {
 	Asset("ANIM", "anim/mms_scroll_bow_red.zip"),
 	Asset("ANIM", "anim/mms_scroll_bow_blue.zip"),
 
+
+	Asset("ANIM", "anim/mms_scroll_shovel_red.zip"),
+	Asset("ANIM", "anim/mms_scroll_shovel_blue.zip"),
+
+	Asset("ANIM", "anim/mms_scroll_bugnet_red.zip"),
+	Asset("ANIM", "anim/mms_scroll_bugnet_blue.zip"),
+
 }
 
 for k, v in pairs(temp_assets) do

@@ -170,6 +170,7 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                         ["switch.short_range_weapon"]   = "近战",
                         ["switch.tools"]   = "工具",
                         ["switch.blink_map"]   = "跃迁",
+                        ["switch.ice_staff"]   = "冰杖",
                     }
                     self.miraculous_machine_secret_scroll_widget_inst:DoPeriodicTask(0.3,function()
                         if weapon_inst and weapon_inst:IsValid() then

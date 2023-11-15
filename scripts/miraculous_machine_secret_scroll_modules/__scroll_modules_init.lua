@@ -26,6 +26,7 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/00_02_keyboard_listener_rigister",           --- 键盘监听
             "miraculous_machine_secret_scroll_modules/00_04_widget_controller",                    --- 界面图标控制
             "miraculous_machine_secret_scroll_modules/00_05_goto_state",                           --- 角色做动画瞬间把外观套上去
+            "miraculous_machine_secret_scroll_modules/00_06_hit_kill_event_listener",              --- 玩家 击打、击杀 的event 转发到 武器 inst 身上
 
 
             "miraculous_machine_secret_scroll_modules/01_acceptable",                           --- 物品接受组件
@@ -35,11 +36,12 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/06_purple_staff",                         --- 紫色法杖
             "miraculous_machine_secret_scroll_modules/07_blink_map",                            --- 地图跃迁
             "miraculous_machine_secret_scroll_modules/08_fishingrod",                           --- 池钓
-            -- "miraculous_machine_secret_scroll_modules/09_ocean_fishingrod",                     --- 海钓
+            -- "miraculous_machine_secret_scroll_modules/09_ocean_fishingrod",                     --- 海钓【废弃】
             "miraculous_machine_secret_scroll_modules/10_bugnet",                               --- 虫网
             "miraculous_machine_secret_scroll_modules/11_trident",                              --- 三叉戟
             "miraculous_machine_secret_scroll_modules/12_long_range_weapon",                    --- 远程武器
             "miraculous_machine_secret_scroll_modules/13_short_range_weapon",                   --- 近战武器
+            "miraculous_machine_secret_scroll_modules/14_ice_staff",                            --- 冰杖
 
         }
         local replica_modules_fn = {}
