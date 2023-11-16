@@ -6,8 +6,9 @@ return {
     -----------------------------------------------------------------------------------------------------------------
     main = function(inst)
 
-        inst.___fishingcollect_event_fn = function(inst,_table)
-            
+        inst.___fishingcollect_event_fn = function(inst,_table)  --- 钓鱼成功后执行的event
+            -- self.inst:PushEvent("fishingcollect", {fish = self.caughtfish} )
+
         end
 
         inst:AddTag("fishingrod")

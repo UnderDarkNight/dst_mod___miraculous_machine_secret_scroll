@@ -43,9 +43,24 @@ return {
         inst:ListenForEvent("start_keyboard_listener",function(_,userid)
             -- print("start_keyboard_listener",userid)
             if userid and ThePlayer and ThePlayer.userid == userid then
+                local function check_is_text_inputting()    --- 检查是否正在输入文字
+                    -- 代码来自  TheFrontEnd:OnTextInput
+                    local screen = TheFrontEnd:GetActiveScreen()
+                    if screen ~= nil then
+                        if TheFrontEnd.forceProcessText and TheFrontEnd.textProcessorWidget ~= nil then
+                            return true
+                        else
+                            return false
+                        end
+                    end
+                    return false
+                end
+
                 inst.__key_handler = TheInput:AddKeyHandler(function(key,down)  ------ 30FPS
                     -- print("test 6666666",key,down)
-                    key_event_fn(inst,key,down)
+                    if not check_is_text_inputting() then
+                        key_event_fn(inst,key,down)
+                    end
                 end)
             end
         end)

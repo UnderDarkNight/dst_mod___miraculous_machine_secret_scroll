@@ -27,6 +27,7 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/00_04_widget_controller",                    --- 界面图标控制
             "miraculous_machine_secret_scroll_modules/00_05_goto_state",                           --- 角色做动画瞬间把外观套上去
             "miraculous_machine_secret_scroll_modules/00_06_hit_kill_event_listener",              --- 玩家 击打、击杀 的event 转发到 武器 inst 身上
+            "miraculous_machine_secret_scroll_modules/00_07_tools_work_finish_event_listener",     --- 玩家 锤、挖、砍、虫网、 的event 转发到 武器 inst 身上
 
 
             "miraculous_machine_secret_scroll_modules/01_acceptable",                           --- 物品接受组件
