@@ -38,15 +38,42 @@ local flg,error_code = pcall(function()
                     6 ：无网 杆
                     2 : idle 的时候显示
                 ]]--
-                ThePlayer.sg:Stop()
-                local scale = 2
-                ThePlayer.AnimState:SetScale(scale, scale, scale)
-                -- ThePlayer.AnimState:OverrideSymbol("swap_object", "mms_scroll_bugnet_red", "swap_bugnet")
-                ThePlayer.AnimState:OverrideSymbol("swap_object", "mms_scroll_bugnet_blue", "swap_bugnet")
-                ThePlayer.AnimState:SetDeltaTimeMultiplier(0.2)
-                -- ThePlayer.AnimState:SetDeltaTimeMultiplier(1)
-                ThePlayer.AnimState:PlayAnimation("bugnet_pre")
-                ThePlayer.AnimState:PushAnimation("bugnet")
+                -- ThePlayer.sg:Stop()
+                -- local scale = 2
+                -- ThePlayer.AnimState:SetScale(scale, scale, scale)
+                -- -- ThePlayer.AnimState:OverrideSymbol("swap_object", "mms_scroll_bugnet_red", "swap_bugnet")
+                -- ThePlayer.AnimState:OverrideSymbol("swap_object", "mms_scroll_bugnet_blue", "swap_bugnet")
+                -- ThePlayer.AnimState:SetDeltaTimeMultiplier(0.2)
+                -- -- ThePlayer.AnimState:SetDeltaTimeMultiplier(1)
+                -- ThePlayer.AnimState:PlayAnimation("bugnet_pre")
+                -- ThePlayer.AnimState:PushAnimation("bugnet")
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+                local cmd_table = {
+                    ["button_blink_map"] = { x = 0, y = 200 },
+
+                    ["button_bow"] = { x = 100, y = 100 },
+
+                    ["button_sword"] = { x = -100, y = 100 },
+
+                    ["button_tools"] = { x = 0, y = -10 },
+
+                    
+                    ["button_goggle"] = { x = -300, y = -180 },
+                    ["button_music"] = { x = -150, y = -180 },
+                    ["button_orange"] = { x = 0, y = -180 },
+                    ["button_razor"] = { x = 150, y = -180 },
+                    ["button_trident"] = { x = 300, y = -180 },
+
+
+                    ["button_water_run"] = { x = -300, y = 180 },
+                    ["button_light"] = { x = -300, y = 0 },
+
+                    ["button_fishingrod"] = { x = 300, y = 180 },
+                    ["button_bugnet"] = { x = 300, y = 0 },
+                    
+
+                }
+                ThePlayer.HUD:mms_scroll_switch_widget_open(nil,cmd_table)
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
@@ -56,7 +83,3 @@ if flg == false then
 end
 
 -- dofile(resolvefilepath("test_fn/test.lua"))
-
-
-
-

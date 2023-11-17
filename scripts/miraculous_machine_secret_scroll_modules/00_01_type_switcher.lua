@@ -73,33 +73,39 @@ return {
             end
         end)
 
-        inst:ListenForEvent("key_up",function(_,key)    ------ RPC 回传的 玩家按键监听. A - Z     F1 - F12
-            -- print("info weapon switch key up",key)
+        -- inst:ListenForEvent("key_up",function(_,key)    ------ RPC 回传的 玩家按键监听. A - Z     F1 - F12
+        --     -- print("info weapon switch key up",key)
 
-            if key == KEY_F1 then
-                inst:TypeSwitchByCooldown("switch.orange_staff")
-            elseif key == KEY_F3 then
-                inst:TypeSwitchByCooldown("switch.purple_staff")
-            elseif key == KEY_F4 then
-                inst:TypeSwitchByCooldown("switch.fishingrod")
-            elseif key == KEY_F5 then
-                inst:TypeSwitchByCooldown("switch.blink_map")
-            elseif key == KEY_F6 then
-                inst:TypeSwitchByCooldown("switch.bugnet")
-            elseif key == KEY_F7 then
-                inst:TypeSwitchByCooldown("switch.trident")
-            elseif key == KEY_F8 then
-                inst:TypeSwitchByCooldown("switch.long_range_weapon")
-            elseif key == KEY_F9 then
-                inst:TypeSwitchByCooldown("switch.short_range_weapon")
-            elseif key == KEY_F10 then
-                inst:TypeSwitchByCooldown("switch.tools")
-            elseif key == KEY_F11 then
-                inst:TypeSwitchByCooldown("switch.ice_staff")
+        --     if key == KEY_F1 then
+        --         inst:TypeSwitchByCooldown("switch.orange_staff")
+        --     elseif key == KEY_F3 then
+        --         inst:TypeSwitchByCooldown("switch.purple_staff")
+        --     elseif key == KEY_F4 then
+        --         inst:TypeSwitchByCooldown("switch.fishingrod")
+        --     elseif key == KEY_F5 then
+        --         inst:TypeSwitchByCooldown("switch.blink_map")
+        --     elseif key == KEY_F6 then
+        --         inst:TypeSwitchByCooldown("switch.bugnet")
+        --     elseif key == KEY_F7 then
+        --         inst:TypeSwitchByCooldown("switch.trident")
+        --     elseif key == KEY_F8 then
+        --         inst:TypeSwitchByCooldown("switch.long_range_weapon")
+        --     elseif key == KEY_F9 then
+        --         inst:TypeSwitchByCooldown("switch.short_range_weapon")
+        --     elseif key == KEY_F10 then
+        --         inst:TypeSwitchByCooldown("switch.tools")
+        --     elseif key == KEY_F11 then
+        --         inst:TypeSwitchByCooldown("switch.ice_staff")
+        --     end
+
+
+
+        -- end)
+        inst:ListenForEvent("type_switch",function(_,target_type)
+            if type(target_type) == "string" then
+                -- inst:TypeSwitchByCooldown("switch.trident")
+                inst:TypeSwitchByCooldown(target_type)
             end
-
-
-
         end)
 
 

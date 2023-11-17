@@ -17,3 +17,6 @@ modimport("imports_of_miraculous_machine_secret_scroll/06_action_fix_for_fishing
 
 
 modimport("imports_of_miraculous_machine_secret_scroll/07_playercontroller.lua")	---- 地图跃迁相关的组件hook
+
+
+modimport("imports_of_miraculous_machine_secret_scroll/08_switch_widget.lua")	---- 按键 界面

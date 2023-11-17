@@ -46,10 +46,86 @@
 
 return function(inst,key,down)
     -- print("test 6666666",key,down)
-    if not down and (  (key >= KEY_A and key <= KEY_Z) or (key >= KEY_F1 and key <= KEY_F12)  ) then    --- 按键抬起
+    -----------------------------------------------------------------------------------------------------------------------------------
+    local cmd_table = {
+        ["button_blink_map"] = { x = 0, y = 200 ,click_fn = function()
+            print("button_blink_map")
+            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.blink_map")
+        end},
+
+        ["button_bow"] = { x = 100, y = 100 ,click_fn = function()
+            print("button_bow")
+            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.long_range_weapon")
+        end},
+
+        ["button_sword"] = { x = -100, y = 100 ,click_fn = function()
+            print("button_sword")
+            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.short_range_weapon")
+        end},
+
+        ["button_tools"] = { x = 0, y = -10 ,click_fn = function()
+            print("button_tools")
+            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.tools")
+
+        end},
+
+        
+        ["button_goggle"] = { x = -300, y = -180 ,click_fn = function()
+            print("button_goggle")
+            -- inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","")
+            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("func.goggles_switch","__")
+        end},
+        ["button_music"] = { x = -150, y = -180 ,click_fn = function()
+            print("button_music")
+        end},
+        ["button_orange"] = { x = 0, y = -180 ,click_fn = function()
+            print("button_orange")
+            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.orange_staff")
+        end},
+        ["button_razor"] = { x = 150, y = -180 ,click_fn = function()
+            print("button_razor")
+        end},
+        ["button_trident"] = { x = 300, y = -180 ,click_fn = function()
+            print("button_trident")
+            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.trident")
+        end},
+
+
+        ["button_water_run"] = { x = -300, y = 180 ,click_fn = function()
+            print("button_water_run")
+        end},
+        ["button_light"] = { x = -300, y = 0 ,click_fn = function()
+            print("button_light")
+        end},
+
+        ["button_fishingrod"] = { x = 300, y = 180 ,click_fn = function()
+            print("button_fishingrod")
+            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.fishingrod")
+        end},
+        ["button_bugnet"] = { x = 300, y = 0 ,click_fn = function()
+            print("button_bugnet")
+            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.bugnet")
+        end},
+        
+
+    }
+    -----------------------------------------------------------------------------------------------------------------------------------
+    -- if not down and (  (key >= KEY_A and key <= KEY_Z) or (key >= KEY_F1 and key <= KEY_F12)  ) then    --- 按键抬起
+    --     -- print("key up",key)
+    --     pcall(function()
+    --         -- inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("key_up",key)   
+    --         if ThePlayer then
+    --             ThePlayer.HUD:mms_scroll_switch_widget_open(nil,cmd_table)
+    --         end
+    --     end)
+    -- end
+    if not down and key == KEY_F1  then    --- 按键抬起
         -- print("key up",key)
         pcall(function()
-            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("key_up",key)            
+            -- inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("key_up",key)   
+            if ThePlayer then
+                ThePlayer.HUD:mms_scroll_switch_widget_open(nil,cmd_table)
+            end
         end)
     end
 end
