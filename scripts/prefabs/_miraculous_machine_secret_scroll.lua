@@ -1,7 +1,9 @@
 local assets =
 {
-    Asset("ANIM", "anim/cane.zip"),
-    Asset("ANIM", "anim/swap_cane.zip"),
+
+    Asset("ANIM", "anim/miraculous_machine_secret_scroll_fx.zip"),
+    Asset( "IMAGE", "images/inventoryimages/miraculous_machine_secret_scroll.tex" ), 
+    Asset( "ATLAS", "images/inventoryimages/miraculous_machine_secret_scroll.xml" ),
 }
 
 local function onequip(inst, owner)
@@ -53,9 +55,9 @@ local function fn()
 
     MakeInventoryPhysics(inst)
 
-    inst.AnimState:SetBank("cane")
-    inst.AnimState:SetBuild("swap_cane")
-    inst.AnimState:PlayAnimation("idle")
+    inst.AnimState:SetBank("miraculous_machine_secret_scroll_fx")
+    inst.AnimState:SetBuild("miraculous_machine_secret_scroll_fx")
+    inst.AnimState:PlayAnimation("ground_idle")
 
 
     inst:AddTag("weapon")
@@ -91,8 +93,8 @@ local function fn()
 
         inst:AddComponent("inspectable")
         inst:AddComponent("inventoryitem")
-        inst.components.inventoryitem.imagename = "cane"
-        inst.components.inventoryitem.atlasname = GetInventoryItemAtlas("cane.tex")
+        inst.components.inventoryitem.imagename = "miraculous_machine_secret_scroll"
+        inst.components.inventoryitem.atlasname = "images/inventoryimages/miraculous_machine_secret_scroll.xml"
         inst:AddComponent("equippable")
         inst.components.equippable:SetOnEquip(onequip)
         inst.components.equippable:SetOnUnequip(onunequip)
@@ -127,6 +129,18 @@ local function fn()
                 end
             end)
     --------------------------------------------------------------------------------------------------------------
+    -------------------------------------------------------------------
+    --- 落水影子
+        local function shadow_init(inst)
+            if inst:IsOnOcean(false) then       --- 如果在海里（不包括船）
+                inst.AnimState:Hide("SHADOW")
+            else                                
+                inst.AnimState:Show("SHADOW")
+            end
+        end
+        inst:ListenForEvent("on_landed",shadow_init)
+        shadow_init(inst)
+    -------------------------------------------------------------------
 
     return inst
 end

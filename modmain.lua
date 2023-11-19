@@ -12,6 +12,8 @@ PrefabFiles =
 	"_miraculous_machine_secret_scroll",	---- 穿戴的物品
 	"01_miraculous_machine_secret_scroll_fx",	---- 卷轴特效
 	"02_arrow_projetile",	---- 弓箭弹药
+	"03_ice_projectile",	---- 雪精灵的弹药
+	"04_snow_spriter",		---- 雪精灵
 }
 
 

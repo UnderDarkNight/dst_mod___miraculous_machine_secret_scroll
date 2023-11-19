@@ -7,18 +7,6 @@ local assets =
     Asset("ANIM", "anim/miraculous_machine_secret_scroll_fx.zip"),
 }
 
-local function OnHit(inst, owner, target)
-    -- if inst.__attack_task then
-    --     inst.__attack_task:Cancel()
-    -- end
-
-
-    -- if inst.__target_fn then
-    --     inst.__target_fn(inst,owner,target)
-    -- end
-    -- inst:Remove()
-    inst:AddTag("stop")
-end
 
 local function fn()
     local inst = CreateEntity()
@@ -35,12 +23,16 @@ local function fn()
     inst.AnimState:SetBank("miraculous_machine_secret_scroll_fx")
     inst.AnimState:SetBuild("miraculous_machine_secret_scroll_fx")
     inst.AnimState:PlayAnimation("close",true)
-    local scale = 0.5
+    inst.AnimState:PushAnimation("close_idle",true)
+    local scale = 1
     inst.AnimState:SetScale(scale, scale, scale)
 
     inst:AddTag("projectile")
-    inst:AddTag("FX")
     inst:AddTag("INLIMBO")
+    inst:AddTag("FX")
+    inst:AddTag("NOCLICK")      --- 不可点击
+    inst:AddTag("CLASSIFIED")   --  私密的，client 不可观测， FindEntity 默认过滤
+    inst:AddTag("NOBLOCK")      -- 不会影响种植和放置
 
     MakeInventoryPhysics(inst)
     RemovePhysicsColliders(inst)
@@ -98,16 +90,16 @@ local function fn()
         inst.__range = _table.range
         inst.__speed = _table.speed
 
-        inst.Transform:SetPosition(_table.pt.x, 0,_table.pt.z)
+        inst.Transform:SetPosition(_table.pt.x,0,_table.pt.z)
 
     end)
 
     inst.__attack_task = inst:DoPeriodicTask(0.5,function()
         if inst.__target and inst.__target:IsValid() then
-
+                local x,y,z = inst.__target.Transform:GetWorldPosition()
                 local dis_sq = inst:GetDistanceSqToInst(inst.__target)
-                if dis_sq > 20*20 then
-                        inst.Transform:SetPosition(inst.__target.Transform:GetWorldPosition())
+                if dis_sq > 20*20 then                    
+                        inst.Transform:SetPosition(x,0,z)
                         inst:StopClosing()
                 else
                         if  dis_sq > ( (inst.__range or 0) * (inst.__range or 0) ) then
@@ -123,12 +115,21 @@ local function fn()
         end
     end)
     ------------------------------------------------------------------------------
+        inst:AddTag("closing")
     --- 切换外观
         inst:ListenForEvent("weapon_in_hand",function(_,cmd)
             if cmd == "off" then
-                inst.AnimState:PlayAnimation("close",true)
+                if not inst:HasTag("closing") then
+                    inst.AnimState:PlayAnimation("close")
+                    inst.AnimState:PushAnimation("close_idle",true)
+                    inst:AddTag("closing")
+                end
             else
-                inst.AnimState:PlayAnimation("open",true)
+                if inst:HasTag("closing") then
+                    inst.AnimState:PlayAnimation("open")
+                    inst.AnimState:PushAnimation("open_idle",true)
+                    inst:RemoveTag("closing")
+                end
             end
         end)
     ------------------------------------------------------------------------------

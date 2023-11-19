@@ -44,6 +44,7 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/13_short_range_weapon",                   --- 近战武器
             "miraculous_machine_secret_scroll_modules/14_ice_staff",                            --- 冰杖
             "miraculous_machine_secret_scroll_modules/15_goggles",                              --- 沙尘暴护目镜
+            "miraculous_machine_secret_scroll_modules/16_snow_spriter",                         --- 雪精灵
 
         }
         local replica_modules_fn = {}

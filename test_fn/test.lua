@@ -48,32 +48,34 @@ local flg,error_code = pcall(function()
                 -- ThePlayer.AnimState:PlayAnimation("bugnet_pre")
                 -- ThePlayer.AnimState:PushAnimation("bugnet")
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-                local cmd_table = {
-                    ["button_blink_map"] = { x = 0, y = 200 },
+                -- local cmd_table = {
+                --     ["button_blink_map"] = { x = 0, y = 200 },
 
-                    ["button_bow"] = { x = 100, y = 100 },
+                --     ["button_bow"] = { x = 100, y = 100 },
 
-                    ["button_sword"] = { x = -100, y = 100 },
+                --     ["button_sword"] = { x = -100, y = 100 },
 
-                    ["button_tools"] = { x = 0, y = -10 },
+                --     ["button_tools"] = { x = 0, y = -10 },
 
                     
-                    ["button_goggle"] = { x = -300, y = -180 },
-                    ["button_music"] = { x = -150, y = -180 },
-                    ["button_orange"] = { x = 0, y = -180 },
-                    ["button_razor"] = { x = 150, y = -180 },
-                    ["button_trident"] = { x = 300, y = -180 },
+                --     ["button_goggle"] = { x = -300, y = -180 },
+                --     ["button_music"] = { x = -150, y = -180 },
+                --     ["button_orange"] = { x = 0, y = -180 },
+                --     ["button_razor"] = { x = 150, y = -180 },
+                --     ["button_trident"] = { x = 300, y = -180 },
 
 
-                    ["button_water_run"] = { x = -300, y = 180 },
-                    ["button_light"] = { x = -300, y = 0 },
+                --     ["button_water_run"] = { x = -300, y = 180 },
+                --     ["button_light"] = { x = -300, y = 0 },
 
-                    ["button_fishingrod"] = { x = 300, y = 180 },
-                    ["button_bugnet"] = { x = 300, y = 0 },
+                --     ["button_fishingrod"] = { x = 300, y = 180 },
+                --     ["button_bugnet"] = { x = 300, y = 0 },
                     
 
-                }
-                ThePlayer.HUD:mms_scroll_switch_widget_open(nil,cmd_table)
+                -- }
+                -- ThePlayer.HUD:mms_scroll_switch_widget_open(nil,cmd_table)
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+                SpawnPrefab("mms_scroll_snow_spriter"):PushEvent("Set",{player = ThePlayer})
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
