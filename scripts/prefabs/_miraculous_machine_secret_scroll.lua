@@ -54,7 +54,8 @@ local function fn()
     inst.entity:AddNetwork()
 
     MakeInventoryPhysics(inst)
-
+    MakeInventoryFloatable(inst, "med", nil, 0.75)
+    
     inst.AnimState:SetBank("miraculous_machine_secret_scroll_fx")
     inst.AnimState:SetBuild("miraculous_machine_secret_scroll_fx")
     inst.AnimState:PlayAnimation("ground_idle")

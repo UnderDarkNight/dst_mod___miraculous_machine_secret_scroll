@@ -30,6 +30,9 @@ local function fn()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.entity:AddDynamicShadow()
+    inst.DynamicShadow:SetSize(1,1)
+
     MakeInventoryPhysics(inst)
     RemovePhysicsColliders(inst)
 

@@ -22,8 +22,7 @@ local function fn()
 
     inst.AnimState:SetBank("miraculous_machine_secret_scroll_fx")
     inst.AnimState:SetBuild("miraculous_machine_secret_scroll_fx")
-    inst.AnimState:PlayAnimation("close",true)
-    inst.AnimState:PushAnimation("close_idle",true)
+    inst.AnimState:PlayAnimation("close_idle",true)
     local scale = 1
     inst.AnimState:SetScale(scale, scale, scale)
 

@@ -15,20 +15,28 @@
       
         ---------------------------------------------------------------------------------------
         ----- 2 秒发射一次
+            local attack_range = 30
+            local attack_damage = 50
+            
+            
             snow_spriter:DoPeriodicTask(2,function()
                 if snow_spriter.attack_target and snow_spriter.attack_target:IsValid() then
                     local attack_target = snow_spriter.attack_target
                     if attack_target.components.combat and attack_target.components.health and not attack_target.components.health:IsDead() then
-                                if snow_spriter:GetDistanceSqToInst(attack_target) < 40*40 then
+                                if snow_spriter:GetDistanceSqToInst(attack_target) < attack_range*attack_range then
 
                                             snow_spriter:Face_Target_And_Stop(attack_target)
-                                            attack_target:DoTaskInTime(0.6,function()
+                                            snow_spriter:DoTaskInTime(0.6,function()
+                                                        if not snow_spriter:IsValid() or not attack_target:IsValid() then
+                                                            return
+                                                        end
                                                         local project = SpawnPrefab("mms_scroll_ice_projectile")
 
                                                         project.Transform:SetPosition(snow_spriter.Transform:GetWorldPosition())
                                                         project.components.projectile:Throw(snow_spriter, attack_target, snow_spriter)
                                                         project.components.projectile:SetOnHitFn(function()
-                                                            attack_target.components.combat:GetAttacked( player, 50, snow_spriter ) -- 伤害 50
+                                                            -- attack_target.components.combat:GetAttacked( player, 50, snow_spriter ) -- 伤害 50  。伤害指向为玩家造成。
+                                                            attack_target.components.combat:GetAttacked( player, attack_damage, snow_spriter ) -- 伤害 50  。伤害指向为玩家造成。
                                                             project:Remove()
                                                         end)
                                             
