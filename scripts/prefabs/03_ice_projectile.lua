@@ -62,6 +62,9 @@ local function common(anim, bloom, lightoverride)
     inst.components.projectile:SetOnHitFn(inst.Remove)
     inst.components.projectile:SetOnMissFn(inst.Remove)
 
+
+
+
     return inst
 end
 

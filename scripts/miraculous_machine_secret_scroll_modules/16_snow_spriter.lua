@@ -18,14 +18,15 @@
             snow_spriter:DoPeriodicTask(2,function()
                 if snow_spriter.attack_target and snow_spriter.attack_target:IsValid() then
                     local attack_target = snow_spriter.attack_target
-                    if attack_target.components.combat then
+                    if attack_target.components.combat and attack_target.components.health and not attack_target.components.health:IsDead() then
                                 if snow_spriter:GetDistanceSqToInst(attack_target) < 40*40 then
 
                                             snow_spriter:Face_Target_And_Stop(attack_target)
                                             attack_target:DoTaskInTime(0.6,function()
                                                         local project = SpawnPrefab("mms_scroll_ice_projectile")
+
                                                         project.Transform:SetPosition(snow_spriter.Transform:GetWorldPosition())
-                                                        project.components.projectile:Throw(inst, attack_target, inst)
+                                                        project.components.projectile:Throw(snow_spriter, attack_target, snow_spriter)
                                                         project.components.projectile:SetOnHitFn(function()
                                                             attack_target.components.combat:GetAttacked( player, 50, snow_spriter ) -- 伤害 50
                                                             project:Remove()
@@ -58,7 +59,7 @@
 return {
     -----------------------------------------------------------------------------------------------------------------
     main = function(inst)
-        -- inst:AddTag("snow_spriter")
+        inst:AddTag("snow_spriter")
         
         if not TheWorld.ismastersim then
             return
@@ -95,9 +96,13 @@ return {
                 if not inst:HasTag("snow_spriter") then
                     return
                 end
+                print("player_onhitother +++++++++++++ ",_table.attacker , _table.target, _table.weapon,_table.damage)
+
                 if _table and _table.target then
-                     snow_spriter_atk_target(inst,_table.target)
-                end            
+                    if _table.weapon == nil or _table.weapon.prefab ~= "mms_scroll_snow_spriter" then
+                        snow_spriter_atk_target(inst,_table.target)
+                    end
+                end
             end)
         -------------------------------------------------------------------------------------------------------------------
 

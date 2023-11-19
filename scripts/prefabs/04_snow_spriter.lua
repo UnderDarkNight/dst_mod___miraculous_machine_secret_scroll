@@ -50,6 +50,8 @@ local function fn()
 
 	inst.persists = false
 
+    inst:AddComponent("weapon")
+	inst.components.weapon:SetDamage(50)
 
     function inst:Close2Point(pt,speed)
         self:FacePoint(pt.x,0,pt.z)
