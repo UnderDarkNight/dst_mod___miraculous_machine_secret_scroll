@@ -171,6 +171,8 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                         ["switch.tools"]   = "工具",
                         ["switch.blink_map"]   = "跃迁",
                         ["switch.ice_staff"]   = "冰杖",
+                        ["switch.razor"]   = "剃刀",
+                        ["switch.music"]   = "音乐",
                     }
                     self.miraculous_machine_secret_scroll_widget_inst:DoPeriodicTask(0.3,function()
                         if weapon_inst and weapon_inst:IsValid() then

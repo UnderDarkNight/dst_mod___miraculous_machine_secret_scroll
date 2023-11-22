@@ -14,6 +14,7 @@ PrefabFiles =
 	"02_arrow_projetile",	---- 弓箭弹药
 	"03_ice_projectile",	---- 雪精灵的弹药
 	"04_snow_spriter",		---- 雪精灵
+	"05_light_fx",			---- 灯光特效
 }
 
 

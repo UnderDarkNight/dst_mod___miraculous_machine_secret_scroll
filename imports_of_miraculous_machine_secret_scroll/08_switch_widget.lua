@@ -25,7 +25,8 @@ AddClassPostConstruct("screens/playerhud",function(self)
                     cmd_table = cmd_table or {}
                 ----------------------------------------------------------------
                     if self.mms_scroll_switch_widget then
-                        self.mms_scroll_switch_widget:Kill()
+                        -- self.mms_scroll_switch_widget:Kill()
+                        hud:mms_scroll_switch_widget_close()
                     end
                     local root = self:AddChild(Screen())
                     self.mms_scroll_switch_widget = root
@@ -152,9 +153,9 @@ AddClassPostConstruct("screens/playerhud",function(self)
                     root.__old_mms_scroll_OnControl = root.OnControl
                     root.OnControl = function(self,control, down)
                         -- print("widget key down",control,down)
-                        if CONTROL_CANCEL == control and down == false or control == CONTROL_OPEN_DEBUG_CONSOLE then
-                            hud:mms_scroll_switch_widget_close()
-                        end
+                        -- if CONTROL_CANCEL == control and down == false or control == CONTROL_OPEN_DEBUG_CONSOLE then
+                        --     hud:mms_scroll_switch_widget_close()
+                        -- end
                         return self:__old_mms_scroll_OnControl(control,down)
                     end
                 ----------------------------------------------------------------

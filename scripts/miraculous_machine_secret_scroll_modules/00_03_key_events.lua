@@ -77,6 +77,8 @@ return function(inst,key,down)
         end},
         ["button_music"] = { x = -150, y = -180 ,click_fn = function()
             print("button_music")
+            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.music")
+
         end},
         ["button_orange"] = { x = 0, y = -180 ,click_fn = function()
             print("button_orange")
@@ -84,6 +86,8 @@ return function(inst,key,down)
         end},
         ["button_razor"] = { x = 150, y = -180 ,click_fn = function()
             print("button_razor")
+            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.razor")
+
         end},
         ["button_trident"] = { x = 300, y = -180 ,click_fn = function()
             print("button_trident")
@@ -96,6 +100,8 @@ return function(inst,key,down)
         end},
         ["button_light"] = { x = -300, y = 0 ,click_fn = function()
             print("button_light")
+            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("func.light_switch","__")
+
         end},
 
         ["button_fishingrod"] = { x = 300, y = 180 ,click_fn = function()

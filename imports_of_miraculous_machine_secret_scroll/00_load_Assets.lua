@@ -58,6 +58,18 @@ local temp_assets = {
 	Asset("ANIM", "anim/mms_scroll_bugnet_red.zip"),
 	Asset("ANIM", "anim/mms_scroll_bugnet_blue.zip"),
 
+	Asset("ANIM", "anim/mms_scroll_trident_red.zip"),
+	Asset("ANIM", "anim/mms_scroll_trident_blue.zip"),
+
+	Asset("ANIM", "anim/mms_scroll_hammer_red.zip"),
+	Asset("ANIM", "anim/mms_scroll_hammer_blue.zip"),
+
+	Asset("ANIM", "anim/mms_scroll_razor_red.zip"),
+	Asset("ANIM", "anim/mms_scroll_razor_blue.zip"),
+
+	Asset("ANIM", "anim/mms_scroll_pickaxe_red.zip"),
+	Asset("ANIM", "anim/mms_scroll_pickaxe_blue.zip"),
+
 }
 
 for k, v in pairs(temp_assets) do

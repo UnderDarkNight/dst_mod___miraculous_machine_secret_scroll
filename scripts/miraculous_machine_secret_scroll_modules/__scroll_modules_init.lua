@@ -45,6 +45,9 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/14_ice_staff",                            --- 冰杖
             "miraculous_machine_secret_scroll_modules/15_goggles",                              --- 沙尘暴护目镜
             "miraculous_machine_secret_scroll_modules/16_snow_spriter",                         --- 雪精灵
+            "miraculous_machine_secret_scroll_modules/17_razor",                                --- 剃刀
+            "miraculous_machine_secret_scroll_modules/18_light",                                --- 灯光
+            "miraculous_machine_secret_scroll_modules/19_music",                                --- 音乐
 
         }
         local replica_modules_fn = {}

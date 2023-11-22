@@ -44,12 +44,22 @@ local function fn()
 
     --projectile (from projectile component) added to pristine state for optimization
     inst:AddTag("projectile")
+    inst:AddTag("INLIMBO")
+    inst:AddTag("FX")
+    inst:AddTag("NOCLICK")      --- 不可点击
+    inst:AddTag("CLASSIFIED")   --  私密的，client 不可观测， FindEntity 默认过滤
+    inst:AddTag("NOBLOCK")      -- 不会影响种植和放置
 
     inst.entity:SetPristine()
 
     if not TheWorld.ismastersim then
         return inst
     end
+
+    inst:DoTaskInTime(0,function()
+        local fx = inst:SpawnChild("cane_candy_fx")
+        fx.Transform:SetPosition(0,3,0)
+    end)
 
 	inst.persists = false
 
