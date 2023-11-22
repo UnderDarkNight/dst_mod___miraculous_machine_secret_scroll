@@ -5,6 +5,18 @@ return {
     -----------------------------------------------------------------------------------------------------------------
     main = function(inst)
 
+            local function weapon_level_changed_event_fn()
+                local weapon_level = inst.components.miraculous_machine_secret_scroll:Add("weapon_level.num",0)
+                inst.components.weapon:SetDamage(45 + weapon_level*2 )
+
+
+                local goldnugget_num = inst.components.miraculous_machine_secret_scroll:Add("goldnugget.num",0)
+                local attack_range = 1 + goldnugget_num * 0.01
+                inst.components.weapon.attackrange = attack_range
+                inst.components.weapon.hitrange = attack_range
+
+            end
+
 
             inst:ListenForEvent("switch.short_range_weapon.start",function()
                 if inst:HasTag("switch.short_range_weapon") then    ---- 避免重复切换
@@ -13,11 +25,15 @@ return {
                 inst:AddTag("switch.short_range_weapon")
                 print("info short_range_weapon on")
                 -----------------------------------------------------------------------------
-                    local attack_range = 1
                     inst:AddTag("weapon")
-                    inst.components.weapon:SetDamage(100)
-                    inst.components.weapon.attackrange = attack_range
-                    inst.components.weapon.hitrange = attack_range
+                    -- local attack_range = 1
+                    -- local weapon_level = inst.components.miraculous_machine_secret_scroll:Get("weapon_level.num") or 0
+                    -- inst.components.weapon:SetDamage(45 + weapon_level*2 )
+                    -- inst.components.weapon.attackrange = attack_range
+                    -- inst.components.weapon.hitrange = attack_range
+                    weapon_level_changed_event_fn()
+
+                    inst:ListenForEvent("weapon_level.changed",weapon_level_changed_event_fn)
                 -----------------------------------------------------------------------------
 
                 inst.components.miraculous_machine_secret_scroll:RPC_PushEvent("switch.short_range_weapon.start.replica")
@@ -33,6 +49,7 @@ return {
                 ------------------------------------------------------------------------
                     inst:RemoveTag("weapon")
                     inst.components.weapon:_scroll_init()
+                    inst:RemoveEventCallback("weapon_level.changed",weapon_level_changed_event_fn)
                 ------------------------------------------------------------------------
 
                 inst.components.miraculous_machine_secret_scroll:RPC_PushEvent("switch.short_range_weapon.stop.replica")

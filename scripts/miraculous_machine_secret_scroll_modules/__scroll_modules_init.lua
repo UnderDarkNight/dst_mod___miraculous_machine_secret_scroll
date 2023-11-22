@@ -28,9 +28,13 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/00_05_goto_state",                           --- 角色做动画瞬间把外观套上去
             "miraculous_machine_secret_scroll_modules/00_06_hit_kill_event_listener",              --- 玩家 击打、击杀 的event 转发到 武器 inst 身上
             "miraculous_machine_secret_scroll_modules/00_07_tools_work_finish_event_listener",     --- 玩家 锤、挖、砍、虫网、 的event 转发到 武器 inst 身上
+            "miraculous_machine_secret_scroll_modules/00_08_kill_event_unlocker",                  --- 击杀解锁标记
 
 
             "miraculous_machine_secret_scroll_modules/01_acceptable",                           --- 物品接受组件
+
+
+
             "miraculous_machine_secret_scroll_modules/02_container",                            --- 容器组件
             "miraculous_machine_secret_scroll_modules/04_tools",                                --- 工具
             "miraculous_machine_secret_scroll_modules/05_orange_staff",                         --- 橙色法杖
@@ -48,6 +52,7 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/17_razor",                                --- 剃刀
             "miraculous_machine_secret_scroll_modules/18_light",                                --- 灯光
             "miraculous_machine_secret_scroll_modules/19_music",                                --- 音乐
+            "miraculous_machine_secret_scroll_modules/20_walk_speed",                           --- 移动速度加成
 
         }
         local replica_modules_fn = {}

@@ -137,6 +137,9 @@ return {
 
                 _table.owner:RemoveEventCallback("newstate",inst._player_sg_event_music_fn)       --- 移除挂在玩家身上的 event 监听
                 band_disable(inst)
+                if inst:HasTag("band") then
+                    _table.owner.AnimState:ClearOverrideSymbol("swap_body_tall")
+                end
             end
         end)
 
@@ -159,6 +162,9 @@ return {
                 if owner then
                     band_enable(inst)
                     owner.AnimState:OverrideSymbol("swap_body_tall", "armor_onemanband", "swap_body_tall")
+                    if owner.sg then
+                        owner.sg:GoToState("enter_onemanband")
+                    end
                 end
             -----------------------------------------------------------------------------
 

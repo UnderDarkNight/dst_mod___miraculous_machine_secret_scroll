@@ -39,6 +39,7 @@ local function fn()
     inst.AnimState:SetBank("mms_scroll_snow_spriter")
     inst.AnimState:SetBuild("mms_scroll_snow_spriter")
     inst.AnimState:PlayAnimation("idle", true)
+    -- inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
 
     inst.Transform:SetFourFaced()
 
@@ -212,6 +213,46 @@ local function fn()
 
 
     end)
+
+    ------------------------------------------------------------------------------------------------
+    ---- 精灵发光
+        inst:ListenForEvent("light",function(_,cmd)
+            if cmd == "on" then
+                if inst.__________light_inst == nil then
+                    local light_inst = inst:SpawnChild("minerhatlight")
+                    inst.__________light_inst = light_inst
+
+                    light_inst.Light:Enable(true)
+                    -- light_inst.Light:SetRadius(1.5)   -- 光照半径
+                    light_inst.Light:SetRadius(1.5)   -- 光照半径
+                    light_inst.Light:SetFalloff(.2)   -- 距离衰减速度（越大衰减越快）
+                    light_inst.Light:SetIntensity(0.9)    --- 光照强度 --- 
+                    -- light_inst.Light:SetColour(235 / 255, 255 / 255, 255 / 255)   --- 颜色 RGB
+                    light_inst.Light:SetColour(255 / 255, 255 / 255, 255 / 255)   --- 颜色 RGB
+
+                end
+            else
+                if inst.__________light_inst then
+                    inst.__________light_inst:Remove()
+                end
+            end
+        end)
+        local light_fn = function()
+            if TheWorld.state.isday then
+                inst:DoTaskInTime(5,function()
+                    inst:PushEvent("light", "off")                
+                end)
+            elseif TheWorld.state.isnight or TheWorld.state.isdusk  then
+                inst:PushEvent("light", "on")
+            end
+        end
+
+        inst:DoTaskInTime(0,light_fn)
+        inst:WatchWorldState("isday", light_fn)
+        inst:WatchWorldState("isdusk", light_fn)
+        inst:WatchWorldState("isnight", light_fn)
+    ------------------------------------------------------------------------------------------------
+
 
     return inst
 end

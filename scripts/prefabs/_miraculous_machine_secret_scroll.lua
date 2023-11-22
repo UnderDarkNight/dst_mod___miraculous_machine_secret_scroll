@@ -101,6 +101,7 @@ local function fn()
         inst.components.equippable:SetOnUnequip(onunequip)
         inst.components.equippable.restrictedtag = "player"
         -- inst.components.equippable.walkspeedmult = TUNING.CANE_SPEED_MULT
+        -- inst.components.equippable.walkspeedmult = 1.1
         MakeHauntableLaunch(inst)
     end
 

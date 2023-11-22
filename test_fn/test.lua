@@ -75,7 +75,18 @@ local flg,error_code = pcall(function()
                 -- }
                 -- ThePlayer.HUD:mms_scroll_switch_widget_open(nil,cmd_table)
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-                SpawnPrefab("mms_scroll_snow_spriter"):PushEvent("Set",{player = ThePlayer})
+                -- SpawnPrefab("mms_scroll_snow_spriter"):PushEvent("Set",{player = ThePlayer})
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+                -- local __transparency = 0
+                -- inst.AnimState:SetMultColour(1, 1, 1, __transparency)
+                -- inst.___SetMultColour_task = inst:DoPeriodicTask(FRAMES,function()
+                --     __transparency = __transparency + 0.05  
+                --     if __transparency > 1 then
+                --         __transparency = 1
+                --         inst.___SetMultColour_task:Cancel()
+                --     end
+                --     inst.AnimState:SetMultColour(1, 1, 1, __transparency)
+                -- end)
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
