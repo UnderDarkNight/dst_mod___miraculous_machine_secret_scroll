@@ -20,6 +20,44 @@ return {
                 inst.components.weapon.hitrange = attack_range
 
             end
+            ------------------------------------------------------------------------------------------------
+            -------------------- 秒杀
+                inst:ListenForEvent("player_onhitother",function(_,_table)
+                    if not inst:HasTag("switch.long_range_weapon") then
+                        return
+                    end
+                    local target = _table.target
+                    local attacker = _table.attacker
+                    local damage = _table.damage
+                    local weapon = _table.weapon
+                    -- print(" double attack event",attacker,target,damage,weapon)
+                    if not (target and attacker and damage and weapon) then
+                        return
+                    end
+                    if weapon ~= inst then
+                        return
+                    end
+
+                    -----------------------------------------------------------------------
+                    --- 秒杀
+                        if inst.components.miraculous_machine_secret_scroll:Get("firestaff.full") then
+                            local redgem_num = inst.components.miraculous_machine_secret_scroll:Add("redgem.num",0)
+                            --- 初始概率1%，每给予一颗红宝石增加0.1%的概率，最高2%   最多喂食10个
+                            local base_redgem_percent = 0.01
+                            if math.random(10000)/10000 < (base_redgem_percent + redgem_num*0.001) then
+                                if target.components.health and target.components.combat then
+                                    local max_health = target.components.health.maxhealth
+                                    target.components.combat:GetAttacked(attacker,max_health,inst)
+                                end
+                                return
+                            end
+                        end
+                    -----------------------------------------------------------------------
+                end)
+
+
+
+            ------------------------------------------------------------------------------------------------
 
             inst:ListenForEvent("switch.long_range_weapon.start",function()
                 if inst:HasTag("switch.long_range_weapon") then    ---- 避免重复切换

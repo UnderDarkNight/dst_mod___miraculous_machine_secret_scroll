@@ -138,6 +138,7 @@ local function fn()
         local function shadow_init(inst)
             if inst:IsOnOcean(false) then       --- 如果在海里（不包括船）
                 inst.AnimState:Hide("SHADOW")
+                inst.AnimState:PlayAnimation("ground_idle")
             else                                
                 inst.AnimState:Show("SHADOW")
             end

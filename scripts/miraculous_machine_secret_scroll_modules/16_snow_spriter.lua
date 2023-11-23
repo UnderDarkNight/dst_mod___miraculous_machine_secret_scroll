@@ -104,7 +104,7 @@ return {
                 if not inst:HasTag("snow_spriter") then
                     return
                 end
-                print("player_onhitother +++++++++++++ ",_table.attacker , _table.target, _table.weapon,_table.damage)
+                -- print("player_onhitother +++++++++++++ ",_table.attacker , _table.target, _table.weapon,_table.damage)
 
                 if _table and _table.target then
                     if _table.weapon == nil or _table.weapon.prefab ~= "mms_scroll_snow_spriter" then

@@ -17,7 +17,80 @@ return {
 
             end
 
+            -------------------- 二连击，秒杀
+                inst:ListenForEvent("player_onhitother",function(_,_table)
+                    if not inst:HasTag("switch.short_range_weapon") then
+                        return
+                    end
+                    local target = _table.target
+                    local attacker = _table.attacker
+                    local damage = _table.damage
+                    local weapon = _table.weapon
+                    -- print(" double attack event",attacker,target,damage,weapon)
+                    if not (target and attacker and damage and weapon) then
+                        return
+                    end
+                    if weapon ~= inst then
+                        return
+                    end
 
+                    -----------------------------------------------------------------------
+                    --- 秒杀
+                        if not inst:HasTag("switch.short_range_weapon.is_double_attack") then --- 不会被双重攻击触发
+                                    if inst.components.miraculous_machine_secret_scroll:Get("firestaff.full") then
+                                        local redgem_num = inst.components.miraculous_machine_secret_scroll:Add("redgem.num",0)
+                                        --- 初始概率1%，每给予一颗红宝石增加0.1%的概率，最高2%   最多喂食10个
+                                        local base_redgem_percent = 0.01
+                                        if math.random(10000)/10000 < (base_redgem_percent + redgem_num*0.001) then
+                                            if target.components.health and target.components.combat then
+                                                local max_health = target.components.health.maxhealth
+                                                target.components.combat:GetAttacked(attacker,max_health,inst)
+                                            end
+                                            return
+                                        end
+                                    end                                    
+                        end
+                    -----------------------------------------------------------------------
+
+
+
+                    --------------------------------------------
+                    ---- 判断能否触发双重攻击
+                        if inst.components.miraculous_machine_secret_scroll:Get("boss.kill.antlion") then
+                            -- 初始几率10%，每击杀一只，【二连击】的几率增加2%，最高20% 。 最多击杀 5 只 满
+                            local base_antlion_percent = 0.1
+                            local antlion_num = inst.components.miraculous_machine_secret_scroll:Get("boss.kill.antlion")
+                            if antlion_num >= 5 then
+                                antlion_num = 5
+                            end
+
+                            if math.random(10000)/10000 <= (base_antlion_percent + antlion_num * 0.02) then
+                                -- print("成功判断 双重攻击")
+                            else
+                                return
+                            end
+                        else
+                            return    
+                        end
+                    --------------------------------------------
+                    ---- 程序锁，避免无限重复触发
+                        if inst:HasTag("switch.short_range_weapon.is_double_attack") then
+                            inst:RemoveTag("switch.short_range_weapon.is_double_attack")
+                            -- print("info 【近战】跳过二连击重复触发判定")
+                            return
+                        end
+                        -- print("info 【近战】进入二连击重复触发判定")
+                    --------------------------------------------
+                        if target.components.health and target.components.combat then
+                            inst:AddTag("switch.short_range_weapon.is_double_attack")
+                            attacker:DoTaskInTime(0.2,function()
+                                target.components.combat:GetAttacked(attacker,damage,inst)                                
+                            end)
+                        end
+                    -----------------------------------------------------------------------
+
+                end)
+            ------------------------------------------------------------------------------------------
             inst:ListenForEvent("switch.short_range_weapon.start",function()
                 if inst:HasTag("switch.short_range_weapon") then    ---- 避免重复切换
                     return

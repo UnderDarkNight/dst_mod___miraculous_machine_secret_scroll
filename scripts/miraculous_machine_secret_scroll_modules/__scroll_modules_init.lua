@@ -38,7 +38,7 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/02_container",                            --- 容器组件
             "miraculous_machine_secret_scroll_modules/04_tools",                                --- 工具
             "miraculous_machine_secret_scroll_modules/05_orange_staff",                         --- 橙色法杖
-            "miraculous_machine_secret_scroll_modules/06_purple_staff",                         --- 紫色法杖
+            -- "miraculous_machine_secret_scroll_modules/06_purple_staff",                         --- 紫色法杖
             "miraculous_machine_secret_scroll_modules/07_blink_map",                            --- 地图跃迁
             "miraculous_machine_secret_scroll_modules/08_fishingrod",                           --- 池钓
             -- "miraculous_machine_secret_scroll_modules/09_ocean_fishingrod",                     --- 海钓【废弃】
@@ -46,13 +46,16 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/11_trident",                              --- 三叉戟
             "miraculous_machine_secret_scroll_modules/12_long_range_weapon",                    --- 远程武器
             "miraculous_machine_secret_scroll_modules/13_short_range_weapon",                   --- 近战武器
-            "miraculous_machine_secret_scroll_modules/14_ice_staff",                            --- 冰杖
+            -- "miraculous_machine_secret_scroll_modules/14_ice_staff",                            --- 冰杖
             "miraculous_machine_secret_scroll_modules/15_goggles",                              --- 沙尘暴护目镜
             "miraculous_machine_secret_scroll_modules/16_snow_spriter",                         --- 雪精灵
             "miraculous_machine_secret_scroll_modules/17_razor",                                --- 剃刀
             "miraculous_machine_secret_scroll_modules/18_light",                                --- 灯光
             "miraculous_machine_secret_scroll_modules/19_music",                                --- 音乐
             "miraculous_machine_secret_scroll_modules/20_walk_speed",                           --- 移动速度加成
+            "miraculous_machine_secret_scroll_modules/21_ocean_walking",                        --- 海上行走
+            "miraculous_machine_secret_scroll_modules/22_freeze_target",                        --- 冰冻目标
+            "miraculous_machine_secret_scroll_modules/23_critical_hit",                         --- 暴击
 
         }
         local replica_modules_fn = {}

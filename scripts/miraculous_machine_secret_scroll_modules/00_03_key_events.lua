@@ -97,6 +97,7 @@ return function(inst,key,down)
 
         ["button_water_run"] = { x = -300, y = 180 ,click_fn = function()
             print("button_water_run")
+            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("func.ocean_walking_switch","__")
         end},
         ["button_light"] = { x = -300, y = 0 ,click_fn = function()
             print("button_light")

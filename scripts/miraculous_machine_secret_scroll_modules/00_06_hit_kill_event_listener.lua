@@ -15,6 +15,7 @@ return {
                 for k, v in pairs(_table) do
                     _cmd_table[k] = v
                 end
+                print("++++ player_onhitother event +++",_cmd_table.target,_cmd_table.damage,_cmd_table.weapon)
                 inst:PushEvent("player_onhitother",_cmd_table)      ----------   往武器inst push 的 event
             end
         end

@@ -1,9 +1,7 @@
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 ---- 物品接受逻辑
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
-local function get_item_by_num(item,need_num)
-    
-end
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 return {
     --------------------------------------------------------
@@ -183,6 +181,62 @@ return {
             end,
         },
     --------------------------------------------------------
+    -- 红色宝石
+        ["redgem"] = {        
+            test_fn = function(inst,item,doer)
+                if inst.replica.miraculous_machine_secret_scroll:Get("redgem.full") ~= true 
+                and inst.replica.miraculous_machine_secret_scroll:Get("firestaff.full") then  --- 红色法杖之后才能放宝石
+                    return true
+                else
+                    return false
+                end
+            end,
+            on_accept_fn = function(inst,item,doer)
+                    local item_num = item.components.stackable.stacksize
+                    local current_num = inst.components.miraculous_machine_secret_scroll:Add("redgem.num",0)
+                    local max_num = 20
+                    if item_num + current_num > max_num then
+                        local added_num = max_num - current_num
+                        inst.components.miraculous_machine_secret_scroll:Set("redgem.num",max_num)
+                        inst.components.miraculous_machine_secret_scroll:Set("redgem.full",true)
+                        item.components.stackable:Get(added_num):Remove()
+                    else
+                        if inst.components.miraculous_machine_secret_scroll:Add("redgem.num",item_num) >= max_num then
+                            inst.components.miraculous_machine_secret_scroll:Set("redgem.full",true)
+                        end
+                        item:Remove()
+                    end
+            end,
+        },
+    --------------------------------------------------------
+    -- 蓝色宝石
+        ["bluegem"] = {        
+            test_fn = function(inst,item,doer)
+                if inst.replica.miraculous_machine_secret_scroll:Get("bluegem.full") ~= true 
+                and inst.replica.miraculous_machine_secret_scroll:Get("icestaff.full") then  --- 红色法杖之后才能放宝石
+                    return true
+                else
+                    return false
+                end
+            end,
+            on_accept_fn = function(inst,item,doer)
+                    local item_num = item.components.stackable.stacksize
+                    local current_num = inst.components.miraculous_machine_secret_scroll:Add("bluegem.num",0)
+                    local max_num = 20
+                    if item_num + current_num > max_num then
+                        local added_num = max_num - current_num
+                        inst.components.miraculous_machine_secret_scroll:Set("bluegem.num",max_num)
+                        inst.components.miraculous_machine_secret_scroll:Set("bluegem.full",true)
+                        item.components.stackable:Get(added_num):Remove()
+                    else
+                        if inst.components.miraculous_machine_secret_scroll:Add("bluegem.num",item_num) >= max_num then
+                            inst.components.miraculous_machine_secret_scroll:Set("bluegem.full",true)
+                        end
+                        item:Remove()
+                    end
+            end,
+        },
+    --------------------------------------------------------
     -- 萤火虫
         ["fireflies"] = {
             test_fn = function(inst,item,doer)
@@ -271,6 +325,46 @@ return {
                     if current_num >= max_num then
                         inst.components.miraculous_machine_secret_scroll:Set("telestaff.full",true)
                         inst.components.miraculous_machine_secret_scroll:Set("telestaff.num",max_num)
+                    end
+                    item:Remove()
+            end,
+        },
+    --------------------------------------------------------
+    -- 火法杖
+        ["firestaff"] = {
+            test_fn = function(inst,item,doer)
+                if inst.replica.miraculous_machine_secret_scroll:Get("firestaff.full") ~= true then
+                    return true
+                else
+                    return false
+                end
+            end,
+            on_accept_fn = function(inst,item,doer)
+                    local current_num = inst.components.miraculous_machine_secret_scroll:Add("firestaff.num",1)
+                    local max_num = 1
+                    if current_num >= max_num then
+                        inst.components.miraculous_machine_secret_scroll:Set("firestaff.full",true)
+                        inst.components.miraculous_machine_secret_scroll:Set("firestaff.num",max_num)
+                    end
+                    item:Remove()
+            end,
+        },
+    --------------------------------------------------------
+    -- 冰法杖
+        ["icestaff"] = {
+            test_fn = function(inst,item,doer)
+                if inst.replica.miraculous_machine_secret_scroll:Get("icestaff.full") ~= true then
+                    return true
+                else
+                    return false
+                end
+            end,
+            on_accept_fn = function(inst,item,doer)
+                    local current_num = inst.components.miraculous_machine_secret_scroll:Add("icestaff.num",1)
+                    local max_num = 1
+                    if current_num >= max_num then
+                        inst.components.miraculous_machine_secret_scroll:Set("icestaff.full",true)
+                        inst.components.miraculous_machine_secret_scroll:Set("icestaff.num",max_num)
                     end
                     item:Remove()
             end,
@@ -511,40 +605,60 @@ return {
     -- 三叉戟
         ["trident"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("trident_level.full") ~= true  then
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                item:Remove()
+                inst.components.miraculous_machine_secret_scroll:Set("trident_level.full",true)
             end,
         },
     --------------------------------------------------------
     -- 剃刀
         ["razor"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("razor_level.full") ~= true  then
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                item:Remove()
+                inst.components.miraculous_machine_secret_scroll:Set("razor_level.full",true)
             end,
         },
     --------------------------------------------------------
     -- 沙漠护目镜
         ["deserthat"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("goggles_level.full") ~= true  then
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                item:Remove()
+                inst.components.miraculous_machine_secret_scroll:Set("goggles_level.full",true)
             end,
         },
     --------------------------------------------------------
     -- 星象护目镜
         ["moonstorm_goggleshat"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("goggles_level.full") ~= true  then
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                item:Remove()
+                inst.components.miraculous_machine_secret_scroll:Set("goggles_level.full",true)
             end,
         },
     --------------------------------------------------------
