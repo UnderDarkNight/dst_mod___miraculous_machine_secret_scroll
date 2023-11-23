@@ -11,7 +11,19 @@ return {
             if not self.inst.components.rechargeable:IsCharged() then
                 return false
             end
-            self.inst.components.rechargeable:Discharge(5)
+            ------------ 冷却时间
+                local purplegem_num = inst.components.miraculous_machine_secret_scroll:Add("purplegem.num",0)
+                local cooldown_time = 30 - purplegem_num
+                if cooldown_time ~= 0 then
+                    self.inst.components.rechargeable:Discharge(cooldown_time)
+                end
+            ----------- Sanity
+                ---- 【imports_of_miraculous_machine_secret_scroll\05_action_blink_map.lua】 里进行 另外限制
+                if doer.components.sanity then
+                    doer.components.sanity:DoDelta(-50)
+                end
+
+
                 -- act.doer.sg:GoToState("portal_jumpin_mms_scroll", {dest = act_pos, from_map = true,})
             if doer and doer.sg then                
                 doer.sg:GoToState("portal_jumpin_mms_scroll", {dest = pt, from_map = true,})

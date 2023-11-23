@@ -49,6 +49,10 @@ ACTIONS_MAP_REMAP[ACTIONS.MMS_SCROLL_BLINK_MAP.code] = function(act, targetpos)
     if doer == nil then
         return nil
     end
+
+    if doer.replica.sanity and doer.replica.sanity:GetCurrent() < 51 then
+        return nil
+    end
        
     if not TheWorld.Map:IsAboveGroundAtPoint(targetpos.x,targetpos.y,targetpos.z) then
         return nil

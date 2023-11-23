@@ -8,7 +8,20 @@ return {
 
         inst.___fishingcollect_event_fn = function(inst,_table)  --- 钓鱼成功后执行的event
             -- self.inst:PushEvent("fishingcollect", {fish = self.caughtfish} )
+            if _table and _table.fish and _table.fish.prefab then
+                if _table.fish.prefab == "pondeel" or _table.fish.prefab == "pondfish" then
+                    if inst.components.miraculous_machine_secret_scroll:Add("fishingrod_level.num",1) >= 100 then
+                        inst.components.miraculous_machine_secret_scroll:Set("fishingrod_level.full",true)
+                    end
+                end
 
+                if inst.components.miraculous_machine_secret_scroll:Get("fishingrod_level.full") then
+                    inst:DoTaskInTime(0.8,function()
+                        SpawnPrefab(_table.fish.prefab).Transform:SetPosition(_table.fish.Transform:GetWorldPosition())
+                    end)
+                end
+
+            end
         end
 
         inst:AddTag("fishingrod")

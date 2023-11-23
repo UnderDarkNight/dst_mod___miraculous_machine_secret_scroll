@@ -96,15 +96,21 @@ local weapon_type_with_fn = {
     ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     --------- 池钓
         ["switch.fishingrod"] = function(weapon_inst,owner,statename,weapon_type)
-            if statename == "fishing_pre" and owner._miraculous_machine_secret_scroll_state ~= statename then
+            local fishing_states = {
+                ["fishing_nibble"] = true,
+                ["fishing_pre"] = true,
+                ["fishing"] = true,
+                ["fishing_pst"] = true,
+            }
+            if fishing_states[statename] and owner._miraculous_machine_secret_scroll_state ~= statename then
                         owner._miraculous_machine_secret_scroll_state = statename
                         if owner._miraculous_machine_secret_scroll_task then
                             owner._miraculous_machine_secret_scroll_task:Cancel()
                         end
                         ---------------------------------------------------------------------------------------------------------------------
-                            owner.AnimState:OverrideSymbol("swap_object", "swap_fishingrod", "swap_fishingrod")
-                            owner.AnimState:OverrideSymbol("fishingline", "swap_fishingrod", "fishingline")
-                            owner.AnimState:OverrideSymbol("FX_fishing", "swap_fishingrod", "FX_fishing")
+                            owner.AnimState:OverrideSymbol("swap_object", "mms_scroll_fishingrod_blue", "swap_fishingrod")
+                            owner.AnimState:OverrideSymbol("fishingline", "mms_scroll_fishingrod_blue", "fishingline")
+                            owner.AnimState:OverrideSymbol("FX_fishing", "mms_scroll_fishingrod_blue", "FX_fishing")
                             owner.AnimState:Show("ARM_carry")
                             owner.AnimState:Hide("ARM_normal")
                         ---------------------------------------------------------------------------------------------------------------------
@@ -112,7 +118,7 @@ local weapon_type_with_fn = {
                         ---------------------------------------------------------------------------------------------------------------------
 
 
-            elseif state_leave_states[statename] and owner._miraculous_machine_secret_scroll_state ~= nil then
+            elseif not fishing_states[statename] and state_leave_states[statename] and owner._miraculous_machine_secret_scroll_state ~= nil then
                         owner._miraculous_machine_secret_scroll_state = nil
 
                         if owner._miraculous_machine_secret_scroll_task then

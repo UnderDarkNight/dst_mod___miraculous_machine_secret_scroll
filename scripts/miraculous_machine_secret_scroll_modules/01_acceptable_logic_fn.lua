@@ -102,40 +102,112 @@ return {
     -- 噩梦燃料
         ["nightmarefuel"] = {        
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("nightmarefuel.full") ~= true 
+                and inst.replica.miraculous_machine_secret_scroll:Get("orangestaff.full") then  --- 橙色法杖之后才能放宝石
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                    local item_num = item.components.stackable.stacksize
+                    local current_num = inst.components.miraculous_machine_secret_scroll:Add("nightmarefuel.num",0)
+                    local max_num = 100
+                    if item_num + current_num > max_num then
+                        local added_num = max_num - current_num
+                        inst.components.miraculous_machine_secret_scroll:Set("nightmarefuel.num",max_num)
+                        inst.components.miraculous_machine_secret_scroll:Set("nightmarefuel.full",true)
+                        item.components.stackable:Get(added_num):Remove()
+                    else
+                        if inst.components.miraculous_machine_secret_scroll:Add("nightmarefuel.num",item_num) >= max_num then
+                            inst.components.miraculous_machine_secret_scroll:Set("nightmarefuel.full",true)
+                        end
+                        item:Remove()
+                    end
             end,
         },
     --------------------------------------------------------
     -- 橙色宝石
         ["orangegem"] = {        
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("orangegem.full") ~= true 
+                and inst.replica.miraculous_machine_secret_scroll:Get("orangestaff.full") then  --- 橙色法杖之后才能放宝石
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                    local item_num = item.components.stackable.stacksize
+                    local current_num = inst.components.miraculous_machine_secret_scroll:Add("orangegem.num",0)
+                    local max_num = 10
+                    if item_num + current_num > max_num then
+                        local added_num = max_num - current_num
+                        inst.components.miraculous_machine_secret_scroll:Set("orangegem.num",max_num)
+                        inst.components.miraculous_machine_secret_scroll:Set("orangegem.full",true)
+                        item.components.stackable:Get(added_num):Remove()
+                    else
+                        if inst.components.miraculous_machine_secret_scroll:Add("orangegem.num",item_num) >= max_num then
+                            inst.components.miraculous_machine_secret_scroll:Set("orangegem.full",true)
+                        end
+                        item:Remove()
+                    end
             end,
         },
     --------------------------------------------------------
     -- 紫色宝石
         ["purplegem"] = {        
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("purplegem.full") ~= true 
+                and inst.replica.miraculous_machine_secret_scroll:Get("telestaff.full") then  --- 橙色法杖之后才能放宝石
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                    local item_num = item.components.stackable.stacksize
+                    local current_num = inst.components.miraculous_machine_secret_scroll:Add("purplegem.num",0)
+                    local max_num = 20
+                    if item_num + current_num > max_num then
+                        local added_num = max_num - current_num
+                        inst.components.miraculous_machine_secret_scroll:Set("purplegem.num",max_num)
+                        inst.components.miraculous_machine_secret_scroll:Set("purplegem.full",true)
+                        item.components.stackable:Get(added_num):Remove()
+                    else
+                        if inst.components.miraculous_machine_secret_scroll:Add("purplegem.num",item_num) >= max_num then
+                            inst.components.miraculous_machine_secret_scroll:Set("purplegem.full",true)
+                        end
+                        item:Remove()
+                    end
             end,
         },
     --------------------------------------------------------
     -- 萤火虫
         ["fireflies"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("fireflies.full") ~= true 
+                and inst.replica.miraculous_machine_secret_scroll:Get("bugnet.full") then  --- 橙色法杖之后才能放宝石
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                    local item_num = item.components.stackable.stacksize
+                    local current_num = inst.components.miraculous_machine_secret_scroll:Add("fireflies.num",0)
+                    local max_num = 100
+                    if item_num + current_num > max_num then
+                        local added_num = max_num - current_num
+                        inst.components.miraculous_machine_secret_scroll:Set("fireflies.num",max_num)
+                        inst.components.miraculous_machine_secret_scroll:Set("fireflies.full",true)
+                        item.components.stackable:Get(added_num):Remove()
+                    else
+                        if inst.components.miraculous_machine_secret_scroll:Add("fireflies.num",item_num) >= max_num then
+                            inst.components.miraculous_machine_secret_scroll:Set("fireflies.full",true)
+                        end
+                        item:Remove()
+                    end
             end,
         },
     --------------------------------------------------------
@@ -167,30 +239,60 @@ return {
     -- 懒人法杖
         ["orangestaff"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("orangestaff.full") ~= true then
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                    local current_num = inst.components.miraculous_machine_secret_scroll:Add("orangestaff.num",1)
+                    local max_num = 1
+                    if current_num >= max_num then
+                        inst.components.miraculous_machine_secret_scroll:Set("orangestaff.full",true)
+                        inst.components.miraculous_machine_secret_scroll:Set("orangestaff.num",max_num)
+                    end
+                    item:Remove()
             end,
         },
     --------------------------------------------------------
     -- 传送法杖
         ["telestaff"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("telestaff.full") ~= true then
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                    local current_num = inst.components.miraculous_machine_secret_scroll:Add("telestaff.num",1)
+                    local max_num = 1
+                    if current_num >= max_num then
+                        inst.components.miraculous_machine_secret_scroll:Set("telestaff.full",true)
+                        inst.components.miraculous_machine_secret_scroll:Set("telestaff.num",max_num)
+                    end
+                    item:Remove()
             end,
         },
     --------------------------------------------------------
     -- 捕虫网
         ["bugnet"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("bugnet.full") ~= true then
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                    local current_num = inst.components.miraculous_machine_secret_scroll:Add("bugnet.num",1)
+                    local max_num = 1
+                    if current_num >= max_num then
+                        inst.components.miraculous_machine_secret_scroll:Set("bugnet.full",true)
+                        inst.components.miraculous_machine_secret_scroll:Set("bugnet.num",max_num)
+                    end
+                    item:Remove()
             end,
         },
     --------------------------------------------------------

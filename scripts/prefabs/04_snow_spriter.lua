@@ -182,7 +182,7 @@ local function fn()
                                     --- 距离过近，不进行任何操作
                                     inst:StopClosing()
                                 else
-                                        if not inst:HasTag("Face_Target_And_Stop") then
+                                        if not inst:HasTag("Face_Target_And_Stop") then --- 施法期间不继续移动
                                                 local speed = dis * 1/2
                                                 inst:Close2Point(pt,speed)
                                         end

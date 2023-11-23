@@ -12,8 +12,7 @@ return {
             inst:AddTag("switch.orange_staff")
             print("info orange_staff on")
             -----------------------------------------------------------------------------
-                    local cool_down_time = 10
-                    inst.components.rechargeable:SetMaxCharge(cool_down_time)
+                    -- inst.components.rechargeable:SetMaxCharge(cool_down_time)
 
                     local function onblink(staff, pos, caster)
                         if caster then
@@ -37,7 +36,20 @@ return {
                         if not self.inst.components.rechargeable:IsCharged() then
                             return false
                         end
-                        self.inst.components.rechargeable:Discharge(cool_down_time)
+                        ------- 橙宝石越多，CD时间越短
+                        local orangegem_num = inst.components.miraculous_machine_secret_scroll:Add("orangegem.num",0)
+                        local cool_down_time = 10 - orangegem_num
+                        if cool_down_time ~= 0 then
+                            self.inst.components.rechargeable:Discharge(cool_down_time)
+                        end
+
+                        -------- 扣San
+                        if caster.components.sanity then                             
+                            local nightmarefuel_num = inst.components.miraculous_machine_secret_scroll:Add("nightmarefuel.num",0)
+                            local delta_num = -20 + nightmarefuel_num*0.2
+                            caster.components.sanity:DoDelta(delta_num)
+                        end
+
                         return self:Blink_mms_scroll_old(pt, caster)
                     end
             -----------------------------------------------------------------------------
