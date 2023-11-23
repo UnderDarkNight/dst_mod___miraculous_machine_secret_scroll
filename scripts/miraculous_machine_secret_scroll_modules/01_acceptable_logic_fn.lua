@@ -299,110 +299,212 @@ return {
     -- 斧头
         ["axe"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("axe_level.full") ~= true then
+                    return true
+                else
+                    return false
+                end
             end,
-            on_accept_fn = function(inst,item,doer)
-
+            on_accept_fn = function(inst,item,doer)                    
+                item:Remove()
+                local axe_max_num = 1000
+                if inst.components.miraculous_machine_secret_scroll:Add("axe_level.num",0) >= axe_max_num then
+                    inst.components.miraculous_machine_secret_scroll:Set("axe_level.num",axe_max_num)
+                    inst.components.miraculous_machine_secret_scroll:Set("axe_level.full",true)
+                end
+                inst:PushEvent("tools_modules_upgrade")
             end,
         },
     --------------------------------------------------------
     -- 金斧头
         ["goldenaxe"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("axe_level.full") ~= true then
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                item:Remove()
+                local axe_max_num = 1000
+                if inst.components.miraculous_machine_secret_scroll:Add("axe_level.num",10) >= axe_max_num then
+                    inst.components.miraculous_machine_secret_scroll:Set("axe_level.num",axe_max_num)
+                    inst.components.miraculous_machine_secret_scroll:Set("axe_level.full",true)
+                end
+                inst:PushEvent("tools_modules_upgrade")
             end,
         },
     --------------------------------------------------------
     -- 玻璃斧头
         ["moonglassaxe"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("axe_level.full") ~= true then
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                item:Remove()
+                local axe_max_num = 1000
+                if inst.components.miraculous_machine_secret_scroll:Add("axe_level.num",100) >= axe_max_num then
+                    inst.components.miraculous_machine_secret_scroll:Set("axe_level.num",axe_max_num)
+                    inst.components.miraculous_machine_secret_scroll:Set("axe_level.full",true)
+                end
+                inst:PushEvent("tools_modules_upgrade")
             end,
         },
     --------------------------------------------------------
     -- 斧镐
         ["multitool_axe_pickaxe"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("axe_level.full") ~= true 
+                    or inst.replica.miraculous_machine_secret_scroll:Get("pickaxe_level.full") ~= true  then
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
+                item:Remove()
+                local axe_max_num = 1000
+                if inst.components.miraculous_machine_secret_scroll:Add("axe_level.num",150) >= axe_max_num then
+                    inst.components.miraculous_machine_secret_scroll:Set("axe_level.num",axe_max_num)
+                    inst.components.miraculous_machine_secret_scroll:Set("axe_level.full",true)
+                end
 
+                local pickaxe_max_num = 1000
+                if inst.components.miraculous_machine_secret_scroll:Add("pickaxe_level.num",150) >= pickaxe_max_num then
+                    inst.components.miraculous_machine_secret_scroll:Set("pickaxe_level.num",pickaxe_max_num)
+                    inst.components.miraculous_machine_secret_scroll:Set("pickaxe_level.full",true)
+                end
+                inst:PushEvent("tools_modules_upgrade")
             end,
         },
     --------------------------------------------------------
     -- 矿镐
         ["pickaxe"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("pickaxe_level.full") ~= true  then
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                item:Remove()
+                local pickaxe_max_num = 1000
+                if inst.components.miraculous_machine_secret_scroll:Add("pickaxe_level.num",0) >= pickaxe_max_num then
+                    inst.components.miraculous_machine_secret_scroll:Set("pickaxe_level.num",pickaxe_max_num)
+                    inst.components.miraculous_machine_secret_scroll:Set("pickaxe_level.full",true)
+                end
+                inst:PushEvent("tools_modules_upgrade")
             end,
         },
     --------------------------------------------------------
     -- 金矿镐
         ["goldenpickaxe"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("pickaxe_level.full") ~= true  then
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                item:Remove()
+                local pickaxe_max_num = 1000
+                if inst.components.miraculous_machine_secret_scroll:Add("pickaxe_level.num",10) >= pickaxe_max_num then
+                    inst.components.miraculous_machine_secret_scroll:Set("pickaxe_level.num",pickaxe_max_num)
+                    inst.components.miraculous_machine_secret_scroll:Set("pickaxe_level.full",true)
+                end
+                inst:PushEvent("tools_modules_upgrade")
             end,
         },
     --------------------------------------------------------
     -- 铲子
         ["shovel"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("shovel_level.full") ~= true  then
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                item:Remove()
+                inst.components.miraculous_machine_secret_scroll:Set("shovel_level.full",true)
+                inst:PushEvent("tools_modules_upgrade")
             end,
         },
     --------------------------------------------------------
     -- 金铲子
         ["goldenshovel"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("shovel_level.full") ~= true  then
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                item:Remove()
+                inst.components.miraculous_machine_secret_scroll:Set("shovel_level.full",true)
+                inst:PushEvent("tools_modules_upgrade")
             end,
         },
     --------------------------------------------------------
     -- 亮茄铲子
         ["shovel_lunarplant"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("shovel_level.full") ~= true  then
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                item:Remove()
+                inst.components.miraculous_machine_secret_scroll:Set("shovel_level.full",true)
+                inst:PushEvent("tools_modules_upgrade")
             end,
         },
     --------------------------------------------------------
     -- 锤子
         ["hammer"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("hammer_level.full") ~= true  then
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                item:Remove()
+                inst.components.miraculous_machine_secret_scroll:Set("hammer_level.full",true)
+                inst:PushEvent("tools_modules_upgrade")
             end,
         },
     --------------------------------------------------------
-    -- 亮茄锤子
+    -- 亮茄锤子+矿镐
         ["pickaxe_lunarplant"] = {
             test_fn = function(inst,item,doer)
-                return true
+                if inst.replica.miraculous_machine_secret_scroll:Get("pickaxe_level.full") ~= true  then
+                    return true
+                else
+                    return false
+                end
             end,
             on_accept_fn = function(inst,item,doer)
-
+                item:Remove()
+                local pickaxe_max_num = 1000
+                if inst.components.miraculous_machine_secret_scroll:Add("pickaxe_level.num",200) >= pickaxe_max_num then
+                    inst.components.miraculous_machine_secret_scroll:Set("pickaxe_level.num",pickaxe_max_num)
+                    inst.components.miraculous_machine_secret_scroll:Set("pickaxe_level.full",true)
+                end
+                inst.components.miraculous_machine_secret_scroll:Set("hammer_level.full",true)
+                inst:PushEvent("tools_modules_upgrade")
             end,
         },
     --------------------------------------------------------
