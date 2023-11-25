@@ -8,7 +8,7 @@ return {
 
         inst.___player_onhitother_event_fn = function(player,_table)
             -- attacker:PushEvent("onhitother", { target = self.inst, damage = damage, damageresolved = damageresolved, stimuli = stimuli, spdamage = spdamage, weapon = weapon, redirected = damageredirecttarget })
-            if _table and _table.damage and _table.target then
+            if _table and _table.damage and _table.target and _table.weapon == inst then
                 local _cmd_table = {
                     attacker = player
                 }

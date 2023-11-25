@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="mms_scroll_widget.tex" />
+	<Elements>
+		<Element name="background.tex" u1="0.23683984375" u2="0.5839609375" v2="0.999" v1="0.2441640625" variant="" />
+		<Element name="blink_map.tex" u1="0.001" u2="0.03415625" v2="0.54978125" v1="0.4004140625" variant="" />
+		<Element name="blink_map_mini.tex" u1="0.044701171875" u2="0.0429453125" v2="0.9472421875" v1="0.948265625" variant="" />
+		<Element name="blink_map_mini_black.tex" u1="0.03615625" u2="0.057349609375" v2="0.551734375" v1="0.4902578125" variant="" />
+		<Element name="bow.tex" u1="0.001" u2="0.03415625" v2="0.3984140625" v1="0.249046875" variant="" />
+		<Element name="bow_mini.tex" u1="0.04445703125" u2="0.042701171875" v2="0.9452890625" v1="0.9463125" variant="" />
+		<Element name="bow_mini_black.tex" u1="0.03615625" u2="0.051490234375" v2="0.4882578125" v1="0.420921875" variant="" />
+		<Element name="bugnet.tex" u1="0.03615625" u2="0.0693125" v2="0.418921875" v1="0.2695546875" variant="" />
+		<Element name="bugnet_mini.tex" u1="0.059349609375" u2="0.071265625" v2="0.5448984375" v1="0.471703125" variant="" />
+		<Element name="bugnet_mini_black.tex" u1="0.073265625" u2="0.085181640625" v2="0.5448984375" v1="0.46584375" variant="" />
+		<Element name="fishingrod.tex" u1="0.001" u2="0.03415625" v2="0.999" v1="0.8496328125" variant="" />
+		<Element name="fishingrod_mini.tex" u1="0.03615625" u2="0.045630859375" v2="0.999" v1="0.9492421875" variant="" />
+		<Element name="fishingrod_mini_black.tex" u1="0.001" u2="0.014380859375" v2="0.8476328125" v1="0.77053125" variant="" />
+		<Element name="goggles.tex" u1="0.047630859375" u2="0.080787109375" v2="0.999" v1="0.8496328125" variant="" />
+		<Element name="goggles_mini.tex" u1="0.016380859375" u2="0.03171484375" v2="0.8476328125" v1="0.8135" variant="" />
+		<Element name="goggles_mini_black.tex" u1="0.016380859375" u2="0.036353515625" v2="0.8115" v1="0.77053125" variant="" />
+		<Element name="light.tex" u1="0.082787109375" u2="0.115943359375" v2="0.999" v1="0.8496328125" variant="" />
+		<Element name="light_mini.tex" u1="0.03615625" u2="0.04245703125" v2="0.9472421875" v1="0.874046875" variant="" />
+		<Element name="light_mini_black.tex" u1="0.038353515625" u2="0.084693359375" v2="0.8476328125" v1="0.7744375" variant="" />
+		<Element name="locked.tex" u1="0.001" u2="0.03415625" v2="0.76853125" v1="0.6191640625" variant="" />
+		<Element name="music.tex" u1="0.03615625" u2="0.0693125" v2="0.76853125" v1="0.6191640625" variant="" />
+		<Element name="music_mini.tex" u1="0.04445703125" u2="0.042701171875" v2="0.9472421875" v1="0.948265625" variant="" />
+		<Element name="music_mini_black.tex" u1="0.001" u2="0.019751953125" v2="0.6171640625" v1="0.55178125" variant="" />
+		<Element name="orangestaff.tex" u1="0.086693359375" u2="0.119849609375" v2="0.8476328125" v1="0.698265625" variant="" />
+		<Element name="orangestaff_mini.tex" u1="0.021751953125" u2="0.040259765625" v2="0.6171640625" v1="0.553734375" variant="" />
+		<Element name="orangestaff_mini_black.tex" u1="0.042259765625" u2="0.060767578125" v2="0.6171640625" v1="0.553734375" variant="" />
+		<Element name="razor.tex" u1="0.0713125" u2="0.10446875" v2="0.696265625" v1="0.5468984375" variant="" />
+		<Element name="razor_mini.tex" u1="0.117943359375" u2="0.136939453125" v2="0.999" v1="0.9433828125" variant="" />
+		<Element name="razor_mini_black.tex" u1="0.117943359375" u2="0.136939453125" v2="0.9413828125" v1="0.885765625" variant="" />
+		<Element name="status_bar.tex" u1="0.138939453125" u2="0.2167734375" v2="0.999" v1="0.8672109375" variant="" />
+		<Element name="sword.tex" u1="0.121849609375" u2="0.155005859375" v2="0.8652109375" v1="0.71584375" variant="" />
+		<Element name="sword_mini.tex" u1="0.10646875" u2="0.121314453125" v2="0.696265625" v1="0.6308828125" variant="" />
+		<Element name="sword_mini_black.tex" u1="0.157005859375" u2="0.1718515625" v2="0.8652109375" v1="0.799828125" variant="" />
+		<Element name="tools.tex" u1="0.123314453125" u2="0.156470703125" v2="0.71384375" v1="0.5644765625" variant="" />
+		<Element name="tools_mini.tex" u1="0.157005859375" u2="0.17478125" v2="0.797828125" v1="0.741234375" variant="" />
+		<Element name="tools_mini_black.tex" u1="0.1738515625" u2="0.191626953125" v2="0.8652109375" v1="0.8086171875" variant="" />
+		<Element name="trident.tex" u1="0.193626953125" u2="0.226783203125" v2="0.8652109375" v1="0.71584375" variant="" />
+		<Element name="trident_mini.tex" u1="0.04445703125" u2="0.042701171875" v2="0.946265625" v1="0.9472890625" variant="" />
+		<Element name="trident_mini_black.tex" u1="0.2187734375" u2="0.23483984375" v2="0.999" v1="0.928734375" variant="" />
+		<Element name="water_run.tex" u1="0.158470703125" u2="0.191626953125" v2="0.739234375" v1="0.5898671875" variant="" />
+		<Element name="water_run_mini.tex" u1="0.0713125" u2="0.0839609375" v2="0.7724375" v1="0.713890625" variant="" />
+		<Element name="water_run_mini_black.tex" u1="0.158470703125" u2="0.175025390625" v2="0.5878671875" v1="0.510765625" variant="" />
+	</Elements>
+</Atlas>

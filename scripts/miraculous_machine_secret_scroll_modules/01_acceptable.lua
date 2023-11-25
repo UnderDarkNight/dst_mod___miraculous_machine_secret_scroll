@@ -3,13 +3,14 @@
 --[[
         物品                    prefab                 可叠堆
     · 彩虹宝石              opalpreciousgem          stackable
-    · 金块                  goldnugget               stackable
-    · 蜘蛛丝                silk                     stackable
-    · 噩梦燃料              nightmarefuel            stackable
     · 橙色宝石              orangegem                stackable
     · 紫色宝石              purplegem                stackable
     · 蓝色宝石              bluegem                  stackable
     · 红色宝石              redgem                   stackable
+    · 金块                  goldnugget               stackable
+    · 蜘蛛丝                silk                     stackable
+    · 噩梦燃料              nightmarefuel            stackable
+
     · 萤火虫                fireflies                stackable
 
     · 手杖                  cane

@@ -33,11 +33,8 @@ local temp_assets = {
 	-- Asset("ANIM", "anim/xzkb_xin_donghua_fuhuo.zip"),
 
 
-	Asset("IMAGE", "images/ui_images/miraculous_machine_secret_scroll_icon.tex"),
-	Asset("ATLAS", "images/ui_images/miraculous_machine_secret_scroll_icon.xml"),
-
-	Asset("IMAGE", "images/ui_images/mms_scroll_switch_widget.tex"),
-	Asset("ATLAS", "images/ui_images/mms_scroll_switch_widget.xml"),
+	Asset("IMAGE", "images/ui_images/mms_scroll_widget.tex"),
+	Asset("ATLAS", "images/ui_images/mms_scroll_widget.xml"),
 
 
 

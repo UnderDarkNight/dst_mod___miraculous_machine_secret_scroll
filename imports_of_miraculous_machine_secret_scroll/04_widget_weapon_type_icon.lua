@@ -17,48 +17,79 @@ local Text = require "widgets/text"
 local TEMPLATES = require "widgets/redux/templates"
 
 -------------------------------------------- 能量条的坐标储存
-    -- AddPlayerPostInit(function(inst)    
+--------------------------------------------------------------------------------------------------------------------
+--- 基础的文件读写函数
+    local function IsClientSide()
+        if TheNet:IsDedicated() then
+            return false
+        end
+        return true
+    end
+    local function Get_Data_File_Name()
+        return "mms_scroll_data.text"
+    end
+    local function Read_All_Json_Data()
 
-    --     inst:ListenForEvent("fwd_in_pdt_event.Cross_Archived_Data_Send_2_Server_Finish",function()
-    --         if inst.HUD and inst.HUD.fwd_in_pdt_wellness then
-    --             local pt_percent_of_screen = inst.replica.fwd_in_pdt_func:Get_Cross_Archived_Data("wellness_bars_screen_xy")
-    --             -- print("error +++++++++++++ ")
-    --             if pt_percent_of_screen and pt_percent_of_screen.x_percent then
-    --                 inst.HUD.fwd_in_pdt_wellness.x_percent = pt_percent_of_screen.x_percent
-    --                 inst.HUD.fwd_in_pdt_wellness.y_percent = pt_percent_of_screen.y_percent
-    --                 inst.HUD.fwd_in_pdt_wellness:LocationScaleFix()
-    --             end
+        local function Read_data_p()
+            local file = io.open(Get_Data_File_Name(), "r")
+            local text = file:read('*line')
+            file:close()
+            return text
+        end
 
-    --             ----- 
-    --             local wellness_main_icon_hide_flag = inst.replica.fwd_in_pdt_func:Get_Cross_Archived_Data("wellness_main_icon_hide_flag")
-    --             if wellness_main_icon_hide_flag then
-    --                 inst.HUD.fwd_in_pdt_wellness:HideMainIcon(true)
-    --             else
-    --                 inst.HUD.fwd_in_pdt_wellness:HideMainIcon(false)                    
-    --             end
+        local flag,ret = pcall(Read_data_p)
 
-    --         end
-    --     end)
+        if flag == true then
+            local retTable = json.decode(ret)
+            return retTable
+        else
+            print("FWD_IN_PDT ERROR :read cross archived data error : Read_All_Json_Data got nil")
+            return {}
+        end
+    end
 
-    --     --------- 监听 体质条 的移动和储存数据到跨存档保存表
-    --     inst:DoTaskInTime(1,function()
-    --         if inst.HUD and inst.HUD.fwd_in_pdt_wellness then
-    --             inst:ListenForEvent("fwd_in_pdt_wellness_bars.save_cmd",function(_,cmd_table)
-    --                 if type(cmd_table) ~= "table" then
-    --                     return
-    --                 end
-    --                 if cmd_table.pt and cmd_table.pt.x_percent then
-    --                     inst.replica.fwd_in_pdt_func:Set_Cross_Archived_Data("wellness_bars_screen_xy",cmd_table.pt)
-    --                 end
-    --                 if cmd_table.HideMainIcon ~= nil then
-    --                     inst.replica.fwd_in_pdt_func:Set_Cross_Archived_Data("wellness_main_icon_hide_flag",cmd_table.HideMainIcon)
-    --                 end
+    local function Write_All_Json_Data(json_data)
+        local w_data = json.encode(json_data)
+        local file = io.open(Get_Data_File_Name(), "w")
+        file:write(w_data)
+        file:close()
+    end
 
-    --             end)
-    --         end
-    --     end)
+    local function Get_Cross_Archived_Data_By_userid(userid)
+        local temp_json_data = Read_All_Json_Data() or {}
+        return temp_json_data[userid] or {}                
+    end
 
-    -- end)
+    local function Set_Cross_Archived_Data_By_userid(userid,_table)
+        if not IsClientSide() then  --- 只在客户端这一侧执行数据写入
+            return
+        end
+
+        local temp_json_data = Read_All_Json_Data() or {}
+        -- temp_json_data[userid] = _table
+        temp_json_data[userid] = temp_json_data[userid] or {}
+        for index, value in pairs(_table) do
+            temp_json_data[userid][index] = value
+        end
+        temp_json_data = deepcopy(temp_json_data)
+        Write_All_Json_Data(temp_json_data)
+    end
+--------------------------------------------------------------------------------------------------------------------
+
+    local function SaveLoaction(x_percent,y_percent)
+        local temp_table = Get_Cross_Archived_Data_By_userid(ThePlayer.userid) or {}
+        temp_table.x_percent = x_percent
+        temp_table.y_percent = y_percent
+        Set_Cross_Archived_Data_By_userid(ThePlayer.userid, temp_table)
+    end
+    local function ReadLocation()
+        local temp_table = Get_Cross_Archived_Data_By_userid(ThePlayer.userid) or {}
+        local x_percent = temp_table.x_percent or 0.5
+        local y_percent = temp_table.y_percent or 0.5
+        return x_percent,y_percent
+    end
+--------------------------------------------------------------------------------------------------------------------
+
 
 -------------------- 直接在这添加界面节点和数据
 
@@ -82,7 +113,7 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                 self.miraculous_machine_secret_scroll_widget_inst = CreateEntity()
                 -----------------------------------------------------------------------------------------------------------------
                 ----- 添加主节点
-                    local main_scale_num = 0.6
+                    local main_scale_num = 0.45
                     local root = self:AddChild(Widget())
                     -------- 设置锚点
                         root:SetHAnchor(1) -- 设置原点x坐标位置，0、1、2分别对应屏幕中、左、右
@@ -93,6 +124,8 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                         root:SetScaleMode(SCALEMODE_FIXEDSCREEN_NONDYNAMIC)   
                         owner.HUD.miraculous_machine_secret_scroll_widget = root        --- 挂载到  HUD节点，方便replica 调用
                     -------- 启动坐标跟随缩放循环任务，缩放的时候去到指定位置。官方好像没预留这类API，或者暂时找不到方法
+                        root.x_percent ,root.y_percent = ReadLocation()
+
                         function root:LocationScaleFix()
                             if self.x_percent and not self.__mouse_holding  then
                                 local scrnw, scrnh = TheSim:GetScreenSize()
@@ -111,16 +144,13 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                 -----------------------------------------------------------------------------------------------------------------
                 ----- 往主节点添加透明按钮
                             local temp_button = root:AddChild(ImageButton(
-                                "images/ui_images/miraculous_machine_secret_scroll_icon.xml",
-                                "miraculous_machine_secret_scroll_icon.tex",
-                                "miraculous_machine_secret_scroll_icon.tex",
-                                "miraculous_machine_secret_scroll_icon.tex",
-                                "miraculous_machine_secret_scroll_icon.tex",
-                                "miraculous_machine_secret_scroll_icon.tex"
+                                "images/ui_images/mms_scroll_widget.xml",
+                                "status_bar.tex",
+                                "status_bar.tex",
+                                "status_bar.tex",
+                                "status_bar.tex",
+                                "status_bar.tex"
                             ))
-
-
-
                             temp_button:SetScale(main_scale_num,main_scale_num,main_scale_num)
 
                             temp_button:SetOnDown(function()                      --- 鼠标按下去的时候
@@ -149,35 +179,63 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                                                     -- owner:PushEvent("fwd_in_pdt_wellness_bars.save_cmd",{    --- 发送储存坐标。
                                                     --     pt = {x_percent = root.x_percent,y_percent = root.y_percent},
                                                     -- })
+                                                    SaveLoaction(root.x_percent,root.y_percent)
 
                                                 end
                                             end)
                                     end                            
                             end)
                 -----------------------------------------------------------------------------------------------------------------
-                ----- 添加文字
-                    local inside_text = temp_button:AddChild(Text(TALKINGFONT,50,"XXXXX",{ 0/255 , 255/255 ,0/255 , 1}))
-                    inside_text:Hide()
+                ----- 指示
                     local weapon_types = {
                         ["NONE"] = "NONE",
-                        ["switch.orange_staff"] = "懒人",
-                        ["switch.purple_staff"] = "传送",
-                        ["switch.fishingrod"]   = "池钓",
-                        ["switch.ocean_fishingrod"]   = "海钓",
-                        ["switch.bugnet"]   = "虫网",
-                        ["switch.trident"]   = "三叉",
-                        ["switch.long_range_weapon"]   = "远程",
-                        ["switch.short_range_weapon"]   = "近战",
-                        ["switch.tools"]   = "工具",
-                        ["switch.blink_map"]   = "跃迁",
-                        ["switch.ice_staff"]   = "冰杖",
-                        ["switch.razor"]   = "剃刀",
-                        ["switch.music"]   = "音乐",
+                        ["switch.orange_staff"] = "orangestaff_mini_black.tex",
+                        ["switch.fishingrod"]   = "fishingrod_mini_black.tex",
+                        ["switch.bugnet"]   = "bugnet_mini_black.tex",
+                        ["switch.trident"]   = "trident_mini_black.tex",
+                        ["switch.long_range_weapon"]   = "bow_mini_black.tex",
+                        ["switch.short_range_weapon"]   = "sword_mini_black.tex",
+                        ["switch.tools"]   = "tools_mini_black.tex",
+                        ["switch.blink_map"]   = "blink_map_mini_black.tex",
+                        ["switch.razor"]   = "razor_mini_black.tex",
+                        ["switch.music"]   = "music_mini_black.tex",
                     }
+                    local state_icon = temp_button:AddChild(Image())
+                    -- state_icon:SetTexture("images/ui_images/mms_scroll_widget.xml","background.tex")
+                    state_icon:SetPosition(0,0)
+                    state_icon:Hide()
+                    -- state_icon:SetScale(main_scale_num,main_scale_num,main_scale_num)
+
+                    ----- 水上行走
+                        local state_water_run = temp_button:AddChild(Image())
+                        state_water_run:SetPosition(90,0)
+                        state_water_run:SetTexture("images/ui_images/mms_scroll_widget.xml","water_run_mini_black.tex")
+                        state_water_run:SetScale(0.8,0.8,0.8)
+                        state_water_run:Hide()
+                    ----- 防沙镜
+                        local state_goggles = temp_button:AddChild(Image())
+                        state_goggles:SetPosition(-90,0)
+                        state_goggles:SetTexture("images/ui_images/mms_scroll_widget.xml","goggles_mini_black.tex")
+                        state_goggles:SetScale(0.8,0.8,0.8)
+                        state_goggles:Hide()
+
                     self.miraculous_machine_secret_scroll_widget_inst:DoPeriodicTask(0.3,function()
                         if weapon_inst and weapon_inst:IsValid() then
-                            inside_text:Show()
-                            inside_text:SetString(weapon_types[weapon_inst.replica.miraculous_machine_secret_scroll:Get("type") or "NONE"])
+                            local state_imag = weapon_types[weapon_inst.replica.miraculous_machine_secret_scroll:Get("type")] or "locked.tex"
+                            state_icon:Show()
+                            state_icon:SetTexture("images/ui_images/mms_scroll_widget.xml",state_imag)
+
+                            if weapon_inst:HasTag("ocean_walking_switch") then
+                                state_water_run:Show()
+                            else
+                                state_water_run:Hide()
+                            end
+
+                            if weapon_inst:HasTag("goggles") then
+                                state_goggles:Show()
+                            else
+                                state_goggles:Hide()
+                            end
                         end
                     end)
                 -----------------------------------------------------------------------------------------------------------------
