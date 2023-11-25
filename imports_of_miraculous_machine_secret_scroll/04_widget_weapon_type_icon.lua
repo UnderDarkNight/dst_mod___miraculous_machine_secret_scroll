@@ -124,7 +124,8 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                         root:SetScaleMode(SCALEMODE_FIXEDSCREEN_NONDYNAMIC)   
                         owner.HUD.miraculous_machine_secret_scroll_widget = root        --- 挂载到  HUD节点，方便replica 调用
                     -------- 启动坐标跟随缩放循环任务，缩放的时候去到指定位置。官方好像没预留这类API，或者暂时找不到方法
-                        root.x_percent ,root.y_percent = ReadLocation()
+                    
+                        root.x_percent ,root.y_percent = ReadLocation() --- 初始化读取数据
 
                         function root:LocationScaleFix()
                             if self.x_percent and not self.__mouse_holding  then

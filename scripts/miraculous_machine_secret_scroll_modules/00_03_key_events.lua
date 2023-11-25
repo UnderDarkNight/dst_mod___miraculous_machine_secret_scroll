@@ -50,6 +50,7 @@ return function(inst,key,down)
     local cmd_table = {
         ["button_blink_map"] = { 
             image = "blink_map.tex",
+            str = "地图跳跃",
             x = 0, y = 0 ,click_fn = function()
             print("button_blink_map")
             inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.blink_map")
@@ -57,6 +58,7 @@ return function(inst,key,down)
 
         ["button_bow"] = { 
             image = "bow.tex",
+            str = "远程武器",
             x = 100, y = 100 ,click_fn = function()
             print("button_bow")
             inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.long_range_weapon")
@@ -64,6 +66,7 @@ return function(inst,key,down)
 
         ["button_sword"] = { 
             image = "sword.tex",
+            str = "近战武器",
             x = -100, y = 100 ,click_fn = function()
             print("button_sword")
             inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.short_range_weapon")
@@ -71,6 +74,7 @@ return function(inst,key,down)
 
         ["button_tools"] = { 
             image = "tools.tex",
+            str = "工具",
             x = 0, y = 200 ,click_fn = function()
             print("button_tools")
             inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.tools")
@@ -80,12 +84,14 @@ return function(inst,key,down)
         
         ["button_goggles"] = { 
             image = "goggles.tex",
+            str = "防砂镜",
             x = -300, y = -155 ,click_fn = function()
             print("button_goggles")
             -- inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","")
             inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("func.goggles_switch","__")
         end},
             ["button_music"] = { 
+                str = "乐器",
                 image = "music.tex",
                 x = -150, y = -135 ,click_fn = function()
             print("button_music")
@@ -94,12 +100,14 @@ return function(inst,key,down)
         end},
         ["button_orange"] = {
             image = "orangestaff.tex",
+            str = "懒人法杖",
             x = 0, y = -130 ,click_fn = function()
             print("button_orange")
             inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.orange_staff")
         end},
         ["button_razor"] = { 
             image = "razor.tex",
+            str = "剃刀",
             x = 150, y = -135 ,click_fn = function()
             print("button_razor")
             inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.razor")
@@ -107,6 +115,7 @@ return function(inst,key,down)
         end},
         ["button_trident"] = { 
             image = "trident.tex",
+            str = "三叉戟",
             x = 300, y = -155 ,click_fn = function()
             print("button_trident")
             inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.trident")
@@ -115,12 +124,14 @@ return function(inst,key,down)
 
         ["button_water_run"] = { 
             image = "water_run.tex",
+            str = "水路行舟",
             x = -350, y = 180 ,click_fn = function()
             print("button_water_run")
             inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("func.ocean_walking_switch","__")
         end},
         ["button_light"] = { 
             image = "light.tex",
+            str = "灯光",
             x = -325, y = 0 ,click_fn = function()
             print("button_light")
             inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("func.light_switch","__")
@@ -129,12 +140,14 @@ return function(inst,key,down)
 
         ["button_fishingrod"] = { 
             image = "fishingrod.tex",
+            str = "鱼竿",
             x = 350, y = 180 ,click_fn = function()
             print("button_fishingrod")
             inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.fishingrod")
         end},
         ["button_bugnet"] = { 
             image = "bugnet.tex",
+            str = "捕虫网",
             x = 325, y = 0 ,click_fn = function()
             print("button_bugnet")
             inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.bugnet")
