@@ -21,7 +21,7 @@ return {
 
             end
             ------------------------------------------------------------------------------------------------
-            -------------------- 秒杀
+            -------------------- 秒杀、上毒
                 inst:ListenForEvent("player_onhitother",function(_,_table)
                     if not inst:HasTag("switch.long_range_weapon") then
                         return
@@ -52,6 +52,10 @@ return {
                                 return
                             end
                         end
+                    -----------------------------------------------------------------------
+                    --- 上毒
+                        inst:PushEvent("bee_venom_2_target",target)
+                        inst:PushEvent("toadstool_venom_2_target",target)
                     -----------------------------------------------------------------------
                 end)
 

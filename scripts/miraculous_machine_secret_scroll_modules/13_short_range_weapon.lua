@@ -51,6 +51,12 @@ return {
                                     end                                    
                         end
                     -----------------------------------------------------------------------
+                    --- 上毒
+                        if not inst:HasTag("switch.short_range_weapon.is_double_attack") then --- 不会被双重攻击触发
+                                inst:PushEvent("bee_venom_2_target",target)
+                                inst:PushEvent("toadstool_venom_2_target",target)
+                        end
+                    -----------------------------------------------------------------------
 
 
 
