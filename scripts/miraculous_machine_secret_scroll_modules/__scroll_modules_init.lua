@@ -61,6 +61,8 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/26_waterproofer",                         --- 防水
             "miraculous_machine_secret_scroll_modules/27_woodcutter",                           --- 砍树效率
             "miraculous_machine_secret_scroll_modules/30_sanity_aura",                          --- 回San光环
+            "miraculous_machine_secret_scroll_modules/31_heal_health",                          --- 攻击回血
+            "miraculous_machine_secret_scroll_modules/32_insulator",                            --- 绝缘体、防雷
 
         }
         local replica_modules_fn = {}

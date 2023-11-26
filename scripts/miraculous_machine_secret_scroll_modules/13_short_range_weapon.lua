@@ -17,7 +17,7 @@ return {
 
             end
 
-            -------------------- 二连击，秒杀
+            -------------------- 二连击，秒杀、吸血
                 inst:ListenForEvent("player_onhitother",function(_,_table)
                     if not inst:HasTag("switch.short_range_weapon") then
                         return
@@ -56,6 +56,12 @@ return {
                                 inst:PushEvent("bee_venom_2_target",target)
                                 inst:PushEvent("toadstool_venom_2_target",target)
                         end
+                    -----------------------------------------------------------------------
+                    --- 回血
+                        if not inst:HasTag("switch.short_range_weapon.is_double_attack") then --- 不会被双重攻击触发
+                                inst:PushEvent("heal_health_by_attack",attacker)
+                        end
+                    -----------------------------------------------------------------------
                     -----------------------------------------------------------------------
 
 

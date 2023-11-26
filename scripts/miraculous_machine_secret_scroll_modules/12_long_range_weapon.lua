@@ -57,6 +57,9 @@ return {
                         inst:PushEvent("bee_venom_2_target",target)
                         inst:PushEvent("toadstool_venom_2_target",target)
                     -----------------------------------------------------------------------
+                    --- 吸血
+                        inst:PushEvent("heal_health_by_attack",attacker)
+                    -----------------------------------------------------------------------
                 end)
 
 

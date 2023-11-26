@@ -118,12 +118,12 @@
                         SANITYAURA_HUGE = 100/(seg_time*.5),
                         SANITYAURA_SUPERHUGE = 100/(seg_time*.25),
 
-    · 击杀【双子魔眼】：  twinofterror1   twinofterror2
-        · 击杀后开启【攻击回血】功能。初始：每次攻击 回血 0.5 点。
-        · 每击杀1只，回血量 增加 0.3 点。最高2点（不可被二连击触发）
+    · 【完成】击杀【双子魔眼】：  twinofterror1   twinofterror2
+                · 击杀后开启【攻击回血】功能。初始：每次攻击 回血 0.5 点。
+                · 每击杀1只，回血量 增加 0.3 点。最高2点（不可被二连击触发）
 
-    · 击杀【电羊】：  lightninggoat
-        · 击杀10只带电的羊，解锁防雷。
+    · 【完成】击杀【电羊】：  lightninggoat
+                · 击杀10只带电的羊，解锁防雷。
 
     · 【完成】击杀【毒菌蟾蜍】：  toadstool
             · 击杀1只后解锁【蟾蜍毒素】功能。攻击目标会有几率给目标上debuff ： 每秒造成 10点伤害，持续 10秒。  debuff可叠加。
