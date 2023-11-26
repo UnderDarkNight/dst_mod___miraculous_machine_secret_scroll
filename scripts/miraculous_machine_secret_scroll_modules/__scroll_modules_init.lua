@@ -58,6 +58,8 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/23_critical_hit",                         --- 暴击
             "miraculous_machine_secret_scroll_modules/24_stronggrip",                           --- 武器不掉落
             "miraculous_machine_secret_scroll_modules/25_temperature_protecter",                --- 温度保证
+            "miraculous_machine_secret_scroll_modules/26_waterproofer",                         --- 防水
+            "miraculous_machine_secret_scroll_modules/27_woodcutter",                           --- 砍树效率
 
         }
         local replica_modules_fn = {}

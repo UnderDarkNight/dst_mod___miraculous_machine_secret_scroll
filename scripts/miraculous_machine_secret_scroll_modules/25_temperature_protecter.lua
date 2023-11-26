@@ -27,7 +27,7 @@ return {
         ------------------------------------------------------------------------
         ---- 体温限制
             local function temperature_fix(com,value)
-                print("temperature_fix",value)
+                -- print("temperature_fix",value)
                 -- local current_temperature = com.current
 
                 ---------------- 低温保护

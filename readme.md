@@ -94,12 +94,12 @@
             · 击杀1只解锁玩家体温过高保护，初始为 50℃ 保护。体温不会高于这个数值。
             · 解锁后，每击杀1只，体温保护就提高1℃。最多 30℃ 保护。体温不会高于30℃。
     
-    · 击杀【鹿鸭】：  moose
-        · 击杀1只解锁防雨功能。默认 TUNING.WATERPROOFNESS_SMALL (0.2)       组件: item.components.waterproofer  
-        · 每击杀1只鹿鸭，提供 0.2 加成，最高到 1 。
+    · 【完成】击杀【鹿鸭】：  moose
+            · 击杀1只解锁防雨功能。默认 TUNING.WATERPROOFNESS_SMALL (0.2)       组件: item.components.waterproofer  
+            · 每击杀1只鹿鸭，提供 0.2 加成，最高到 1 。 5只
 
-    · 击杀【树精】：  leif   leif_sparse
-        · 击杀 10 只后解锁 伍迪砍树效率。  【程序笔记】player:AddTag("woodcutter")
+    · 【完成】击杀【树精】：  leif   leif_sparse
+            · 击杀 10 只后解锁 伍迪砍树效率。  【程序笔记】player:AddTag("woodcutter")
 
     · 击杀【蜂后】：  beequeen
         · 击杀1只后解锁【蜂毒】功能。攻击目标会有几率给目标上debuff ： 每秒造成 10 点伤害，持续 10秒。  debuff可叠加。

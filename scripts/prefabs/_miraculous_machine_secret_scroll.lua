@@ -63,6 +63,7 @@ local function fn()
 
     inst:AddTag("weapon")
     inst:AddTag("miraculous_machine_secret_scroll")
+    inst:AddTag("waterproofer")
     inst.entity:SetPristine()
 
 
@@ -89,7 +90,10 @@ local function fn()
         --- 冷却系统
             inst:AddComponent("rechargeable")
             inst.components.rechargeable:SetMaxCharge(30)
-
+        ----------------------------------------------------------------------------------------------
+        --- 防水
+            inst:AddComponent("waterproofer")
+            inst.components.waterproofer:SetEffectiveness(0)
         ----------------------------------------------------------------------------------------------
 
 
