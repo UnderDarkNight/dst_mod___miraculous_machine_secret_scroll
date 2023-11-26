@@ -82,7 +82,16 @@ AddClassPostConstruct("screens/playerhud",function(self)
                             local click_fn  = button_cmd.click_fn
                             local x = button_cmd.x or 0
                             local y = button_cmd.y or 0
-                            local locked = button_cmd.locked or false
+                            -------------------------------------------------
+                                local locked = false
+                                if type(button_cmd.locked) == "function" then
+                                    locked = button_cmd.locked()
+                                else
+                                    locked = button_cmd.locked or false
+                                end
+                            -------------------------------------------------
+
+
                             local the_str = button_cmd.str or ""
                             if locked then
                                 image = "locked.tex"
@@ -167,6 +176,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
             TheFrontEnd:PopScreen(self.mms_scroll_switch_widget)
 
             self.mms_scroll_switch_widget_button_text_base:Kill()
+            self.mms_scroll_switch_widget_button_text_base = nil
 
             self.mms_scroll_switch_widget:Kill()
             self.mms_scroll_switch_widget = nil

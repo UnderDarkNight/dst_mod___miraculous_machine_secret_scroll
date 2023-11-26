@@ -541,7 +541,7 @@ local weapon_type_with_fn = {
 
 
 local function player_statename(weapon_inst,owner,statename,weapon_type)
-    print("info  player  statename",statename)
+    -- print("info  player  statename",statename)
     if weapon_type_with_fn[weapon_type] then        
         weapon_type_with_fn[weapon_type](weapon_inst,owner,statename,weapon_type)
     end

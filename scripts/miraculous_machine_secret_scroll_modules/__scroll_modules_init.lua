@@ -56,6 +56,8 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/21_ocean_walking",                        --- 海上行走
             "miraculous_machine_secret_scroll_modules/22_freeze_target",                        --- 冰冻目标
             "miraculous_machine_secret_scroll_modules/23_critical_hit",                         --- 暴击
+            "miraculous_machine_secret_scroll_modules/24_stronggrip",                           --- 武器不掉落
+            "miraculous_machine_secret_scroll_modules/25_temperature_protecter",                --- 温度保证
 
         }
         local replica_modules_fn = {}
