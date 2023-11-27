@@ -17,6 +17,7 @@ local AnimButton = require "widgets/animbutton"
 local ImageButton = require "widgets/imagebutton"
 local Text = require "widgets/text"
 
+local current_page = 1
 
 
 return function(root,inst)
@@ -216,7 +217,42 @@ return function(root,inst)
         end        
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    pages_fns[#pages_fns]()
+    -- pages_fns[#pages_fns]()  --- 只显示最后一页
 
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ----- 上下页面切换
+            local pages_layer = {}
+            for i, temp_fn in ipairs(pages_fns) do
+                local temp_page = temp_fn()
+                table.insert(pages_layer,temp_page)
+                temp_page:Hide()
+            end
+
+            local max_page = #pages_fns
+
+            current_page = max_page
+
+            pages_layer[current_page]:Show()
+
+
+            function root:_next_page()
+                pages_layer[current_page]:Hide()
+
+                current_page = current_page + 1
+                if current_page > max_page then
+                    current_page  = 1
+                end
+                pages_layer[current_page]:Show()
+            end
+            function root:_last_page()
+                pages_layer[current_page]:Hide()
+
+                current_page = current_page - 1
+                if current_page <= 0 then
+                    current_page  = max_page
+                end
+                pages_layer[current_page]:Show()
+            end
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 end

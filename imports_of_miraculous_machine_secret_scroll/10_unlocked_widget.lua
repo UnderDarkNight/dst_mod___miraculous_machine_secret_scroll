@@ -73,7 +73,9 @@ AddClassPostConstruct("screens/playerhud",function(self)
             last_button:SetScale(main_scale_num,main_scale_num,main_scale_num)
             last_button:SetPosition(-350,-230)
             last_button:SetOnClick(function()
-
+                if root._last_page then
+                    root:_last_page()
+                end
             end)
         ----------------------------------------------------------------
         ---- 下一页
@@ -88,7 +90,9 @@ AddClassPostConstruct("screens/playerhud",function(self)
             next_button:SetScale(main_scale_num,main_scale_num,main_scale_num)
             next_button:SetPosition(275,-230)
             next_button:SetOnClick(function()
-
+                if root._next_page then
+                    root:_next_page()
+                end
             end)
         ----------------------------------------------------------------
         ---- 关闭按钮
