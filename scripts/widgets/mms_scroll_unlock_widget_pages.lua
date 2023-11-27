@@ -68,7 +68,7 @@ return function(root,inst)
         ["bow"] = true,
         ["bow_mini"] = true,
         ["bow_mini_black"] = true,
-        ["bugnet"] = true,
+        -- ["bugnet"] = true,
         ["bugnet_mini"] = true,
         ["bugnet_mini_black"] = true,
         ["fishingrod"] = true,
@@ -86,7 +86,7 @@ return function(root,inst)
         -- ["orangestaff"] = true,
         ["orangestaff_mini"] = true,
         ["orangestaff_mini_black"] = true,
-        ["razor"] = true,
+        -- ["razor"] = true,
         ["razor_mini"] = true,
         ["razor_mini_black"] = true,
         ["sword"] = true,
@@ -95,12 +95,45 @@ return function(root,inst)
         ["tools"] = true,
         ["tools_mini"] = true,
         ["tools_mini_black"] = true,
-        ["trident"] = true,
+        -- ["trident"] = true,
         ["trident_mini"] = true,
         ["trident_mini_black"] = true,
         ["water_run"] = true,
         ["water_run_mini"] = true,
         ["water_run_mini_black"] = true,
+    }
+    local monster_imgs = {
+        ["alterguardian_phase1"] = true,
+        ["alterguardian_phase2"] = true,
+        ["alterguardian_phase3"] = true,
+        ["antlion"] = true,
+        ["bearger"] = true,
+        ["crabking"] = true,
+        ["daywalker"] = true,
+        ["deerclops"] = true,
+        ["dragonfly"] = true,
+        ["klaus"] = true,
+        ["lightninggoat"] = true,
+        ["lightninggoat_charged"] = true,
+        ["leif"] = true,
+        ["little_walrus"] = true,
+        ["lordfruitfly"] = true,
+        ["malbatross"] = true,
+        ["minotaur"] = true,
+        ["moose"] = true,
+        ["shadow_bishop"] = true,
+        ["shadow_knight"] = true,
+        ["shadow_rook"] = true,
+        ["shadowthrall_hands"] = true,
+        ["shadowthrall_horns"] = true,
+        ["shadowthrall_wings"] = true,
+        ["spiderqueen"] = true,
+        ["stalker_atrium"] = true,
+        ["toadstool"] = true,
+        ["toadstool_dark"] = true,
+        ["twinofterror1"] = true,
+        ["twinofterror2"] = true,
+        ["walrus"] = true,
     }
     local function create_image(_table)
         -- local _table = {
@@ -113,11 +146,19 @@ return function(root,inst)
         -- }
 
         local atlas = "images/ui_images/mms_scroll_unlock_progress_material.xml"
+        if GetInventoryItemAtlas(_table.image..".tex") then
+            atlas = GetInventoryItemAtlas(_table.image..".tex")
+        end
+
+
         if background_imgs[_table.image] then
             atlas = "images/ui_images/mms_scroll_unlock_widget.xml"
         elseif state_button_img[_table.image] then
             atlas = "images/ui_images/mms_scroll_widget.xml"
+        elseif monster_imgs[_table.image] then
+            atlas = "images/ui_images/mms_scroll_unlock_progress_material.xml" 
         end
+
         
         local image = _table.base:AddChild(Image())
         image:SetTexture(atlas,_table.image..".tex")
@@ -131,6 +172,7 @@ return function(root,inst)
     local pages_fns = {}
 
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 1 页
         pages_fns[1] = function(current_page,max_page)
             -------------------------------------------------------------------------------------
                 local page = root:AddChild(Widget())
@@ -149,7 +191,7 @@ return function(root,inst)
             ---- 移动速度
                 if not ( com:Get("monster.kill.walrus") and com:Get("monster.kill.little_walrus") ) then
 
-                        local box = create_image({base = page , x = 100 , y = 0 , image = "box_frame_red" ,scale = 0.5})
+                        local box = create_image({base = page , x = 100 , y = -30 , image = "box_frame_red" ,scale = 0.5})
                         local cane =  create_image({base = box , x = 0 , y = 0 , image = "cane" ,scale = 1.5})
                         local lock =  create_image({base = box , x = 0 , y = 0 , image = "lock_red" ,scale = 1 ,a = 0.5})
 
@@ -177,6 +219,7 @@ return function(root,inst)
             return page
         end        
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 2 页
         pages_fns[2] = function(current_page,max_page)
             -------------------------------------------------------------------------------------  
                 local page = root:AddChild(Widget())
@@ -222,6 +265,7 @@ return function(root,inst)
         end
         
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 3 页
         pages_fns[3] = function(current_page,max_page)
             -------------------------------------------------------------------------------------  
                 local page = root:AddChild(Widget())
@@ -280,7 +324,55 @@ return function(root,inst)
 
             -------------------------------------------------------------------------------------
             return page
-        end   
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 4 页
+        pages_fns[4] = function(current_page,max_page)
+            -------------------------------------------------------------------------------------  
+                local page = root:AddChild(Widget())
+                page:SetPosition(-50,0)
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 20, y = 100, str = "钓鱼、捕虫", size = 60})
+
+            -------------------------------------------------------------------------------------
+            --- 钓鱼
+
+                    local fishingrod_level_num = com:Get("fishingrod_level.num") or 0
+
+                    local pondeel = create_image({base = page , x = -130 , y = -20 , image = "pondeel" ,scale = 1.5})
+                    local pondfish = create_image({base = page , x = -60 , y = -20 , image = "pondfish" ,scale = 1.5})
+
+
+                    local fishingrod_level_str = tostring(fishingrod_level_num) .. " / 100"
+                    create_text({base = page, x = -90, y = -100, str = fishingrod_level_str, size = 40})
+                
+
+            -------------------------------------------------------------------------------------
+            --- 捕虫网
+
+                if com:Get("bugnet.num") == nil then
+                    
+                    local box_frame_red = create_image({base = page , x = 150 , y = -20 , image = "box_frame_red" ,scale = 0.5})
+                    local bugnet = create_image({base = box_frame_red , x = 0 , y = 0 , image = "bugnet" ,scale = 2})
+                    local lock_red = create_image({base = box_frame_red , x = 0 , y = 0 , image = "lock_red" ,scale = 1 , a = 0.5})
+                    local telestaff_str = tostring(com:Get("bugnet.num") or 0) .. " / 1"
+                    create_text({base = box_frame_red, x = 0, y = -200, str = telestaff_str, size = 80})
+
+                else
+
+                    local fireflies = create_image({base = page , x = 150 , y = -20 , image = "fireflies" ,scale = 1.5})
+                    local fireflies_str = tostring( com:Get("fireflies.num") or 0 ) .. " / 100"
+                    create_text({base = page, x = 150, y = -100, str = fireflies_str, size = 40})
+
+                end
+
+
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
+
+            -------------------------------------------------------------------------------------
+            return page
+        end
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     -- pages_fns[#pages_fns]()  --- 只显示最后一页

@@ -28,6 +28,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
         ----------------------------------------------------------------
             if self.mms_scroll_unlocked_widget then
                 hud:mms_scroll_unlocked_widget_close()
+                return
             end
         ----------------------------------------------------------------
             local root = self:AddChild(Screen())
