@@ -66,6 +66,7 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/33_rigid_sys",                            --- 霸体系统
             "miraculous_machine_secret_scroll_modules/34_planardamage_sys",                     --- 位面伤害
             "miraculous_machine_secret_scroll_modules/35_real_damage",                          --- 真实伤害
+            "miraculous_machine_secret_scroll_modules/36_aoe_damage",                           --- AOE伤害
 
         }
         local replica_modules_fn = {}
