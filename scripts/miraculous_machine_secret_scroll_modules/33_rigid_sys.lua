@@ -20,20 +20,22 @@ return {
                 if inst.___rigid_task == nil then
 
                     local toadstool_dark_num = inst.components.miraculous_machine_secret_scroll:Get("boss.kill.toadstool_dark") or 0
-                    local probability = ( 0.5 + (toadstool_dark_num-1)*0.02)
-                    if probability > 0.6 then
-                        probability = 0.6
-                    end
-                    if math.random(10000)/10000 <= probability then
-                        ---- 持续时间
-                        local rigid_time = 5 + (toadstool_dark_num-1)
-                        if rigid_time > 10 then
-                            rigid_time = 10
-                        end
+                    if toadstool_dark_num > 0 then
+                                    local probability = ( 0.5 + (toadstool_dark_num-1)*0.02)
+                                    if probability > 0.6 then
+                                        probability = 0.6
+                                    end
+                                    if math.random(10000)/10000 <= probability then
+                                        ---- 持续时间
+                                        local rigid_time = 5 + (toadstool_dark_num-1)
+                                        if rigid_time > 10 then
+                                            rigid_time = 10
+                                        end
 
-                        inst.___rigid_task = inst:DoTaskInTime(rigid_time,function()
-                            inst.___rigid_task = nil
-                        end)
+                                        inst.___rigid_task = inst:DoTaskInTime(rigid_time,function()
+                                            inst.___rigid_task = nil
+                                        end)
+                                    end
                     end
 
                 else
