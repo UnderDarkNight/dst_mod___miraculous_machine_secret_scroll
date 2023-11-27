@@ -192,7 +192,13 @@ local flg,error_code = pcall(function()
 
         -- inst.components.miraculous_machine_secret_scroll:Set("boss.kill.daywalker",1)
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-            ThePlayer.HUD:mms_scroll_unlocked_widget_open(inst,275,-230)
+            -- ThePlayer.HUD:mms_scroll_unlocked_widget_open(inst,275,-230)
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+            -- for k, v in pairs(package.laoded) do
+            --     print(k,v)
+            -- end
+            local ret = dofile(resolvefilepath("scripts/widgets/mms_scroll_unlock_widget_pages.lua"))
+            print(ret)
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

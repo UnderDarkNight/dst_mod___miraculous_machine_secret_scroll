@@ -83,7 +83,7 @@ return function(root,inst)
         ["music"] = true,
         ["music_mini"] = true,
         ["music_mini_black"] = true,
-        ["orangestaff"] = true,
+        -- ["orangestaff"] = true,
         ["orangestaff_mini"] = true,
         ["orangestaff_mini_black"] = true,
         ["razor"] = true,
@@ -124,25 +124,27 @@ return function(root,inst)
         image:SetPosition(_table.x or 0,_table.y or 0)
         image:SetFadeAlpha(_table.a or 1,true)
         local scale = _table.scale or 1
-        image:SetScale(scale,scale,scale)
+        image:SetScale(scale,scale,1)
         return image
     end
 
     local pages_fns = {}
 
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        pages_fns[1] = function()        
-            local page = root:AddChild(Widget())
+        pages_fns[1] = function(current_page,max_page)
+            -------------------------------------------------------------------------------------
+                local page = root:AddChild(Widget())
+                page:SetPosition(-50,0)
             -------------------------------------------------------------------------------------
 
-            create_text({base = page, x = -50, y = 100, str = "物品等级", size = 60})
+            create_text({base = page, x = 0, y = 100, str = "物品等级", size = 60})
 
             -------------------------------------------------------------------------------------
             ---- 等级
-                local opalpreciousgem = create_image({base = page , x = -200, y = 0, image = "opalpreciousgem", scale = 1 , a = 1})
+                local opalpreciousgem = create_image({base = page , x = -100, y = -30, image = "opalpreciousgem", scale = 1 , a = 1})
                 local num = com:Get("weapon_level.num") or 0
                 local str = tostring(num) .. " / 60"
-                create_text({base = page, x = -200, y = -100, str = str, size = 40})
+                create_text({base = page, x = -100, y = -130, str = str, size = 40})
             -------------------------------------------------------------------------------------
             ---- 移动速度
                 if not ( com:Get("monster.kill.walrus") and com:Get("monster.kill.little_walrus") ) then
@@ -161,60 +163,124 @@ return function(root,inst)
                 else
 
 
-                        local cane =  create_image({base = page , x = 100 , y = 0 , image = "cane" ,scale = 1.5})
+                        local cane =  create_image({base = page , x = 100 , y = -30 , image = "cane" ,scale = 1.5})
                         local cane_num = com:Get("cane.num") or 0
                         local cane_str = tostring(cane_num) .. " / 14"
-                        create_text({base = page, x = 100, y = -100, str = cane_str, size = 40})
+                        create_text({base = page, x = 100, y = -130, str = cane_str, size = 40})
 
                 end
 
             -------------------------------------------------------------------------------------
-
+            ---- 页码
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
 
             return page
         end        
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        pages_fns[2] = function()
+        pages_fns[2] = function(current_page,max_page)
             -------------------------------------------------------------------------------------  
                 local page = root:AddChild(Widget())
                 page:SetPosition(-50,0)
             -------------------------------------------------------------------------------------
-                create_text({base = page, x = 0, y = 100, str = "近战、远程攻击距离", size = 60})
+                create_text({base = page, x = 20, y = 100, str = "近战、远程攻击距离", size = 60})
 
             -------------------------------------------------------------------------------------
+            --- 近战
+
+                local sword_mini_black = create_image({base = page , x = -100 , y = 20 , image = "sword_mini_black" ,scale = 0.5})
+                local goldnugget = create_image({base = page , x = -100 , y = -60 , image = "goldnugget" ,scale = 1})
+                local goldnugget_num = com:Get("goldnugget.num") or 0
+                local goldnugget_str = tostring(goldnugget_num) .. " / 100"
+                create_text({base = page, x = -100, y = -130, str = goldnugget_str, size = 40})
+            -------------------------------------------------------------------------------------
             --- 远程
-                local bow = create_image({base = page , x = 100 , y = 0 , image = "bow_mini_black" ,scale = 0.5})
+                local bow = create_image({base = page , x = 130 , y = 20 , image = "bow_mini_black" ,scale = 0.5})
 
                 local spiderqueen_num = com:Get("boss.kill.spiderqueen") or 0
                 if spiderqueen_num == 0 then
 
-                    local spiderqueen = create_image({base = page , x = 100 , y = -80 , image = "spiderqueen" ,scale = 0.3})
+                    local spiderqueen = create_image({base = page , x = 130 , y = -60 , image = "spiderqueen" ,scale = 0.3})
                     local spiderqueen_str = tostring(spiderqueen_num) .. " / 1"
-                    create_text({base = page, x = 100, y = -150, str = spiderqueen_str, size = 40})
+                    create_text({base = page, x = 130, y = -130, str = spiderqueen_str, size = 40})
 
                 else
 
-                    local silk = create_image({base = page , x = 100 , y = -80 , image = "silk" ,scale = 1.5})
+                    local silk = create_image({base = page , x = 130 , y = -60 , image = "silk" ,scale = 1.5})
                     local silk_num = com:Get("silk.num") or 0
                     local silk_str = tostring(silk_num) .. " / 400"
-                    create_text({base = page, x = 100, y = -150, str = silk_str, size = 40})
+                    create_text({base = page, x = 130, y = -130, str = silk_str, size = 40})
 
                 end
             -------------------------------------------------------------------------------------
-            --- 近战
 
-                local sword_mini_black = create_image({base = page , x = -100 , y = 0 , image = "sword_mini_black" ,scale = 0.5})
 
-                local goldnugget = create_image({base = page , x = -100 , y = -80 , image = "goldnugget" ,scale = 1})
-
-                local goldnugget_num = com:Get("goldnugget.num") or 0
-                local goldnugget_str = tostring(goldnugget_num) .. " / 100"
-                create_text({base = page, x = -100, y = -150, str = goldnugget_str, size = 40})
-            -------------------------------------------------------------------------------------
+            ---- 页码
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
 
 
             return page
-        end        
+        end
+        
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        pages_fns[3] = function(current_page,max_page)
+            -------------------------------------------------------------------------------------  
+                local page = root:AddChild(Widget())
+                page:SetPosition(-50,0)
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 20, y = 100, str = "传送、图跳", size = 60})
+
+            -------------------------------------------------------------------------------------
+            --- 橙色法杖
+
+                local orangestaff_num = com:Get("orangestaff.num") or 0
+                if orangestaff_num == 0 then
+
+                    local box_frame_blue = create_image({base = page , x = -100 , y = -20 , image = "box_frame_blue" ,scale = 0.5})
+                    local orangestaff = create_image({base = box_frame_blue , x = 0 , y = 0 , image = "orangestaff" ,scale = 2})
+                    local lock_blue = create_image({base = box_frame_blue , x = 0 , y = 0 , image = "lock_blue" ,scale = 1 , a = 0.5})
+                    local orangestaff_str = tostring(orangestaff_num) .. " / 1"
+                    create_text({base = box_frame_blue, x = 0, y = -200, str = orangestaff_str, size = 80})
+
+
+                else   
+
+                    local orangegem = create_image({base = page , x = -150 , y = -20 , image = "orangegem" ,scale = 0.7})
+                    local orangegem_num = com:Get("orangegem.num") or 0
+                    local orangegem_str = tostring(orangegem_num) .. " / 10"
+                    create_text({base = page, x = -150, y = -100, str = orangegem_str, size = 40})
+
+                    local nightmarefuel = create_image({base = page , x = -30 , y = -20 , image = "nightmarefuel" ,scale = 1.2})
+                    local nightmarefuel_num = com:Get("nightmarefuel.num") or 0
+                    local nightmarefuel_str = tostring(nightmarefuel_num) .. " / 100"
+                    create_text({base = page, x = -30, y = -100, str = nightmarefuel_str, size = 40})
+
+                end
+
+            -------------------------------------------------------------------------------------
+            --- 紫色法杖
+
+                if com:Get("telestaff.num") == nil then
+                    local box_frame_red = create_image({base = page , x = 150 , y = -20 , image = "box_frame_red" ,scale = 0.5})
+                    local telestaff = create_image({base = box_frame_red , x = 0 , y = 0 , image = "telestaff" ,scale = 2})
+                    local lock_red = create_image({base = box_frame_red , x = 0 , y = 0 , image = "lock_red" ,scale = 1 , a = 0.5})
+                    local telestaff_str = tostring(com:Get("telestaff.num") or 0) .. " / 1"
+                    create_text({base = box_frame_red, x = 0, y = -200, str = telestaff_str, size = 80})
+
+                else
+
+                    local purplegem = create_image({base = page , x = 150 , y = -20 , image = "purplegem" ,scale = 0.7})
+                    local purplegem_str = tostring( com:Get("purplegem.num") or 0 ) .. " / 20"
+                    create_text({base = page, x = 150, y = -100, str = purplegem_str, size = 40})
+
+                end
+
+
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
+
+            -------------------------------------------------------------------------------------
+            return page
+        end   
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     -- pages_fns[#pages_fns]()  --- 只显示最后一页
@@ -223,7 +289,7 @@ return function(root,inst)
     ----- 上下页面切换
             local pages_layer = {}
             for i, temp_fn in ipairs(pages_fns) do
-                local temp_page = temp_fn()
+                local temp_page = temp_fn(i,#pages_fns)
                 table.insert(pages_layer,temp_page)
                 temp_page:Hide()
             end

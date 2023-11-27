@@ -51,7 +51,8 @@ AddClassPostConstruct("screens/playerhud",function(self)
             background:SetScale(main_scale_num,main_scale_num,main_scale_num)
         ----------------------------------------------------------------
         ---- 每一页 
-            local fn = require("widgets/mms_scroll_unlock_widget_pages")
+            -- local fn = require("widgets/mms_scroll_unlock_widget_pages")
+            local fn = dofile(resolvefilepath("scripts/widgets/mms_scroll_unlock_widget_pages.lua"))
             if type(fn) == "function" then
                 local crash_flag,reason = pcall(fn,root,weapon_inst)
                 if not crash_flag then
