@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="mms_scroll_unlock_widget.tex" />
+	<Elements>
+		<Element name="background.tex" u1="0.042015625" u2="0.7499765625" v2="0.999" v1="0.1289296875" variant="" />
+		<Element name="box_frame_blue.tex" u1="0.84621484375" u2="0.9531015625" v2="0.999" v1="0.721703125" variant="" />
+		<Element name="box_frame_red.tex" u1="0.7519765625" u2="0.87253515625" v2="0.719703125" v1="0.4150625" variant="" />
+		<Element name="close_button.tex" u1="0.7519765625" u2="0.84421484375" v2="0.999" v1="0.772484375" variant="" />
+		<Element name="last_button.tex" u1="0.05812890625" u2="0.108375" v2="0.1269296875" v1="0.006859375" variant="" />
+		<Element name="lock_blue.tex" u1="0.110375" u2="0.14987890625" v2="0.1269296875" v1="0.034203125" variant="" />
+		<Element name="lock_red.tex" u1="0.001" u2="0.040015625" v2="0.999" v1="0.8906484375" variant="" />
+		<Element name="next_button.tex" u1="0.001" u2="0.05612890625" v2="0.1269296875" v1="0.014671875" variant="" />
+	</Elements>
+</Atlas>

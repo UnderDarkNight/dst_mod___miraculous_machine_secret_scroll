@@ -17,17 +17,25 @@ return {
 
         local function equip_hook(player)
             if player.components.playerlightningtarget then
-                player.components.playerlightningtarget.GetHitChance__mms_scroll_old = player.components.playerlightningtarget.GetHitChance
-                player.components.playerlightningtarget.GetHitChance = function(self,...)
 
-                    local lightninggoat_charged_num = inst.components.miraculous_machine_secret_scroll:Get("lightninggoat_charged") or 0
-                    if lightninggoat_charged_num >= 10 then
-                        return -1
-                    else
-                        return self:GetHitChance__mms_scroll_old(...)
+
+                -----------------------------------
+                    player.components.playerlightningtarget.GetHitChance__mms_scroll_old = player.components.playerlightningtarget.GetHitChance
+                    player.components.playerlightningtarget.GetHitChance = function(self,...)
+
+                        local lightninggoat_charged_num = inst.components.miraculous_machine_secret_scroll:Get("lightninggoat_charged") or 0
+                        if lightninggoat_charged_num >= 10 then
+                            return -1
+                        else
+                            return self:GetHitChance__mms_scroll_old(...)
+                        end
+
                     end
+                -----------------------------------
+                    
 
-                end
+
+
             end
         end
 
