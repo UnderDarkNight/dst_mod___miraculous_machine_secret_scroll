@@ -22,6 +22,8 @@ AddClassPostConstruct("screens/playerhud",function(self)
 
     function self:mms_scroll_switch_widget_open(weapon_inst,cmd_table)
                 ----------------------------------------------------------------
+                    hud:mms_scroll_unlocked_widget_close() --- 关闭另外一个界面
+                ----------------------------------------------------------------
                     cmd_table = cmd_table or {}
                 ----------------------------------------------------------------
                     if self.mms_scroll_switch_widget then

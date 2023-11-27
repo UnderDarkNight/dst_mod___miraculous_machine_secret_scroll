@@ -22,3 +22,5 @@ modimport("imports_of_miraculous_machine_secret_scroll/07_playercontroller.lua")
 modimport("imports_of_miraculous_machine_secret_scroll/08_switch_widget.lua")	---- 按键 界面
 
 modimport("imports_of_miraculous_machine_secret_scroll/09_player_combat_hook.lua")	---- 霸体相关的hook
+
+modimport("imports_of_miraculous_machine_secret_scroll/10_unlocked_widget.lua")	---- 解锁界面

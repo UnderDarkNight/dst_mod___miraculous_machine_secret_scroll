@@ -165,13 +165,23 @@ return function(inst,key,down)
     --         end
     --     end)
     -- end
-    if not down and key == KEY_F1  then    --- 按键抬起
+    if not down then    --- 按键抬起
         -- print("key up",key)
-        pcall(function()
-            -- inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("key_up",key)   
-            if ThePlayer then
-                ThePlayer.HUD:mms_scroll_switch_widget_open(nil,cmd_table)
-            end
-        end)
+        if key == KEY_F3 then
+                pcall(function()
+                    -- inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("key_up",key)   
+                    if ThePlayer then
+                        ThePlayer.HUD:mms_scroll_switch_widget_open(nil,cmd_table)
+                    end
+                end)
+        elseif key == KEY_F1 then
+                pcall(function()
+                    -- inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("key_up",key)   
+                    if ThePlayer then
+                        ThePlayer.HUD:mms_scroll_unlocked_widget_open(inst)
+                    end
+                end)
+        end
+                    
     end
 end

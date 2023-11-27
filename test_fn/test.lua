@@ -190,7 +190,9 @@ local flg,error_code = pcall(function()
         -- inst.components.planardamage:SetBaseDamage(0)
         -- inst.components.miraculous_machine_secret_scroll:Set("boss.kill.antlion",5)
 
-        inst.components.miraculous_machine_secret_scroll:Set("boss.kill.daywalker",1)
+        -- inst.components.miraculous_machine_secret_scroll:Set("boss.kill.daywalker",1)
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+            ThePlayer.HUD:mms_scroll_unlocked_widget_open(inst,275,-230)
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
