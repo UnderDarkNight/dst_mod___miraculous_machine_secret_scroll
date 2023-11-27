@@ -139,8 +139,8 @@
                                         位面目标组件 ：inst:AddComponent("damagetypebonus") 。绑定目标位面 ：lunar_aligned / shadow_aligned
                                         详情参考 亮茄剑 sword_lunarplant 和 收割者 voidcloth_scythe
 
-    · 击杀【地下暗影三基佬】：  shadowthrall_hands  shadowthrall_wings  shadowthrall_horns
-        ·每击杀一种，增加2点位面伤害，首次击杀有效。共计6点位面伤害加成。解锁位面伤害目标 ：lunar_aligned
+    · 【完成】击杀【地下暗影三基佬】：  shadowthrall_hands  shadowthrall_wings  shadowthrall_horns
+                ·每击杀一种，增加2点位面伤害，首次击杀有效。共计6点位面伤害加成。解锁位面伤害目标 ：lunar_aligned
 
     · 【完成】击杀【天体英雄】：
                 · 击杀解锁【灯光】开启功能（快捷键）
