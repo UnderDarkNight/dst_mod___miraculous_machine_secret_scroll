@@ -67,7 +67,7 @@
 return {
     -----------------------------------------------------------------------------------------------------------------
     main = function(inst)
-        inst:AddTag("snow_spriter")
+        -- inst:AddTag("snow_spriter")
         
         if not TheWorld.ismastersim then
             return

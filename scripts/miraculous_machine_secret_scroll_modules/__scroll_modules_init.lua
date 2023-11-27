@@ -64,6 +64,7 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/31_heal_health",                          --- 攻击回血
             "miraculous_machine_secret_scroll_modules/32_insulator",                            --- 绝缘体、防雷
             "miraculous_machine_secret_scroll_modules/33_rigid_sys",                            --- 霸体系统
+            "miraculous_machine_secret_scroll_modules/34_planardamage_sys",                     --- 位面伤害
 
         }
         local replica_modules_fn = {}

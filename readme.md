@@ -133,18 +133,18 @@
                 · 击杀1只后解锁【霸体】。每次被攻击都会有50%概率触发【霸体】。【霸体】期间不受到任何伤害。初始【霸体】持续时间为5s 。
                 · 每击杀1只，【霸体】持续时间增加1s，概率增加2%。最多升级到10s 。60%概率。（不可被二连击触发）
 
-    · 击杀【暗影三基佬】：  shadow_knight   shadow_rook   shadow_bishop
-        · 每击杀一种，增加8点位面伤害，首次击杀有效，最高形态才算数。共计24点位面伤害加成。解锁位面伤害目标 ：lunar_aligned
-                · 【程序笔记】：位面伤害组件：inst:AddComponent("planardamage") 
-                                位面目标组件 ：inst:AddComponent("damagetypebonus") 。绑定目标位面 ：lunar_aligned / shadow_aligned
-                                详情参考 亮茄剑 sword_lunarplant 和 收割者 voidcloth_scythe
+    · 【完成】击杀【暗影三基佬】：  shadow_knight   shadow_rook   shadow_bishop
+                · 每击杀一种，增加8点位面伤害，首次击杀有效，最高形态才算数。共计24点位面伤害加成。解锁位面伤害目标 ：lunar_aligned
+                        · 【程序笔记】：位面伤害组件：inst:AddComponent("planardamage") 
+                                        位面目标组件 ：inst:AddComponent("damagetypebonus") 。绑定目标位面 ：lunar_aligned / shadow_aligned
+                                        详情参考 亮茄剑 sword_lunarplant 和 收割者 voidcloth_scythe
 
     · 击杀【地下暗影三基佬】：  shadowthrall_hands  shadowthrall_wings  shadowthrall_horns
         ·每击杀一种，增加2点位面伤害，首次击杀有效。共计6点位面伤害加成。解锁位面伤害目标 ：lunar_aligned
 
-    · 击杀【天体英雄】：
-        · 击杀解锁【灯光】开启功能（快捷键）
-        · 增加8点位面伤害，首次击杀有效。解锁位面伤害目标：shadow_aligned
+    · 【完成】击杀【天体英雄】：
+                · 击杀解锁【灯光】开启功能（快捷键）
+                · 增加8点位面伤害，首次击杀有效。解锁位面伤害目标：shadow_aligned
 
     · 击杀【远古织影者】：  stalker_atrium
         · 解锁功能：【近战】攻击暗影怪有 5% 概率秒杀。每击杀一次，增加5%概率，最高50%概率。

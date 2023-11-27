@@ -185,8 +185,10 @@ local flg,error_code = pcall(function()
         -- }
         -- ThePlayer.HUD:mms_scroll_switch_widget_open(nil,cmd_table)
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-        local dragonfly_num = inst.components.miraculous_machine_secret_scroll:Get("boss.kill.dragonfly")
-        print(dragonfly_num)
+        -- local dragonfly_num = inst.components.miraculous_machine_secret_scroll:Get("boss.kill.dragonfly")
+        -- print(dragonfly_num)
+        inst.components.planardamage:SetBaseDamage(0)
+        inst.components.miraculous_machine_secret_scroll:Set("boss.kill.antlion",5)
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

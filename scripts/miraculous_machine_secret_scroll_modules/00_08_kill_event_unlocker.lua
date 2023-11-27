@@ -18,7 +18,7 @@ return {
                             local flag = "boss.kill.".._table.target.prefab
                             inst.components.miraculous_machine_secret_scroll:Add(flag,1)
                             inst:PushEvent("target_kill_count_end")
-
+                            inst:PushEvent("boss_killed",_table.target)
                         else
                             if monster_list[_table.target.prefab] then
                                 local flag = "monster.kill.".._table.target.prefab
@@ -27,6 +27,7 @@ return {
 
                             end
                         end
+                        inst:PushEvent("monster_killed",_table.target)
                 end
             end)
 

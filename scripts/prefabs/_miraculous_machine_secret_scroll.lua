@@ -95,8 +95,9 @@ local function fn()
             inst:AddComponent("waterproofer")
             inst.components.waterproofer:SetEffectiveness(0)
         ----------------------------------------------------------------------------------------------
-        --- 防雷
-
+        --- 位面伤害
+            inst:AddComponent("planardamage")
+            inst:AddComponent("damagetypebonus")
         ----------------------------------------------------------------------------------------------
 
 
