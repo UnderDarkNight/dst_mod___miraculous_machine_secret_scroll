@@ -563,15 +563,66 @@ return function(root,inst)
                 if com:Get("boss.kill.lordfruitfly") == nil then
 
                         local box_frame_red2 = create_image({base = page , x = 220 , y = -20 , image = "box_frame_red" ,scale = 0.5})
-                        local onemanband = create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "onemanband" ,scale = 2})
-                        local lock_red = create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "lock_red" ,scale = 1 , a = 0.5})
-                        -- create_text({base = box_frame_red2, x = 0, y = -200, str = "0 / 1", size = 80})
-                        create_image({base = box_frame_red2 , x = 0 , y = -200 , image = "lordfruitfly" ,scale = 1 })
+                        create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "lordfruitfly" ,scale = 1})
+                        create_text({base = box_frame_red2, x = 0, y = -200, str = "0 / 1", size = 80})
                 else                        
 
                     local box_frame_red2 = create_image({base = page , x = 220 , y = -20  ,scale = 0.5})
-                    local onemanband = create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "onemanband" ,scale = 2})
+                    create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "onemanband" ,scale = 2})
                     create_text({base = box_frame_red2, x = 0, y = -200, str = "1 / 1", size = 80})
+
+                end
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
+
+            -------------------------------------------------------------------------------------
+            return page
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 7 页
+        pages_fns[7] = function(current_page,max_page)
+            -------------------------------------------------------------------------------------  
+                local page = root:AddChild(Widget())
+                page:SetPosition(-50,0)
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 20, y = 100, str = "灯光、水上行走", size = 60})
+
+            -------------------------------------------------------------------------------------
+            --- 灯光
+                    -- if (com:Get("trident_level.num") or 0) == 0 then
+
+                        -- local box_frame_blue = create_image({base = page , x = -100 , y = -20 , image = "box_frame_blue" ,scale = 0.5})
+                        -- create_image({base = box_frame_blue , x = 0 , y = 0 , image = "alterguardian_phase3" ,scale = 0.7})
+                        -- create_text({base = box_frame_blue, x = 0, y = -200, str = "0 / 1", size = 80})
+
+
+                    -- else
+
+                        local box_frame_blue = create_image({base = page , x = -100 , y = -20 ,scale = 0.5})
+                        create_image({base = box_frame_blue , x = 0 , y = 0 , image = "light_mini_black" ,scale = 2})
+                        create_text({base = box_frame_blue, x = 0, y = -200, str = "1 / 1", size = 80})
+
+                    -- end
+                
+
+            
+
+
+            -------------------------------------------------------------------------------------
+            --- 水上行走
+
+                if ( com:Get("boss.kill.malbatross") or 0 ) ~= 3 then
+
+                        local box_frame_red2 = create_image({base = page , x = 130 , y = -20 , image = "box_frame_red" ,scale = 0.5})
+                        create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "malbatross" ,scale = 1})
+                        local malbatross_str = tostring(com:Get("boss.kill.malbatross") or 0) .. " / 3"
+                        create_text({base = box_frame_red2, x = 0, y = -200, str = malbatross_str, size = 80})
+
+                else                        
+
+                    local box_frame_red2 = create_image({base = page , x = 130 , y = -20  ,scale = 0.5})
+                    local water_run_mini_black = create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "water_run_mini_black" ,scale = 2})
+                    create_text({base = box_frame_red2, x = 0, y = -200, str = "3 / 3", size = 80})
 
                 end
             -------------------------------------------------------------------------------------
