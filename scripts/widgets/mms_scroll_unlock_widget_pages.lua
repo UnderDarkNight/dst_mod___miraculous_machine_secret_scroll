@@ -143,29 +143,42 @@ return function(root,inst)
         --     scale = 1,
         --     image = "box_frame_blue",
         --     a = 1,
+        --     angle = 0,
         -- }
 
-        local atlas = "images/ui_images/mms_scroll_unlock_progress_material.xml"
-        if GetInventoryItemAtlas(_table.image..".tex") then
-            atlas = GetInventoryItemAtlas(_table.image..".tex")
-        end
+        local image = nil
+        if _table.image ~= nil then
+
+                local atlas = "images/ui_images/mms_scroll_unlock_progress_material.xml"
+                if GetInventoryItemAtlas(_table.image..".tex") then
+                    atlas = GetInventoryItemAtlas(_table.image..".tex")
+                end
 
 
-        if background_imgs[_table.image] then
-            atlas = "images/ui_images/mms_scroll_unlock_widget.xml"
-        elseif state_button_img[_table.image] then
-            atlas = "images/ui_images/mms_scroll_widget.xml"
-        elseif monster_imgs[_table.image] then
-            atlas = "images/ui_images/mms_scroll_unlock_progress_material.xml" 
-        end
+                if background_imgs[_table.image] then
+                    atlas = "images/ui_images/mms_scroll_unlock_widget.xml"
+                elseif state_button_img[_table.image] then
+                    atlas = "images/ui_images/mms_scroll_widget.xml"
+                elseif monster_imgs[_table.image] then
+                    atlas = "images/ui_images/mms_scroll_unlock_progress_material.xml" 
+                end
 
         
-        local image = _table.base:AddChild(Image())
-        image:SetTexture(atlas,_table.image..".tex")
+                image = _table.base:AddChild(Image())
+                image:SetTexture(atlas,_table.image..".tex")
+        else
+                image = _table.base:AddChild(Widget())
+        end    
+
+
         image:SetPosition(_table.x or 0,_table.y or 0)
         image:SetFadeAlpha(_table.a or 1,true)
         local scale = _table.scale or 1
         image:SetScale(scale,scale,1)
+        if _table.angle then
+            image:SetRotation(_table.angle)
+        end
+
         return image
     end
 
@@ -341,7 +354,7 @@ return function(root,inst)
 
                     local pondeel = create_image({base = page , x = -130 , y = -20 , image = "pondeel" ,scale = 1.5})
                     local pondfish = create_image({base = page , x = -60 , y = -20 , image = "pondfish" ,scale = 1.5})
-
+                    local fishingrod_mini_black = create_image({base = page , x = -140 , y = 30 , image = "fishingrod_mini_black" ,scale = 0.5})
 
                     local fishingrod_level_str = tostring(fishingrod_level_num) .. " / 100"
                     create_text({base = page, x = -90, y = -100, str = fishingrod_level_str, size = 40})
@@ -367,6 +380,200 @@ return function(root,inst)
                 end
 
 
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
+
+            -------------------------------------------------------------------------------------
+            return page
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 5 页
+        pages_fns[5] = function(current_page,max_page)
+            -------------------------------------------------------------------------------------  
+                local page = root:AddChild(Widget())
+                page:SetPosition(-50,0)
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 20, y = 100, str = "工具", size = 60})
+
+            -------------------------------------------------------------------------------------
+            --- 斧头
+                    if (com:Get("axe_level.num") or 0) == 0 then
+
+                        local box_frame_blue = create_image({base = page , x = -180 , y = -20 , image = "box_frame_blue" ,scale = 0.5})
+                        local axe = create_image({base = box_frame_blue , x = 0 , y = 0 , image = "axe" ,scale = 2})
+                        local lock_blue = create_image({base = box_frame_blue , x = 0 , y = 0 , image = "lock_blue" ,scale = 1 , a = 0.5})
+                        local axe_str = tostring(com:Get("axe_level.num") or 0) .. " / 1"
+                        create_text({base = box_frame_blue, x = 0, y = -200, str = axe_str, size = 80})
+
+                    else
+
+                        local box_frame_blue = page:AddChild(Widget())
+                        box_frame_blue:SetPosition(-180,-20)
+                        box_frame_blue:SetScale(0.5,0.5,1)
+                        local axe = create_image({base = box_frame_blue , x = 0 , y = 80 , image = "axe" ,scale = 2})
+                        local goldenaxe = create_image({base = box_frame_blue , x = -60 , y = 0 , image = "goldenaxe" ,scale = 2})
+                        local moonglassaxe = create_image({base = box_frame_blue , x = 60 , y = 0 , image = "moonglassaxe" ,scale = 2})
+                        local multitool_axe_pickaxe = create_image({base = box_frame_blue , x = 0 , y = -80 , image = "multitool_axe_pickaxe" ,scale = 2,angle = 30})
+                        local axe_str = tostring(com:Get("axe_level.num") or 0) .. " / 1000"
+                        create_text({base = box_frame_blue, x = 0, y = -200, str = axe_str, size = 80})
+
+                    end
+                
+
+            -------------------------------------------------------------------------------------
+            --- 矿镐
+                    if (com:Get("pickaxe_level.num") or 0) == 0 then
+
+                        local box_frame_blue2 = create_image({base = page , x = -50 , y = -20 , image = "box_frame_blue" ,scale = 0.5})
+                        local pickaxe = create_image({base = box_frame_blue2 , x = 0 , y = 0 , image = "pickaxe" ,scale = 2})
+                        local lock_blue = create_image({base = box_frame_blue2 , x = 0 , y = 0 , image = "lock_blue" ,scale = 1 , a = 0.5})
+                        local pickaxe_str = tostring(com:Get("pickaxe_level.num") or 0) .. " / 1"
+                        create_text({base = box_frame_blue2, x = 0, y = -200, str = pickaxe_str, size = 80})
+
+                    else
+                            
+
+                        local box_frame_blue2 = page:AddChild(Widget())
+                        box_frame_blue2:SetPosition(-50,-20)
+                        box_frame_blue2:SetScale(0.5,0.5,1)
+                        local pickaxe = create_image({base = box_frame_blue2 , x = 0 , y = 80 , image = "pickaxe" ,scale = 2})
+                        local goldenpickaxe = create_image({base = box_frame_blue2 , x = -60 , y = 0 , image = "goldenpickaxe" ,scale = 2})
+                        local pickaxe_lunarplant = create_image({base = box_frame_blue2 , x = 60 , y = 0 , image = "pickaxe_lunarplant" ,scale = 2})
+                        local multitool_axe_pickaxe = create_image({base = box_frame_blue2 , x = 0 , y = -80 , image = "multitool_axe_pickaxe" ,scale = 2,angle = 30})
+                        local pickaxe_level_str = tostring(com:Get("pickaxe_level.num") or 0) .. " / 1000"
+                        create_text({base = box_frame_blue2, x = 0, y = -200, str = pickaxe_level_str, size = 80})
+
+                    end
+
+
+            -------------------------------------------------------------------------------------
+            --- 铲子
+                if com:Get("shovel_level.full") ~= true then
+
+                    local box_frame_red = create_image({base = page , x = 80 , y = -20 , image = "box_frame_red" ,scale = 0.5})
+                    local shovel = create_image({base = box_frame_red , x = 0 , y = 0 , image = "shovel" ,scale = 2})
+                    local lock_red = create_image({base = box_frame_red , x = 0 , y = 0 , image = "lock_red" ,scale = 1 , a = 0.5})
+                    local shovel_str = tostring(com:Get("shovel_level.full") and 1 or 0) .. " / 1"
+                    create_text({base = box_frame_red, x = 0, y = -200, str = shovel_str, size = 80})
+
+                else
+                    
+
+                    local box_frame_red = create_image({base = page , x = 80 , y = -20 , scale = 0.5})
+                    local shovel = create_image({base = box_frame_red , x = 0 , y = 0 , image = "shovel" ,scale = 2})
+                    local shovel_str = "1 / 1"
+                    create_text({base = box_frame_red, x = 0, y = -200, str = shovel_str, size = 80})
+
+                end
+
+            -------------------------------------------------------------------------------------
+            --- 锤子
+
+                if com:Get("hammer_level.full") ~= true then
+
+                        local box_frame_red2 = create_image({base = page , x = 220 , y = -20 , image = "box_frame_red" ,scale = 0.5})
+                        local hammer = create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "hammer" ,scale = 2})
+                        local lock_red = create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "lock_red" ,scale = 1 , a = 0.5})
+                        local hammer_str = "0 / 1"
+                        create_text({base = box_frame_red2, x = 0, y = -200, str = hammer_str, size = 80})
+
+                else                        
+
+                        local box_frame_red2 = create_image({base = page , x = 220 , y = -20 , scale = 0.5})
+                        local hammer = create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "hammer" ,scale = 2})
+                        local hammer_str = "1 / 1"
+                        create_text({base = box_frame_red2, x = 0, y = -200, str = hammer_str, size = 80})
+
+                end
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
+
+            -------------------------------------------------------------------------------------
+            return page
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 6 页
+        pages_fns[6] = function(current_page,max_page)
+            -------------------------------------------------------------------------------------  
+                local page = root:AddChild(Widget())
+                page:SetPosition(-50,0)
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 20, y = 100, str = "三叉戟、剃刀、护目镜、乐器", size = 60})
+
+            -------------------------------------------------------------------------------------
+            --- 三叉戟
+                    if (com:Get("trident_level.num") or 0) == 0 then
+
+                        local box_frame_blue = create_image({base = page , x = -180 , y = -20 , image = "box_frame_blue" ,scale = 0.5})
+                        local trident = create_image({base = box_frame_blue , x = 0 , y = 0 , image = "trident" ,scale = 2})
+                        local lock_blue = create_image({base = box_frame_blue , x = 0 , y = 0 , image = "lock_blue" ,scale = 1 , a = 0.5})
+                        create_text({base = box_frame_blue, x = 0, y = -200, str = "0 / 1", size = 80})
+
+                    else
+
+                        local box_frame_blue = create_image({base = page , x = -180 , y = -20 ,scale = 0.5})
+                        local trident = create_image({base = box_frame_blue , x = 0 , y = 0 , image = "trident" ,scale = 2})
+                        create_text({base = box_frame_blue, x = 0, y = -200, str = "1 / 1", size = 80})
+
+                    end
+                
+
+            -------------------------------------------------------------------------------------
+            --- 剃刀
+                    if (com:Get("razor_level.num") or 0) == 0 then
+
+                        local box_frame_blue2 = create_image({base = page , x = -50 , y = -20 , image = "box_frame_blue" ,scale = 0.5})
+                        local razor = create_image({base = box_frame_blue2 , x = 0 , y = 0 , image = "razor" ,scale = 2})
+                        local lock_blue = create_image({base = box_frame_blue2 , x = 0 , y = 0 , image = "lock_blue" ,scale = 1 , a = 0.5})
+                        create_text({base = box_frame_blue2, x = 0, y = -200, str = "0 / 1", size = 80})
+
+                    else
+                            
+                        local box_frame_blue2 = create_image({base = page , x = -50 , y = -20 ,scale = 0.5})
+                        local razor = create_image({base = box_frame_blue2 , x = 0 , y = 0 , image = "razor" ,scale = 2})
+                        create_text({base = box_frame_blue2, x = 0, y = -200, str = "1 / 1", size = 80})
+
+
+                    end
+
+
+            -------------------------------------------------------------------------------------
+            --- 护目镜
+                if com:Get("goggles_level.full") ~= true then
+
+                    local box_frame_red = create_image({base = page , x = 80 , y = -20 , image = "box_frame_red" ,scale = 0.5})
+                    local moonstorm_goggleshat = create_image({base = box_frame_red , x = -20 , y = 20 , image = "moonstorm_goggleshat" ,scale = 2})
+                    local deserthat = create_image({base = box_frame_red , x = 20 , y = -20 , image = "deserthat" ,scale = 2})
+                    local lock_red = create_image({base = box_frame_red , x = 0 , y = 0 , image = "lock_red" ,scale = 1 , a = 0.5})
+                    create_text({base = box_frame_red, x = 0, y = -200, str = "0 / 1", size = 80})
+
+                else
+                    
+
+                    local box_frame_red = create_image({base = page , x = 80 , y = -20 ,scale = 0.5})
+                    local moonstorm_goggleshat = create_image({base = box_frame_red , x = -20 , y = 20 , image = "moonstorm_goggleshat" ,scale = 2})
+                    local deserthat = create_image({base = box_frame_red , x = 20 , y = -30 , image = "deserthat" ,scale = 2})
+                    create_text({base = box_frame_red, x = 0, y = -200, str = "1 / 1", size = 80})
+
+                end
+
+            -------------------------------------------------------------------------------------
+            --- 乐器
+
+                if com:Get("boss.kill.lordfruitfly") == nil then
+
+                        local box_frame_red2 = create_image({base = page , x = 220 , y = -20 , image = "box_frame_red" ,scale = 0.5})
+                        local onemanband = create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "onemanband" ,scale = 2})
+                        local lock_red = create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "lock_red" ,scale = 1 , a = 0.5})
+                        -- create_text({base = box_frame_red2, x = 0, y = -200, str = "0 / 1", size = 80})
+                        create_image({base = box_frame_red2 , x = 0 , y = -200 , image = "lordfruitfly" ,scale = 1 })
+                else                        
+
+                    local box_frame_red2 = create_image({base = page , x = 220 , y = -20  ,scale = 0.5})
+                    local onemanband = create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "onemanband" ,scale = 2})
+                    create_text({base = box_frame_red2, x = 0, y = -200, str = "1 / 1", size = 80})
+
+                end
             -------------------------------------------------------------------------------------
                 create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
 
