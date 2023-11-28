@@ -108,14 +108,17 @@ return function(root,inst)
         ["alterguardian_phase3"] = true,
         ["antlion"] = true,
         ["bearger"] = true,
+        ["mutatedbearger"] = true,
         ["crabking"] = true,
         ["daywalker"] = true,
         ["deerclops"] = true,
+        ["mutateddeerclops"] = true,
         ["dragonfly"] = true,
         ["klaus"] = true,
         ["lightninggoat"] = true,
         ["lightninggoat_charged"] = true,
         ["leif"] = true,
+        ["leif_sparse"] = true,
         ["little_walrus"] = true,
         ["lordfruitfly"] = true,
         ["malbatross"] = true,
@@ -683,6 +686,55 @@ return function(root,inst)
                         create_text({base = box_frame_red2, x = 0, y = -200, str = bluegem_str, size = 80})
 
                 end
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
+
+            -------------------------------------------------------------------------------------
+            return page
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 9 页
+        pages_fns[9] = function(current_page,max_page)
+            -------------------------------------------------------------------------------------  
+                local page = root:AddChild(Widget())
+                page:SetPosition(-50,0)
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 20, y = 100, str = "武器不掉落、防雨", size = 60})
+
+            -------------------------------------------------------------------------------------
+            --- 武器不掉落
+
+
+                        local box_frame_blue = create_image({base = page , x = -100 , y = -20 ,scale = 0.5})
+                        create_image({base = box_frame_blue , x = 20 , y = 20 , image = "mutatedbearger" ,scale = 1 , a = 0.5})
+                        create_image({base = box_frame_blue , x = -20 , y = 0 , image = "bearger" ,scale = 1})
+                        local bearger_num = (com:Get("boss.kill.bearger") or 0) + (com:Get("boss.kill.mutatedbearger") or 0)
+                        if bearger_num >= 5 then
+                            bearger_num = 5
+                        end
+                        local bearger_str = tostring(bearger_num) .. " / 5"
+                        create_text({base = box_frame_blue, x = 0, y = -200, str = bearger_str, size = 80})
+
+                    
+                
+
+            
+
+
+            -------------------------------------------------------------------------------------
+            --- 防雨
+
+
+                    local box_frame_red = create_image({base = page , x = 130 , y = -20 ,scale = 0.5})
+                    create_image({base = box_frame_red , x = 0 , y = 0 , image = "moose" ,scale = 0.7 })
+                    local moose_num = (com:Get("boss.kill.moose") or 0)
+                    if moose_num >= 5 then
+                        moose_num = 5
+                    end
+                    local moose_str = tostring(moose_num) .. " / 5"
+                    create_text({base = box_frame_red, x = 0, y = -200, str = moose_str, size = 80})
+
+
             -------------------------------------------------------------------------------------
                 create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
 
