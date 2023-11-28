@@ -225,7 +225,7 @@ return {
             on_accept_fn = function(inst,item,doer)
                     local item_num = item.components.stackable.stacksize
                     local current_num = inst.components.miraculous_machine_secret_scroll:Add("redgem.num",0)
-                    local max_num = 10
+                    local max_num = 40
                     if item_num + current_num > max_num then
                         local added_num = max_num - current_num
                         inst.components.miraculous_machine_secret_scroll:Set("redgem.num",max_num)

@@ -45,7 +45,7 @@ return {
                             local deerclops_num = inst.components.miraculous_machine_secret_scroll:Get("boss.kill.deerclops") 
                             local mutateddeerclops_num =  inst.components.miraculous_machine_secret_scroll:Get("boss.kill.mutateddeerclops")            
                             if deerclops_num or mutateddeerclops_num then
-                                local low_temperature_block_num = (deerclops_num or 0) + (mutateddeerclops_num or 0)
+                                local low_temperature_block_num = (deerclops_num or 0) + (mutateddeerclops_num or 0) - 1
                                 if low_temperature_block_num > 20 then
                                     low_temperature_block_num = 20
                                 end

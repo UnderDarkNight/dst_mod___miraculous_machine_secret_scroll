@@ -40,18 +40,7 @@ return {
 
                     -----------------------------------------------------------------------
                     --- 秒杀
-                        if inst.components.miraculous_machine_secret_scroll:Get("firestaff.full") then
-                            local redgem_num = inst.components.miraculous_machine_secret_scroll:Add("redgem.num",0)
-                            --- 初始概率1%，每给予一颗红宝石增加0.1%的概率，最高2%   最多喂食10个
-                            local base_redgem_percent = 0.01
-                            if math.random(10000)/10000 < (base_redgem_percent + redgem_num*0.001) then
-                                if target.components.health and target.components.combat then
-                                    local max_health = target.components.health.maxhealth
-                                    target.components.combat:GetAttacked(attacker,max_health,inst)
-                                end
-                                return
-                            end
-                        end
+                        inst:PushEvent("spike_target",target)
                     -----------------------------------------------------------------------
                     --- 上毒
                         inst:PushEvent("bee_venom_2_target",target)

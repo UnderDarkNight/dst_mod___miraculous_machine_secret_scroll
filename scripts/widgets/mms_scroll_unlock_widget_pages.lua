@@ -682,7 +682,7 @@ return function(root,inst)
 
                         local box_frame_red2 = create_image({base = page , x = 130 , y = -20 ,scale = 0.5})
                         create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "redgem" ,scale = 4})
-                        local bluegem_str = tostring(com:Get("redgem.num") or 0) .. " / 10"
+                        local bluegem_str = tostring(com:Get("redgem.num") or 0) .. " / 40"
                         create_text({base = box_frame_red2, x = 0, y = -200, str = bluegem_str, size = 80})
 
                 end
@@ -733,6 +733,61 @@ return function(root,inst)
                     end
                     local moose_str = tostring(moose_num) .. " / 5"
                     create_text({base = box_frame_red, x = 0, y = -200, str = moose_str, size = 80})
+
+
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
+
+            -------------------------------------------------------------------------------------
+            return page
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 10 页
+        pages_fns[10] = function(current_page,max_page)
+            -------------------------------------------------------------------------------------  
+                local page = root:AddChild(Widget())
+                page:SetPosition(-50,0)
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 20, y = 100, str = "温度保护", size = 60})
+
+            -------------------------------------------------------------------------------------
+            --- 低温
+
+
+                        local box_frame_blue = create_image({base = page , x = -100 , y = -20 ,scale = 0.5})
+                        create_image({base = box_frame_blue , x = 20 , y = 0 , image = "mutateddeerclops" ,scale = 0.8 , a = 0.5})
+                        create_image({base = box_frame_blue , x = -20 , y = 0 , image = "deerclops" ,scale = 0.8})
+                        local deerclops_num = (com:Get("boss.kill.deerclops") or 0) + (com:Get("boss.kill.mutateddeerclops") or 0)
+                        if deerclops_num == 0 then
+                            local deerclops_str = tostring(deerclops_num) .. " killed "
+                            create_text({base = box_frame_blue, x = 0, y = -200, str = deerclops_str, size = 80})
+                        else
+                            local low_temperature = deerclops_num - 1
+                            if low_temperature >= 20 then
+                                low_temperature = 20
+                            end
+                            local low_temperature_str = "低温 : " .. tostring(low_temperature) .. " ℃"
+                            create_text({base = box_frame_blue, x = 0, y = -200, str = low_temperature_str, size = 80})
+                        end
+
+
+            -------------------------------------------------------------------------------------
+            --- 高温
+
+
+                    local box_frame_red = create_image({base = page , x = 130 , y = -20 ,scale = 0.5})
+                    create_image({base = box_frame_red , x = 0 , y = 0 , image = "dragonfly" ,scale = 0.8 })
+                    local dragonfly_num = (com:Get("boss.kill.dragonfly") or 0)
+                    if dragonfly_num == 0 then
+                        create_text({base = box_frame_red, x = 0, y = -200, str = "0 killed ", size = 80})
+                    else
+                        local high_temperature = 50 - (dragonfly_num - 1)*1
+                        if high_temperature <= 30 then
+                            high_temperature = 30
+                        end
+                        local high_temperature_str = "高温 : " .. tostring(high_temperature) .. " ℃"
+                        create_text({base = box_frame_red, x = 0, y = -200, str = high_temperature_str, size = 80})
+                    end
 
 
             -------------------------------------------------------------------------------------
