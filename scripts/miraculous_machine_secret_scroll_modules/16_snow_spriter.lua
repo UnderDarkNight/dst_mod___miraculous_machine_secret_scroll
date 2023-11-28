@@ -1,7 +1,10 @@
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
----- 护目镜
+---- 雪精灵
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
     local function spawn_snow_spriter(inst,player)
+        if not inst.components.equippable.isequipped then
+            return
+        end
         if inst.____snow_spriter ~= nil then
             return
         end
@@ -78,12 +81,10 @@ return {
 
         -------------------------------------------------------------------------------------------------------------------
         ----- 加载时候检查 是否已经解锁，然后上tag
-            inst:ListenForEvent("scroll_data_load_end",function()
+            inst:DoTaskInTime(0,function()
                 if inst.components.miraculous_machine_secret_scroll:Get("snow_spriter") then
                     inst:AddTag("snow_spriter")
-                    inst:DoTaskInTime(0,function()
-                        inst:PushEvent("snow_spriter_unlock")
-                    end)
+                    inst:PushEvent("snow_spriter_unlock")
                 end
             end)
         -------------------------------------------------------------------------------------------------------------------
@@ -96,6 +97,11 @@ return {
                     if owner then
                         spawn_snow_spriter(inst, owner)
                     end
+                end
+            end)
+            inst:ListenForEvent("boss_killed",function(_,target)    ---- 击杀帝王蟹后解锁
+                if target and target.prefab == "crabking" then
+                    inst:PushEvent("snow_spriter_unlock")
                 end
             end)
         -------------------------------------------------------------------------------------------------------------------

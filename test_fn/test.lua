@@ -197,8 +197,10 @@ local flg,error_code = pcall(function()
             -- for k, v in pairs(package.laoded) do
             --     print(k,v)
             -- end
-            local ret = dofile(resolvefilepath("scripts/widgets/mms_scroll_unlock_widget_pages.lua"))
-            print(ret)
+            -- local ret = dofile(resolvefilepath("scripts/widgets/mms_scroll_unlock_widget_pages.lua"))
+            -- print(ret)
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+            inst:PushEvent("snow_spriter_unlock")
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
