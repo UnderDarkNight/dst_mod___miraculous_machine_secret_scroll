@@ -196,16 +196,18 @@ return function(root,inst)
 
             -------------------------------------------------------------------------------------
             ---- 等级
-                local opalpreciousgem = create_image({base = page , x = -100, y = -30, image = "opalpreciousgem", scale = 1 , a = 1})
+
+                local opalpreciousgem = create_image({base = page , x = -100, y = -20, image = "opalpreciousgem", scale = 2 , a = 1})
                 local num = com:Get("weapon_level.num") or 0
                 local str = tostring(num) .. " / 60"
-                create_text({base = page, x = -100, y = -130, str = str, size = 40})
+                create_text({base = opalpreciousgem, x = 0, y = -50, str = str, size = 20})
+
             -------------------------------------------------------------------------------------
             ---- 移动速度
                 if not ( com:Get("monster.kill.walrus") and com:Get("monster.kill.little_walrus") ) then
 
-                        local box = create_image({base = page , x = 100 , y = -30 , image = "box_frame_red" ,scale = 0.5})
-                        local cane =  create_image({base = box , x = 0 , y = 0 , image = "cane" ,scale = 1.5})
+                        local box = create_image({base = page , x = 130 , y = -30 , image = "box_frame_red" ,scale = 0.5})
+                        local cane =  create_image({base = box , x = 0 , y = 0 , image = "cane" ,scale = 2})
                         local lock =  create_image({base = box , x = 0 , y = 0 , image = "lock_red" ,scale = 1 ,a = 0.5})
 
                         if ( com:Get("monster.kill.walrus") or 0 ) == 0 then
@@ -218,10 +220,10 @@ return function(root,inst)
                 else
 
 
-                        local cane =  create_image({base = page , x = 100 , y = -30 , image = "cane" ,scale = 1.5})
+                        local cane =  create_image({base = page , x = 130 , y = -30 , image = "cane" ,scale = 1.5})
                         local cane_num = com:Get("cane.num") or 0
                         local cane_str = tostring(cane_num) .. " / 14"
-                        create_text({base = page, x = 100, y = -130, str = cane_str, size = 40})
+                        create_text({base = page, x = 130, y = -120, str = cane_str, size = 40})
 
                 end
 
@@ -589,20 +591,20 @@ return function(root,inst)
 
             -------------------------------------------------------------------------------------
             --- 灯光
-                    -- if (com:Get("trident_level.num") or 0) == 0 then
+                    if (com:Get("trident_level.num") or 0) == 0 then
 
-                        -- local box_frame_blue = create_image({base = page , x = -100 , y = -20 , image = "box_frame_blue" ,scale = 0.5})
-                        -- create_image({base = box_frame_blue , x = 0 , y = 0 , image = "alterguardian_phase3" ,scale = 0.7})
-                        -- create_text({base = box_frame_blue, x = 0, y = -200, str = "0 / 1", size = 80})
+                        local box_frame_blue = create_image({base = page , x = -100 , y = -20 , image = "box_frame_blue" ,scale = 0.5})
+                        create_image({base = box_frame_blue , x = 0 , y = 0 , image = "alterguardian_phase3" ,scale = 0.7})
+                        create_text({base = box_frame_blue, x = 0, y = -200, str = "0 / 1", size = 80})
 
 
-                    -- else
+                    else
 
                         local box_frame_blue = create_image({base = page , x = -100 , y = -20 ,scale = 0.5})
                         create_image({base = box_frame_blue , x = 0 , y = 0 , image = "light_mini_black" ,scale = 2})
                         create_text({base = box_frame_blue, x = 0, y = -200, str = "1 / 1", size = 80})
 
-                    -- end
+                    end
                 
 
             
@@ -623,6 +625,62 @@ return function(root,inst)
                     local box_frame_red2 = create_image({base = page , x = 130 , y = -20  ,scale = 0.5})
                     local water_run_mini_black = create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "water_run_mini_black" ,scale = 2})
                     create_text({base = box_frame_red2, x = 0, y = -200, str = "3 / 3", size = 80})
+
+                end
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
+
+            -------------------------------------------------------------------------------------
+            return page
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 8 页
+        pages_fns[8] = function(current_page,max_page)
+            -------------------------------------------------------------------------------------  
+                local page = root:AddChild(Widget())
+                page:SetPosition(-50,0)
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 20, y = 100, str = "冰冻、暴击", size = 60})
+
+            -------------------------------------------------------------------------------------
+            --- 冰冻
+                    if (com:Get("icestaff.num") or 0) == 0 then
+
+                        local box_frame_blue = create_image({base = page , x = -100 , y = -20 , image = "box_frame_blue" ,scale = 0.5})
+                        create_image({base = box_frame_blue , x = 0 , y = 0 , image = "icestaff" ,scale = 2})
+                        create_image({base = box_frame_blue , x = 0 , y = 0 , image = "lock_blue" ,scale = 1 , a = 0.5})
+                        create_text({base = box_frame_blue, x = 0, y = -200, str = "0 / 1", size = 80})
+
+
+                    else
+
+                        local box_frame_blue = create_image({base = page , x = -100 , y = -20 ,scale = 0.5})
+                        create_image({base = box_frame_blue , x = 0 , y = 0 , image = "bluegem" ,scale = 4})
+                        local bluegem_str = tostring(com:Get("bluegem.num") or 0) .. " / 15"
+                        create_text({base = box_frame_blue, x = 0, y = -200, str = bluegem_str, size = 80})
+
+                    end
+                
+
+            
+
+
+            -------------------------------------------------------------------------------------
+            --- 秒杀
+
+                if ( com:Get("firestaff.num") or 0 ) == 0 then
+
+                        local box_frame_red2 = create_image({base = page , x = 130 , y = -20 , image = "box_frame_red" ,scale = 0.5})
+                        create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "firestaff" ,scale = 2})
+                        create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "lock_red" ,scale = 1,a = 0.5})
+                        create_text({base = box_frame_red2, x = 0, y = -200, str = "0 / 1", size = 80})
+
+                else                        
+
+                        local box_frame_red2 = create_image({base = page , x = 130 , y = -20 ,scale = 0.5})
+                        create_image({base = box_frame_red2 , x = 0 , y = 0 , image = "redgem" ,scale = 4})
+                        local bluegem_str = tostring(com:Get("redgem.num") or 0) .. " / 10"
+                        create_text({base = box_frame_red2, x = 0, y = -200, str = bluegem_str, size = 80})
 
                 end
             -------------------------------------------------------------------------------------
