@@ -9,14 +9,14 @@ return {
                 ---- 斧头
                     if inst.components.miraculous_machine_secret_scroll:Get("axe_level.num") then
                         local base_axe_percentages = 1
-                        local axe_level_num = inst.components.miraculous_machine_secret_scroll:Get("axe_level.num")
-                        inst.components.tool:SetAction(ACTIONS.CHOP,base_axe_percentages + axe_level_num/1000)
+                        local axe_level_num = inst.components.miraculous_machine_secret_scroll:Get("axe_level.num") or 0
+                        inst.components.tool:SetAction(ACTIONS.CHOP,(base_axe_percentages + axe_level_num/1000)*5)
                     end
                 ---- 矿锄
                     -- inst.components.tool:SetAction(ACTIONS.MINE)
                     if inst.components.miraculous_machine_secret_scroll:Get("pickaxe_level.num") then
                         local base_pickaxe_percentages = 1
-                        local pickaxe_level_num = inst.components.miraculous_machine_secret_scroll:Get("pickaxe_level.num")
+                        local pickaxe_level_num = inst.components.miraculous_machine_secret_scroll:Get("pickaxe_level.num") or 0
                         inst.components.tool:SetAction(ACTIONS.MINE,base_pickaxe_percentages + pickaxe_level_num/1000)
                     end
                 ---- 铲子
