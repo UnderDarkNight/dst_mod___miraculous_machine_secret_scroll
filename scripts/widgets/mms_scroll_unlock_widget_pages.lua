@@ -844,6 +844,52 @@ return function(root,inst)
             return page
         end
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 12 页
+        pages_fns[12] = function(current_page,max_page)
+            -------------------------------------------------------------------------------------  
+                local page = root:AddChild(Widget())
+                page:SetPosition(-50,0)
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 20, y = 100, str = "吸血、防雷", size = 60})
+
+            -------------------------------------------------------------------------------------
+            --- 吸血
+
+
+                        local box_frame_blue = create_image({base = page , x = -100 , y = -20 ,scale = 0.5})
+                        create_image({base = box_frame_blue , x = 20 , y = 0 , image = "twinofterror1" ,scale = 1 , a = 0.5})
+                        create_image({base = box_frame_blue , x = -20 , y = 0 , image = "twinofterror2" ,scale = 1})
+                        local twinofterror_num = (com:Get("boss.kill.leif") or 0) + (com:Get("boss.kill.leif_sparse") or 0)
+                        if twinofterror_num >= 6 then
+                            twinofterror_num = 6
+                        end
+
+                        local leif_num_str = tostring(twinofterror_num) .. " / 6 "
+                        create_text({base = box_frame_blue, x = 0, y = -200, str = leif_num_str, size = 80})
+
+
+
+            -------------------------------------------------------------------------------------
+            --- 防雷
+
+
+                    local box_frame_red = create_image({base = page , x = 130 , y = -20 ,scale = 0.5})
+                    create_image({base = box_frame_red , x = 0 , y = 0 , image = "lightninggoat_charged" ,scale = 1 })
+                    local lightninggoat_charged_num = (com:Get("lightninggoat_charged") or 0)
+                    if lightninggoat_charged_num >= 10 then
+                        lightninggoat_charged_num = 10
+                    end
+                    local eyeofterror_num_str = tostring(lightninggoat_charged_num) .. " / 10 "
+                    create_text({base = box_frame_red, x = 0, y = -200, str = eyeofterror_num_str, size = 80})
+
+
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
+
+            -------------------------------------------------------------------------------------
+            return page
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     -- pages_fns[#pages_fns]()  --- 只显示最后一页
 
