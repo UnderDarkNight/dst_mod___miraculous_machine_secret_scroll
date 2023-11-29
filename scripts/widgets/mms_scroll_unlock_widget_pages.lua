@@ -1205,7 +1205,7 @@ return function(root,inst)
 
             local max_page = #pages_fns
 
-            current_page = max_page
+            -- current_page = max_page
 
             pages_layer[current_page]:Show()
 

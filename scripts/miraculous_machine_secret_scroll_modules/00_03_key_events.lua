@@ -51,107 +51,193 @@ return function(inst,key,down)
         ["switch.blink_map"] = { 
             image = "blink_map.tex",
             str = "地图跳跃",
-            x = 0, y = 0 ,click_fn = function()
-            print("button_blink_map")
-            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.blink_map")
-        end},
+            x = 0, y = 0 ,
+            click_fn = function()
+                -- print("button_blink_map")
+                inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.blink_map")
+            end,
+            locked = function()
+                if inst.replica.miraculous_machine_secret_scroll:Get("telestaff.full") then
+                    return false
+                else
+                    return true
+                end
+            end
+        },
 
         ["switch.long_range_weapon"] = { 
             image = "bow.tex",
             str = "远程武器",
-            x = 100, y = 100 ,click_fn = function()
-            print("button_bow")
-            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.long_range_weapon")
-        end},
+            x = 100, y = 100 ,
+            click_fn = function()
+                -- print("button_bow")
+                inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.long_range_weapon")
+            end,
+        },
 
         ["switch.short_range_weapon"] = { 
             image = "sword.tex",
             str = "近战武器",
-            x = -100, y = 100 ,click_fn = function()
-            print("button_sword")
-            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.short_range_weapon")
-        end},
+            x = -100, y = 100 ,
+            click_fn = function()
+                -- print("button_sword")
+                inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.short_range_weapon")
+            end,
+        },
 
         ["switch.tools"] = { 
             image = "tools.tex",
             str = "工具",
-            x = 0, y = 200 ,click_fn = function()
-            print("button_tools")
-            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.tools")
-
-        end},
+            x = 0, y = 200 ,
+            click_fn = function()
+                -- print("button_tools")
+                inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.tools")
+            end,
+        },
 
         
         ["func.goggles_switch"] = { 
             image = "goggles.tex",
             str = "防砂镜",
-            x = -300, y = -155 ,click_fn = function()
-            print("button_goggles")
-            -- inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","")
-            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("func.goggles_switch","__")
-        end},
+            x = -300, y = -155 ,
+            click_fn = function()
+                -- print("button_goggles")
+                -- inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","")
+                inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("func.goggles_switch","__")
+            end,
+            locked = function()
+                if inst.replica.miraculous_machine_secret_scroll:Get("goggles_level.full") then
+                    return false
+                else
+                    return true
+                end
+            end
+        },
         ["switch.music"] = { 
             str = "乐器",
             image = "music.tex",
-            x = -150, y = -135 ,click_fn = function()
-            print("button_music")
-            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.music")
-
-        end},
+            x = -150, y = -135 ,
+            click_fn = function()
+                -- print("button_music")
+                inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.music")
+            end,
+            locked = function()
+                if ( inst.replica.miraculous_machine_secret_scroll:Get("boss.kill.lordfruitfly") or 0) > 0 then
+                    return false
+                else
+                    return true
+                end
+            end
+        },
         ["switch.orange_staff"] = {
             image = "orangestaff.tex",
             str = "懒人法杖",
-            x = 0, y = -130 ,click_fn = function()
-            print("button_orange")
-            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.orange_staff")
-        end},
+            x = 0, y = -130 ,
+            click_fn = function()
+                -- print("button_orange")
+                inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.orange_staff")
+            end,
+            locked = function()
+                if inst.replica.miraculous_machine_secret_scroll:Get("orangestaff.full") then
+                    return false
+                else
+                    return true
+                end    
+            end
+        },
         ["switch.razor"] = { 
             image = "razor.tex",
             str = "剃刀",
-            x = 150, y = -135 ,click_fn = function()
-            print("button_razor")
-            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.razor")
-
-        end},
+            x = 150, y = -135 ,
+            click_fn = function()
+                -- print("button_razor")
+                inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.razor")
+            end,
+            locked = function()
+                if inst.replica.miraculous_machine_secret_scroll:Get("razor_level.full") then
+                    return false
+                else
+                    return true
+                end
+            end
+        },
         ["switch.trident"] = { 
             image = "trident.tex",
             str = "三叉戟",
-            x = 300, y = -155 ,click_fn = function()
-            print("button_trident")
-            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.trident")
-        end},
+            x = 300, y = -155 ,
+            click_fn = function()
+                -- print("button_trident")
+                inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.trident")
+            end,
+            locked = function()
+                if inst.replica.miraculous_machine_secret_scroll:Get("trident_level.full") then
+                    return false
+                else
+                    return true
+                end
+            end
+        },
 
 
         ["func.ocean_walking_switch"] = { 
             image = "water_run.tex",
             str = "水路行舟",
-            x = -350, y = 180 ,click_fn = function()
-            print("button_water_run")
-            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("func.ocean_walking_switch","__")
-        end},
+            x = -350, y = 180 ,
+            click_fn = function()
+                -- print("button_water_run")
+                inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("func.ocean_walking_switch","__")
+            end,
+            locked = function()
+                if ( inst.replica.miraculous_machine_secret_scroll:Get("boss.kill.malbatross") or 0  ) > 3 then
+                    return false
+                else
+                    return true
+                end
+            end
+        },
         ["func.light_switch"] = { 
             image = "light.tex",
             str = "灯光",
-            x = -325, y = 0 ,click_fn = function()
-            print("button_light")
-            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("func.light_switch","__")
+            x = -325, y = 0 ,
+            click_fn = function()
+                -- print("button_light")
+                inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("func.light_switch","__")
 
-        end},
+            end,
+            locked = function()
+                if ( inst.replica.miraculous_machine_secret_scroll:Get("boss.kill.alterguardian_phase3") or 0  ) > 0 then
+                    return false
+                else
+                    return true
+                end
+            end
+        },
 
         ["switch.fishingrod"] = { 
             image = "fishingrod.tex",
             str = "鱼竿",
-            x = 350, y = 180 ,click_fn = function()
-            print("button_fishingrod")
-            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.fishingrod")
-        end},
+            x = 350, y = 180 ,
+            click_fn = function()
+                -- print("button_fishingrod")
+                inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.fishingrod")
+            end,
+        },
         ["switch.bugnet"] = { 
             image = "bugnet.tex",
             str = "捕虫网",
-            x = 325, y = 0 ,click_fn = function()
-            print("button_bugnet")
-            inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.bugnet")
-        end},
+            x = 325, y = 0 ,
+            click_fn = function()
+                -- print("button_bugnet")
+                inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("type_switch","switch.bugnet")
+            end,
+            locked = function()
+                if inst.replica.miraculous_machine_secret_scroll:Get("bugnet.full") then
+                    return false
+                else
+                    return true
+                end
+            end
+        },
         
 
     }
