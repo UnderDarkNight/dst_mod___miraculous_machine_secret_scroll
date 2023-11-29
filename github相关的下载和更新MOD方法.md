@@ -1,0 +1,30 @@
+前期准备：
+    1、下载安装 git  （git 是工具，github是网站，是两个东西）： https://registry.npmmirror.com/-/binary/git-for-windows/v2.43.0.windows.1/Git-2.43.0-64-bit.exe
+    
+    2、下载安装 Watt Toolkit  。这个是 通用加速器，能加速 github 。官网 ：  https://steampp.net/
+    
+
+下载步骤：
+    1、启用 Watt Toolkit 。加速选项里  勾选 【Github】  和 【国外验证码平台】、【公共CDN】
+
+    2、进入 饥荒 MOD的根目录，如【E:\SteamLibrary\steamapps\common\Don't Starve Together\mods】
+
+    3、右键空白处，选择【Git Bash Here】
+
+    4、 输入 命令   ：     
+        git clone https://github.com/UnderDarkNight/dst_mod___miraculous_machine_secret_scroll.git
+
+    5、 等待下载完成。这个时候会多出个文件夹【dst_mod___miraculous_machine_secret_scroll】。这个就是MOD的所有东西。
+
+    6、 进入【dst_mod___miraculous_machine_secret_scroll】文件夹，重新右键【Git Bash Here】
+
+    7、 输入命令：
+        git pull origin main
+
+更新步骤：
+    1、启用 Watt Toolkit 。加速选项里  勾选 【Github】  和 【国外验证码平台】、【公共CDN】
+
+    2、进入【dst_mod___miraculous_machine_secret_scroll】文件夹，重新右键【Git Bash Here】
+
+    3、 输入命令：
+        git pull origin main
