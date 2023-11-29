@@ -51,6 +51,11 @@ return {
                                 inst:PushEvent("heal_health_by_attack",attacker)
                         end
                     -----------------------------------------------------------------------
+                    --- 影怪
+                        if not inst:HasTag("switch.short_range_weapon.is_double_attack") then --- 不会被双重攻击触发
+                                inst:PushEvent("shadow_monster_kill.sword",target)
+                        end
+                    -----------------------------------------------------------------------
                     -----------------------------------------------------------------------
 
 

@@ -29,6 +29,7 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/00_06_hit_kill_event_listener",              --- 玩家 击打、击杀 的event 转发到 武器 inst 身上
             "miraculous_machine_secret_scroll_modules/00_07_tools_work_finish_event_listener",     --- 玩家 锤、挖、砍、虫网、 的event 转发到 武器 inst 身上
             "miraculous_machine_secret_scroll_modules/00_08_kill_event_unlocker",                  --- 击杀解锁标记
+            "miraculous_machine_secret_scroll_modules/00_09_level_checker",                        --- 初始化 等级检查
 
 
             "miraculous_machine_secret_scroll_modules/01_acceptable",                           --- 物品接受组件
@@ -68,6 +69,7 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/35_real_damage",                          --- 真实伤害
             "miraculous_machine_secret_scroll_modules/36_aoe_damage",                           --- AOE伤害
             "miraculous_machine_secret_scroll_modules/37_spike_target",                         --- 秒杀
+            "miraculous_machine_secret_scroll_modules/38_shadow_monster_killer",                --- 影怪秒杀、弹射
 
         }
         local replica_modules_fn = {}

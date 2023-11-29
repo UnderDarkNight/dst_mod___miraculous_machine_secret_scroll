@@ -132,6 +132,14 @@ local function fn()
             end
         end)
     ------------------------------------------------------------------------------
+    --- 切换红色
+        inst:ListenForEvent("change_2_red",function()
+            inst.AnimState:SetBank("miraculous_machine_secret_scroll_fx_red")
+            inst.AnimState:SetBuild("miraculous_machine_secret_scroll_fx_red")
+            local t_scale = 0.5
+            inst.AnimState:SetScale(t_scale, t_scale, t_scale)
+        end)
+    ------------------------------------------------------------------------------
 
     return inst
 end

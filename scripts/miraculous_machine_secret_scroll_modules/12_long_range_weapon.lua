@@ -76,12 +76,24 @@ return {
                     inst.components.weapon:SetProjectile("mms_scroll_arrow")   --- 弹药的prefab
 
                     inst._mms_scroll_arrow_init_fn = function(arrow_inst)       --- 箭创建的时候初始化,用于外观修改
-                        arrow_inst:PushEvent("color","red")
+                        if inst:HasTag("max_level") then
+                            arrow_inst:PushEvent("color","red")
+                        end
                     end
                     inst._mms_scroll_arrow_onhit_fn = function(arrow_inst, attacker, target)    --- 给弹药 onhit 的函数（配合 弹药prefab ）
                         if target.components.combat then
                             local weapon_level = inst.components.miraculous_machine_secret_scroll:Add("weapon_level.num",0)
-                            target.components.combat:GetAttacked(attacker,30 + weapon_level*2 ,inst)    --- 每级伤害 +2
+                            local damage = 30 + weapon_level*2 
+                            target.components.combat:GetAttacked(attacker,damage,inst)    --- 每级伤害 +2
+
+                            ----- 弹射影怪
+                                inst:PushEvent("shadow_monster_kill.bow",{  
+                                    target = target,
+                                    damage = damage,
+                                    attacker = attacker,
+                                    range = inst.components.weapon.attackrange,
+                                })
+
                         end
                     end
 

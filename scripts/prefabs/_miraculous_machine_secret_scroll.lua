@@ -2,8 +2,11 @@ local assets =
 {
 
     Asset("ANIM", "anim/miraculous_machine_secret_scroll_fx.zip"),
+    Asset("ANIM", "anim/miraculous_machine_secret_scroll_fx_red.zip"),
     Asset( "IMAGE", "images/inventoryimages/miraculous_machine_secret_scroll.tex" ), 
     Asset( "ATLAS", "images/inventoryimages/miraculous_machine_secret_scroll.xml" ),
+    Asset( "IMAGE", "images/inventoryimages/miraculous_machine_secret_scroll_red.tex" ), 
+    Asset( "ATLAS", "images/inventoryimages/miraculous_machine_secret_scroll_red.xml" ),
 }
 
 local function onequip(inst, owner)
@@ -29,6 +32,10 @@ local function onequip(inst, owner)
             speed = 6,
             range = 5,
         })
+
+        if inst:HasTag("max_level") then
+            inst.__fx:PushEvent("change_2_red")
+        end
 
     end
 
@@ -139,6 +146,22 @@ local function fn()
                         inst.__fx:PushEvent("weapon_in_hand",weapon_type)
                     end
                 end
+            end)
+
+
+            inst:ListenForEvent("change_2_red",function()
+                ----------- 切换物品外观
+                    inst.components.inventoryitem.imagename = "miraculous_machine_secret_scroll_red"
+                    inst.components.inventoryitem.atlasname = "images/inventoryimages/miraculous_machine_secret_scroll_red.xml"
+                    inst.AnimState:SetBank("miraculous_machine_secret_scroll_fx_red")
+                    inst.AnimState:SetBuild("miraculous_machine_secret_scroll_fx_red")
+                    inst:PushEvent("imagechange")
+                    local t_scale = 0.5
+                    inst.AnimState:SetScale(t_scale, t_scale, t_scale)
+                ----------- 切换特效
+                    if inst.__fx then
+                        inst.__fx:PushEvent("change_2_red")
+                    end
             end)
     --------------------------------------------------------------------------------------------------------------
     -------------------------------------------------------------------

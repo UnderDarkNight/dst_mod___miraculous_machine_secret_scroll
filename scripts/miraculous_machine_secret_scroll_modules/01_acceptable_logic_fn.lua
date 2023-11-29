@@ -34,6 +34,8 @@ return {
                     if inst.components.miraculous_machine_secret_scroll:Add("weapon_level.num",0) >= max_num then
                         inst.components.miraculous_machine_secret_scroll:Set("weapon_level.full",true)
                         inst.components.miraculous_machine_secret_scroll:Set("weapon_level.num",max_num)
+
+                        inst:PushEvent("scroll_level_init")
                     end
 
                     inst:PushEvent("weapon_level.changed")

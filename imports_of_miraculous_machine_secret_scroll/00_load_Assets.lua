@@ -7,6 +7,10 @@ end
 local temp_assets = {
 
 
+	Asset( "IMAGE", "images/inventoryimages/miraculous_machine_secret_scroll.tex" ), 
+    Asset( "ATLAS", "images/inventoryimages/miraculous_machine_secret_scroll.xml" ),
+	Asset( "IMAGE", "images/inventoryimages/miraculous_machine_secret_scroll_red.tex" ), 
+    Asset( "ATLAS", "images/inventoryimages/miraculous_machine_secret_scroll_red.xml" ),
 
 	Asset("IMAGE", "images/ui_images/mms_scroll_widget.tex"),
 	Asset("ATLAS", "images/ui_images/mms_scroll_widget.xml"),
@@ -50,6 +54,9 @@ local temp_assets = {
 	Asset("ANIM", "anim/mms_scroll_fishingrod_red.zip"),
 	Asset("ANIM", "anim/mms_scroll_fishingrod_blue.zip"),
 
+	Asset("ANIM", "anim/mms_scroll_till_red.zip"),
+	Asset("ANIM", "anim/mms_scroll_till_blue.zip"),
+
 }
 
 for k, v in pairs(temp_assets) do
@@ -57,3 +64,5 @@ for k, v in pairs(temp_assets) do
 end
 
 -- AddMinimapAtlas("images/map_icons/npc_item_treasure_map.xml")	----- 小地图上的标记得用这个func 在modmain 里加载
+RegisterInventoryItemAtlas("images/inventoryimages/miraculous_machine_secret_scroll.xml", "miraculous_machine_secret_scroll.tex")
+RegisterInventoryItemAtlas("images/inventoryimages/miraculous_machine_secret_scroll_red.xml", "miraculous_machine_secret_scroll_red.tex")
