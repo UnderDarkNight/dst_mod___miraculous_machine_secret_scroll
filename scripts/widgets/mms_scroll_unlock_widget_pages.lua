@@ -108,6 +108,7 @@ return function(root,inst)
         ["alterguardian_phase3"] = true,
         ["antlion"] = true,
         ["bearger"] = true,
+        ["beequeen"] = true,
         ["mutatedbearger"] = true,
         ["crabking"] = true,
         ["daywalker"] = true,
@@ -880,6 +881,51 @@ return function(root,inst)
                         lightninggoat_charged_num = 10
                     end
                     local eyeofterror_num_str = tostring(lightninggoat_charged_num) .. " / 10 "
+                    create_text({base = box_frame_red, x = 0, y = -200, str = eyeofterror_num_str, size = 80})
+
+
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
+
+            -------------------------------------------------------------------------------------
+            return page
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 13 页
+        pages_fns[13] = function(current_page,max_page)
+            -------------------------------------------------------------------------------------  
+                local page = root:AddChild(Widget())
+                page:SetPosition(-50,0)
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 20, y = 100, str = "蜂毒、蟾蜍毒", size = 60})
+
+            -------------------------------------------------------------------------------------
+            --- 蜂毒
+
+
+                        local box_frame_blue = create_image({base = page , x = -100 , y = -20 ,scale = 0.5})
+                        create_image({base = box_frame_blue , x = 0 , y = 0 , image = "beequeen" ,scale = 1 , a = 1})
+                        local beequeen_num = (com:Get("boss.kill.beequeen") or 0)
+                        if beequeen_num >= 5 then
+                            beequeen_num = 5
+                        end
+
+                        local leif_num_str = tostring(beequeen_num) .. " / 5 "
+                        create_text({base = box_frame_blue, x = 0, y = -200, str = leif_num_str, size = 80})
+
+
+
+            -------------------------------------------------------------------------------------
+            --- 蟾蜍毒
+
+
+                    local box_frame_red = create_image({base = page , x = 130 , y = -20 ,scale = 0.5})
+                    create_image({base = box_frame_red , x = 0 , y = 0 , image = "toadstool" ,scale = 0.7 })
+                    local toadstool_num = (com:Get("boss.kill.toadstool") or 0)
+                    if toadstool_num >= 5 then
+                        toadstool_num = 5
+                    end
+                    local eyeofterror_num_str = tostring(toadstool_num) .. " / 5 "
                     create_text({base = box_frame_red, x = 0, y = -200, str = eyeofterror_num_str, size = 80})
 
 
