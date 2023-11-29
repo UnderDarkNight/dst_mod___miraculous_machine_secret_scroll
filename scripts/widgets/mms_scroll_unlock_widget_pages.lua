@@ -645,7 +645,7 @@ return function(root,inst)
                 local page = root:AddChild(Widget())
                 page:SetPosition(-50,0)
             -------------------------------------------------------------------------------------
-                create_text({base = page, x = 20, y = 100, str = "冰冻、暴击", size = 60})
+                create_text({base = page, x = 20, y = 100, str = "冰冻、秒杀", size = 60})
 
             -------------------------------------------------------------------------------------
             --- 冰冻
