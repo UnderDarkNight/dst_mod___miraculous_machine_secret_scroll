@@ -936,6 +936,51 @@ return function(root,inst)
             return page
         end
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 14 页
+        pages_fns[14] = function(current_page,max_page)
+            -------------------------------------------------------------------------------------  
+                local page = root:AddChild(Widget())
+                page:SetPosition(-50,0)
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 20, y = 100, str = "霸体、雪精灵", size = 60})
+
+            -------------------------------------------------------------------------------------
+            --- 霸体
+
+
+                        local box_frame_blue = create_image({base = page , x = -100 , y = -20 ,scale = 0.5})
+                        create_image({base = box_frame_blue , x = 0 , y = 0 , image = "toadstool_dark" ,scale = 0.7 , a = 1})
+                        local toadstool_dark_num = (com:Get("boss.kill.toadstool_dark") or 0)
+                        if toadstool_dark_num >= 5 then
+                            toadstool_dark_num = 5
+                        end
+
+                        local leif_num_str = tostring(toadstool_dark_num) .. " / 5 "
+                        create_text({base = box_frame_blue, x = 0, y = -200, str = leif_num_str, size = 80})
+
+
+
+            -------------------------------------------------------------------------------------
+            --- 雪精灵
+
+
+                    local box_frame_red = create_image({base = page , x = 130 , y = -20 ,scale = 0.5})
+                    create_image({base = box_frame_red , x = 0 , y = 0 , image = "crabking" ,scale = 1 })
+                    local toadstool_num = (com:Get("boss.kill.crabking") or 0)
+                    if toadstool_num >= 1 then
+                        toadstool_num = 1
+                    end
+                    local toadstool_num_str = tostring(toadstool_num) .. " / 1 "
+                    create_text({base = box_frame_red, x = 0, y = -200, str = toadstool_num_str, size = 80})
+
+
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
+
+            -------------------------------------------------------------------------------------
+            return page
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     -- pages_fns[#pages_fns]()  --- 只显示最后一页
 
