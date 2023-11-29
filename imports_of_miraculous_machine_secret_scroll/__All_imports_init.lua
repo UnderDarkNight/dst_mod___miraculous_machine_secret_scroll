@@ -24,3 +24,7 @@ modimport("imports_of_miraculous_machine_secret_scroll/08_switch_widget.lua")	--
 modimport("imports_of_miraculous_machine_secret_scroll/09_player_combat_hook.lua")	---- 霸体相关的hook
 
 modimport("imports_of_miraculous_machine_secret_scroll/10_unlocked_widget.lua")	---- 解锁界面
+
+modimport("imports_of_miraculous_machine_secret_scroll/11_strings_and_recipe.lua")	---- 文本和制作
+
+modimport("imports_of_miraculous_machine_secret_scroll/12_mod_config.lua")	---- MOD 设置

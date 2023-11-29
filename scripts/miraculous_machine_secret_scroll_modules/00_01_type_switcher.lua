@@ -66,12 +66,26 @@ return {
 
         end
 
+        -------------------------------------------------------------------------------------
         ----------- 默认模式
-        inst:DoTaskInTime(0.1,function()
-            if inst.components.miraculous_machine_secret_scroll:Get("type") == nil then
-                inst:TypeSwitchByCooldown("switch.short_range_weapon")
-            end
-        end)
+                inst:DoTaskInTime(0.1,function()
+                    if inst.components.miraculous_machine_secret_scroll:Get("type") == nil then
+                        inst:TypeSwitchByCooldown("switch.short_range_weapon")
+                    end
+                end)
+                -- inst.onPreBuilt = function()
+                --     inst:DoTaskInTime(0,function()
+                --         if inst.components.miraculous_machine_secret_scroll:Get("type") == nil then
+                --             inst:TypeSwitchByCooldown("switch.short_range_weapon")
+                --         end
+                --     end)
+                -- end
+                -- inst:ListenForEvent("equipped",function()
+                --     if inst.components.miraculous_machine_secret_scroll:Get("type") == nil then
+                --         inst:TypeSwitchByCooldown("switch.short_range_weapon")
+                --     end
+                -- end)
+        -------------------------------------------------------------------------------------
 
         -- inst:ListenForEvent("key_up",function(_,key)    ------ RPC 回传的 玩家按键监听. A - Z     F1 - F12
         --     -- print("info weapon switch key up",key)
