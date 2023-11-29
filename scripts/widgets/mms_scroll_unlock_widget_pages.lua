@@ -1056,6 +1056,51 @@ return function(root,inst)
             return page
         end
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 16 页
+        pages_fns[16] = function(current_page,max_page)
+            -------------------------------------------------------------------------------------  
+                local page = root:AddChild(Widget())
+                page:SetPosition(-50,0)
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 20, y = 100, str = "影怪、暴击", size = 60})
+
+            -------------------------------------------------------------------------------------
+            --- 影怪
+
+
+                        local box_frame_blue = create_image({base = page , x = -100 , y = -20 ,scale = 0.5})
+                        create_image({base = box_frame_blue , x = 0 , y = 0 , image = "stalker_atrium" ,scale = 0.8 , a = 1})
+                        local stalker_atrium_num = (com:Get("boss.kill.stalker_atrium") or 0)
+                        if stalker_atrium_num >= 10 then
+                            stalker_atrium_num = 10
+                        end
+
+                        local stalker_atrium_num_str = tostring(stalker_atrium_num) .. " / 10 "
+                        create_text({base = box_frame_blue, x = 0, y = -200, str = stalker_atrium_num_str, size = 80})
+
+
+
+            -------------------------------------------------------------------------------------
+            --- 暴击
+
+
+                    local box_frame_red = create_image({base = page , x = 130 , y = -20 ,scale = 0.5})
+                    create_image({base = box_frame_red , x = 0 , y = 0 , image = "klaus" ,scale = 1 })
+                    local klaus_num = (com:Get("boss.kill.klaus") or 0)
+                    if klaus_num >= 5 then
+                        klaus_num = 5
+                    end
+                    local klaus_num_str = tostring(klaus_num) .. " / 5 "
+                    create_text({base = box_frame_red, x = 0, y = -200, str = klaus_num_str, size = 80})
+
+
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
+
+            -------------------------------------------------------------------------------------
+            return page
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     -- pages_fns[#pages_fns]()  --- 只显示最后一页
 
