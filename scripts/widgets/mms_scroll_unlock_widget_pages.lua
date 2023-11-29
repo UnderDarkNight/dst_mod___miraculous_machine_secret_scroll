@@ -981,6 +981,81 @@ return function(root,inst)
             return page
         end
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 15 页
+        pages_fns[15] = function(current_page,max_page)
+            -------------------------------------------------------------------------------------  
+                local page = root:AddChild(Widget())
+                page:SetPosition(-50,0)
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 20, y = 100, str = "位面伤害", size = 60})
+
+            -------------------------------------------------------------------------------------
+            --- 三基佬
+
+
+                        local box_frame_blue = create_image({base = page , x = -130 , y = -20 ,scale = 0.5})
+                        create_image({base = box_frame_blue , x = -90 , y = 50 , image = "shadow_bishop" ,scale = 1 , a = 1})
+                        create_image({base = box_frame_blue , x = 90 , y = 50 , image = "shadow_knight" ,scale = 1 , a = 1})
+                        create_image({base = box_frame_blue , x = 0 , y = -30 , image = "shadow_rook" ,scale = 1 , a = 1})
+
+                        local shadow_boss_num =  0
+                        if com:Get("planardamage.shadow_bishop") then
+                            shadow_boss_num = shadow_boss_num + 1
+                        end
+                        if com:Get("planardamage.shadow_knight") then
+                            shadow_boss_num = shadow_boss_num + 1
+                        end
+                        if com:Get("planardamage.shadow_rook") then
+                            shadow_boss_num = shadow_boss_num + 1
+                        end
+
+                        local shadow_boss_num_str = tostring(shadow_boss_num) .. " / 3 "
+                        create_text({base = box_frame_blue, x = 0, y = -200, str = shadow_boss_num_str, size = 80})
+
+
+
+            -------------------------------------------------------------------------------------
+            --- 地下三基佬
+
+
+                        local box_frame_blue2 = create_image({base = page , x = 50 , y = -20 ,scale = 0.5})
+                        create_image({base = box_frame_blue2 , x = -90 , y = 50 , image = "shadowthrall_wings" ,scale = 1 , a = 1})
+                        create_image({base = box_frame_blue2 , x = 90 , y = 50 , image = "shadowthrall_hands" ,scale = 1 , a = 1})
+                        create_image({base = box_frame_blue2 , x = 0 , y = -30 , image = "shadowthrall_horns" ,scale = 1 , a = 1})
+
+                        local shadowthrall_num =  0
+                        if com:Get("planardamage.shadowthrall_wings") then
+                            shadowthrall_num = shadowthrall_num + 1
+                        end
+                        if com:Get("planardamage.shadowthrall_hands") then
+                            shadowthrall_num = shadowthrall_num + 1
+                        end
+                        if com:Get("planardamage.shadowthrall_horns") then
+                            shadowthrall_num = shadowthrall_num + 1
+                        end
+
+                        local shadowthrall_num_str = tostring(shadowthrall_num) .. " / 3 "
+                        create_text({base = box_frame_blue2, x = 0, y = -200, str = shadowthrall_num_str, size = 80})
+
+
+
+            -------------------------------------------------------------------------------------
+            ---
+
+                    local box_frame_red = create_image({base = page , x = 210 , y = -20 ,scale = 0.5})
+                    create_image({base = box_frame_red , x = 0 , y = 0 , image = "alterguardian_phase3" ,scale = 1 })
+                    local alterguardian_phase3_num = (com:Get("planardamage.shadowthrall_horns") and 1 or 0)
+
+                    local alterguardian_phase3_num_str = tostring(alterguardian_phase3_num) .. " / 1 "
+                    create_text({base = box_frame_red, x = 0, y = -200, str = alterguardian_phase3_num_str, size = 80})
+
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
+
+            -------------------------------------------------------------------------------------
+            return page
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     -- pages_fns[#pages_fns]()  --- 只显示最后一页
 
