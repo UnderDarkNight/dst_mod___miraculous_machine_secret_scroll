@@ -205,6 +205,9 @@ local flg,error_code = pcall(function()
             ThePlayer.AnimState:OverrideSymbol("chalk", "player_notes", "chalk")
             ThePlayer.AnimState:PlayAnimation("notes_loop",true)
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+            -- ThePlayer.components.talker:Say(tostring(c_select().components.equippable.walkspeedmult))
+            -- print(c_select().components.equippable.walkspeedmult)
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
 

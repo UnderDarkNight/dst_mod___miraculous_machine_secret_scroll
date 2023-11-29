@@ -25,10 +25,11 @@ return {
                 inst.components.equippable.walkspeedmult = ret_speed                
             end
 
-            walk_speed_init()
+            -- walk_speed_init()
             inst:ListenForEvent("walk_speed_init",walk_speed_init)
             inst:ListenForEvent("target_kill_count_end",walk_speed_init)
-            inst:ListenForEvent("scroll_data_load_end",walk_speed_init)
+            -- inst:ListenForEvent("scroll_data_load_end",walk_speed_init)
+            inst:DoTaskInTime(0,walk_speed_init)
             -----------------------------------------------------------------------------------------------------------------
     end,
     -----------------------------------------------------------------------------------------------------------------
