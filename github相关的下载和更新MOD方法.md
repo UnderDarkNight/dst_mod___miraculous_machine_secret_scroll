@@ -28,3 +28,6 @@
 
     3、 输入命令：
         git pull origin main
+
+意外情况：
+    1、 SSL 验证失败，关闭git验证SSL：  git config --global http.sslverify false
