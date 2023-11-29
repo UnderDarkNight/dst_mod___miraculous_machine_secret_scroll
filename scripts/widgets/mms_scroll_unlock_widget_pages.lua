@@ -1101,6 +1101,96 @@ return function(root,inst)
             return page
         end
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 17 页
+        pages_fns[17] = function(current_page,max_page)
+            -------------------------------------------------------------------------------------  
+                local page = root:AddChild(Widget())
+                page:SetPosition(-50,0)
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 20, y = 100, str = "二连击、真实伤害", size = 60})
+
+            -------------------------------------------------------------------------------------
+            --- 二连击
+
+
+                        local box_frame_blue = create_image({base = page , x = -100 , y = -20 ,scale = 0.5})
+                        create_image({base = box_frame_blue , x = 0 , y = 0 , image = "antlion" ,scale = 0.8 , a = 1})
+                        local antlion_num = (com:Get("boss.kill.antlion") or 0)
+                        if antlion_num >= 5 then
+                            antlion_num = 5
+                        end
+
+                        local antlion_num_str = tostring(antlion_num) .. " / 5 "
+                        create_text({base = box_frame_blue, x = 0, y = -200, str = antlion_num_str, size = 80})
+
+
+
+            -------------------------------------------------------------------------------------
+            --- 真实伤害
+
+
+                    local box_frame_red = create_image({base = page , x = 130 , y = -20 ,scale = 0.5})
+                    create_image({base = box_frame_red , x = 0 , y = 0 , image = "minotaur" ,scale = 1.2 })
+                    local minotaur_num = (com:Get("boss.kill.minotaur") or 0)
+                    if minotaur_num >= 6 then
+                        minotaur_num = 6
+                    end
+                    local minotaur_num_str = tostring(minotaur_num) .. " / 6 "
+                    create_text({base = box_frame_red, x = 0, y = -200, str = minotaur_num_str, size = 80})
+
+
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
+
+            -------------------------------------------------------------------------------------
+            return page
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 18 页
+        pages_fns[18] = function(current_page,max_page)
+            -------------------------------------------------------------------------------------  
+                local page = root:AddChild(Widget())
+                page:SetPosition(-50,0)
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 20, y = 100, str = "AOE", size = 60})
+
+            -------------------------------------------------------------------------------------
+            --- AOE
+
+
+                        local box_frame_blue = create_image({base = page , x = 30 , y = -20 ,scale = 0.5})
+                        create_image({base = box_frame_blue , x = 0 , y = 0 , image = "daywalker" ,scale = 0.8 , a = 1})
+                        local daywalker_num = (com:Get("boss.kill.daywalker") or 0)
+                        if daywalker_num >= 4 then
+                            daywalker_num = 4
+                        end
+
+                        local daywalker_num_str = tostring(daywalker_num) .. " / 4 "
+                        create_text({base = box_frame_blue, x = 0, y = -200, str = daywalker_num_str, size = 80})
+
+
+
+            -------------------------------------------------------------------------------------
+            --- 真实伤害
+
+
+                    -- local box_frame_red = create_image({base = page , x = 130 , y = -20 ,scale = 0.5})
+                    -- create_image({base = box_frame_red , x = 0 , y = 0 , image = "minotaur" ,scale = 1.2 })
+                    -- local minotaur_num = (com:Get("boss.kill.minotaur") or 0)
+                    -- if minotaur_num >= 6 then
+                    --     minotaur_num = 6
+                    -- end
+                    -- local minotaur_num_str = tostring(minotaur_num) .. " / 6 "
+                    -- create_text({base = box_frame_red, x = 0, y = -200, str = minotaur_num_str, size = 80})
+
+
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
+
+            -------------------------------------------------------------------------------------
+            return page
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     -- pages_fns[#pages_fns]()  --- 只显示最后一页
 
