@@ -200,7 +200,10 @@ local flg,error_code = pcall(function()
             -- local ret = dofile(resolvefilepath("scripts/widgets/mms_scroll_unlock_widget_pages.lua"))
             -- print(ret)
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-            inst:PushEvent("snow_spriter_unlock")
+            -- inst:PushEvent("snow_spriter_unlock")
+            ThePlayer.AnimState:OverrideSymbol("clipboard_prop", "player_notes", "clipboard_prop")
+            ThePlayer.AnimState:OverrideSymbol("chalk", "player_notes", "chalk")
+            ThePlayer.AnimState:PlayAnimation("notes_loop",true)
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

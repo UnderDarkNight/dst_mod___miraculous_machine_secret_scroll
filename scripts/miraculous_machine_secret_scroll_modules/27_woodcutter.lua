@@ -41,7 +41,7 @@ return {
         end
 
 
-        inst:ListenForEvent("target_kill_count_end",woodcutter_init)
+        inst:ListenForEvent("boss_killed",woodcutter_init)
         inst:DoTaskInTime(0,woodcutter_init)
 
 

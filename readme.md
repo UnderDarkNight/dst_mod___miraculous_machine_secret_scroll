@@ -102,9 +102,6 @@
     · 【完成】击杀【树精】：  leif   leif_sparse
             · 击杀 10 只后解锁 伍迪砍树效率。  【程序笔记】player:AddTag("woodcutter")
 
-    · 【完成】击杀【蜂后】：  beequeen
-            · 击杀1只后解锁【蜂毒】功能。攻击目标会有几率给目标上debuff ： 每秒造成 10 点伤害，持续 10秒。  debuff可叠加。
-            · 初始上毒概率为 10% 。 每击杀一只【蜂后】，增加 5%概率。上限30（不可被二连击触发）  5只怪
 
     · 【完成】击杀【克眼】：  eyeofterror
             · 击杀1只后，开启回San光环。默认 TUNING.SANITYAURA_TINY。   inst.components.equippable.dapperness = TUNING.SANITYAURA_SMALL
@@ -125,6 +122,10 @@
 
     · 【完成】击杀【电羊】：  lightninggoat
                 · 击杀10只带电的羊，解锁防雷。
+
+    · 【完成】击杀【蜂后】：  beequeen
+            · 击杀1只后解锁【蜂毒】功能。攻击目标会有几率给目标上debuff ： 每秒造成 10 点伤害，持续 10秒。  debuff可叠加。
+            · 初始上毒概率为 10% 。 每击杀一只【蜂后】，增加 5%概率。上限30（不可被二连击触发）  5只怪
 
     · 【完成】击杀【毒菌蟾蜍】：  toadstool
                 · 击杀1只后解锁【蟾蜍毒素】功能。攻击目标会有几率给目标上debuff ： 每秒造成 10点伤害，持续 10秒。  debuff可叠加。

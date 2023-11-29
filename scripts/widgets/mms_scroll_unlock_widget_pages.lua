@@ -112,6 +112,7 @@ return function(root,inst)
         ["crabking"] = true,
         ["daywalker"] = true,
         ["deerclops"] = true,
+        ["eyeofterror"] = true,
         ["mutateddeerclops"] = true,
         ["dragonfly"] = true,
         ["klaus"] = true,
@@ -788,6 +789,52 @@ return function(root,inst)
                         local high_temperature_str = "高温 : " .. tostring(high_temperature) .. " ℃"
                         create_text({base = box_frame_red, x = 0, y = -200, str = high_temperature_str, size = 80})
                     end
+
+
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 30, y = -200, str = tostring(current_page).." / "..tostring(max_page), size = 25})
+
+            -------------------------------------------------------------------------------------
+            return page
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 第 11 页
+        pages_fns[11] = function(current_page,max_page)
+            -------------------------------------------------------------------------------------  
+                local page = root:AddChild(Widget())
+                page:SetPosition(-50,0)
+            -------------------------------------------------------------------------------------
+                create_text({base = page, x = 20, y = 100, str = "砍树、光环", size = 60})
+
+            -------------------------------------------------------------------------------------
+            --- 砍树
+
+
+                        local box_frame_blue = create_image({base = page , x = -100 , y = -20 ,scale = 0.5})
+                        create_image({base = box_frame_blue , x = 20 , y = 0 , image = "leif_sparse" ,scale = 1 , a = 0.5})
+                        create_image({base = box_frame_blue , x = -20 , y = 0 , image = "leif" ,scale = 1})
+                        local leif_num = (com:Get("boss.kill.leif") or 0) + (com:Get("boss.kill.leif_sparse") or 0)
+                        if leif_num >= 10 then
+                            leif_num = 10
+                        end
+
+                        local leif_num_str = tostring(leif_num) .. " / 10 "
+                        create_text({base = box_frame_blue, x = 0, y = -200, str = leif_num_str, size = 80})
+
+
+
+            -------------------------------------------------------------------------------------
+            --- 回San光环
+
+
+                    local box_frame_red = create_image({base = page , x = 130 , y = -20 ,scale = 0.5})
+                    create_image({base = box_frame_red , x = 0 , y = 0 , image = "eyeofterror" ,scale = 1 })
+                    local eyeofterror_num = (com:Get("boss.kill.dragonfly") or 0)
+                    if eyeofterror_num >= 7 then
+                        eyeofterror_num = 7
+                    end
+                    local eyeofterror_num_str = tostring(eyeofterror_num) .. " / 7 "
+                    create_text({base = box_frame_red, x = 0, y = -200, str = eyeofterror_num_str, size = 80})
 
 
             -------------------------------------------------------------------------------------
