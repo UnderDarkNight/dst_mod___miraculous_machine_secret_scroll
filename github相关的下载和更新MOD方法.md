@@ -18,7 +18,13 @@
 
     6、 进入【dst_mod___miraculous_machine_secret_scroll】文件夹，重新右键【Git Bash Here】
 
-    7、 输入命令：
+    7、 输入以下命令：
+        git reset --hard
+    
+    8、 输入以下命令：
+        git pull
+    
+    9、 输入以下命令：
         git pull origin main
 
 更新步骤：
@@ -26,7 +32,10 @@
 
     2、进入【dst_mod___miraculous_machine_secret_scroll】文件夹，重新右键【Git Bash Here】
 
-    3、 输入命令：
+    3、 输入命令： 【注意！！！】最后那个  【点】不能漏掉。
+        git checkout .
+    
+    4、 输入以下命令：
         git pull origin main
 
 意外情况：
