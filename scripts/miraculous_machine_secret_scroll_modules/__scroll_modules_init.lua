@@ -61,6 +61,8 @@ return function(inst)
             "miraculous_machine_secret_scroll_modules/25_temperature_protecter",                --- 温度保证
             "miraculous_machine_secret_scroll_modules/26_waterproofer",                         --- 防水
             "miraculous_machine_secret_scroll_modules/27_woodcutter",                           --- 砍树效率
+            "miraculous_machine_secret_scroll_modules/28_bee_venom",                           --- 蜂毒
+            "miraculous_machine_secret_scroll_modules/29_toadstool_venom",                      --- 蟾蜍毒
             "miraculous_machine_secret_scroll_modules/30_sanity_aura",                          --- 回San光环
             "miraculous_machine_secret_scroll_modules/31_heal_health",                          --- 攻击回血
             "miraculous_machine_secret_scroll_modules/32_insulator",                            --- 绝缘体、防雷

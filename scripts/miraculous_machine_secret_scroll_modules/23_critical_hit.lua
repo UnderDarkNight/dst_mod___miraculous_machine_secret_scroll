@@ -39,7 +39,14 @@ return {
                     end
                     -- 初始几率10%每击杀一只 ， 【暴击】的几率增加5%，最高30%的几率 。最多击杀 5 只
                     local base_percent = 0.1
-                    if math.random(1000)/1000 <= ( base_percent + (0.05 * boss_num-1) ) and target.components.combat then
+                    local the_probability = math.random(1000)/1000
+                    if TUNING.MIRACULOUS_MACHINE_SECRET_SCROLL.DEBUG_MODE then
+                        TheNet:Announce("当前暴击ROLL到:"..tostring(the_probability*100).."%")
+                    end
+                    if the_probability <= ( base_percent + (0.05 * boss_num-1) ) and target.components.combat then
+                        if TUNING.MIRACULOUS_MACHINE_SECRET_SCROLL.DEBUG_MODE then
+                            TheNet:Announce("成功暴击")
+                        end
                         inst:AddTag("weapon_critical_hit")
                         target.components.combat:GetAttacked(attacker,damage,inst)
                     end

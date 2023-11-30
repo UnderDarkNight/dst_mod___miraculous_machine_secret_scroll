@@ -17,7 +17,7 @@ return {
                     if toadstool_num >= 5 then
                         toadstool_num = 5
                     end
-                            local base_probability = TUNING.MIRACULOUS_MACHINE_SECRET_SCROLL.DEBUG_MODE and 0.5 or 0.1
+                            local base_probability = TUNING.MIRACULOUS_MACHINE_SECRET_SCROLL.DEBUG_MODE and 0.3 or 0.1
                             local the_probability = math.random(1000)/1000
                             if TUNING.MIRACULOUS_MACHINE_SECRET_SCROLL.DEBUG_MODE then
                                 TheNet:Announce("当前蟾蜍毒ROLL到:"..tostring(the_probability*100).."%")
