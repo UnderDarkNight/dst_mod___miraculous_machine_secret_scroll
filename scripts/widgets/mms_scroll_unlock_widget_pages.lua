@@ -509,7 +509,7 @@ return function(root,inst)
 
             -------------------------------------------------------------------------------------
             --- 三叉戟
-                    if (com:Get("trident_level.num") or 0) == 0 then
+                    if com:Get("trident_level.full")  ~= true then
 
                         local box_frame_blue = create_image({base = page , x = -180 , y = -20 , image = "box_frame_blue" ,scale = 0.5})
                         local trident = create_image({base = box_frame_blue , x = 0 , y = 0 , image = "trident" ,scale = 2})
