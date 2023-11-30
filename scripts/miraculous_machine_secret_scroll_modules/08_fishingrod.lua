@@ -27,7 +27,7 @@ return {
         inst:AddTag("fishingrod")
         inst:AddTag("allow_action_on_impassable")
         inst:AddComponent("fishingrod")
-        inst.components.fishingrod:SetWaitTimes(4, 40)
+        inst.components.fishingrod:SetWaitTimes(1, 10)
         inst.components.fishingrod:SetStrainTimes(0, 5)
         inst:ListenForEvent("fishingcollect",inst.___fishingcollect_event_fn)
         inst:RemoveTag("fishingrod")
