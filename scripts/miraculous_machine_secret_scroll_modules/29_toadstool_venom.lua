@@ -18,7 +18,14 @@ return {
                         toadstool_num = 5
                     end
                             local base_probability = TUNING.MIRACULOUS_MACHINE_SECRET_SCROLL.DEBUG_MODE and 0.5 or 0.1
-                            if math.random(1000)/1000 <= ( base_probability + (toadstool_num-1)*0.05 ) then
+                            local the_probability = math.random(1000)/1000
+                            if TUNING.MIRACULOUS_MACHINE_SECRET_SCROLL.DEBUG_MODE then
+                                TheNet:Announce("当前蟾蜍毒ROLL到:"..tostring(the_probability*100).."%")
+                            end
+                            if the_probability <= ( base_probability + (toadstool_num-1)*0.05 ) then
+                                if TUNING.MIRACULOUS_MACHINE_SECRET_SCROLL.DEBUG_MODE then
+                                    TheNet:Announce("成功给目标打上蟾蜍毒")
+                                end
                                         for i = 1, 10, 1 do
                                             target:DoTaskInTime(i,function()
                                                 target.components.health:DoDelta(-10)
