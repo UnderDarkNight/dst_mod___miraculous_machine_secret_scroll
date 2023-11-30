@@ -596,7 +596,7 @@ return function(root,inst)
 
             -------------------------------------------------------------------------------------
             --- 灯光
-                    if (com:Get("trident_level.num") or 0) == 0 then
+                    if (com:Get("boss.kill.num") or 0) == 0 then
 
                         local box_frame_blue = create_image({base = page , x = -100 , y = -20 , image = "box_frame_blue" ,scale = 0.5})
                         create_image({base = box_frame_blue , x = 0 , y = 0 , image = "alterguardian_phase3" ,scale = 0.7})
@@ -1044,7 +1044,7 @@ return function(root,inst)
 
                     local box_frame_red = create_image({base = page , x = 210 , y = -20 ,scale = 0.5})
                     create_image({base = box_frame_red , x = 0 , y = 0 , image = "alterguardian_phase3" ,scale = 1 })
-                    local alterguardian_phase3_num = (com:Get("planardamage.shadowthrall_horns") and 1 or 0)
+                    local alterguardian_phase3_num = (com:Get("planardamage.alterguardian_phase3") and 1 or 0)
 
                     local alterguardian_phase3_num_str = tostring(alterguardian_phase3_num) .. " / 1 "
                     create_text({base = box_frame_red, x = 0, y = -200, str = alterguardian_phase3_num_str, size = 80})

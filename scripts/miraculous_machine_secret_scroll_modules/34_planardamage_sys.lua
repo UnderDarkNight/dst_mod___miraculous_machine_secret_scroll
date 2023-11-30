@@ -44,6 +44,7 @@ return {
             end
             -- print("error ++++ level right and damage change",planardamage)
             inst.components.miraculous_machine_secret_scroll:Set("planardamage",planardamage)
+            inst.components.planardamage:SetBaseDamage(planardamage)
         end
 
         inst:ListenForEvent("monster_killed",function(_,boss_inst)
