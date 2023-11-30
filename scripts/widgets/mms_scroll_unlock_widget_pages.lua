@@ -860,7 +860,7 @@ return function(root,inst)
                         local box_frame_blue = create_image({base = page , x = -100 , y = -20 ,scale = 0.5})
                         create_image({base = box_frame_blue , x = 20 , y = 0 , image = "twinofterror1" ,scale = 1 , a = 0.5})
                         create_image({base = box_frame_blue , x = -20 , y = 0 , image = "twinofterror2" ,scale = 1})
-                        local twinofterror_num = (com:Get("boss.kill.leif") or 0) + (com:Get("boss.kill.leif_sparse") or 0)
+                        local twinofterror_num = (com:Get("boss.kill.twinofterror1") or 0) + (com:Get("boss.kill.twinofterror2") or 0)
                         if twinofterror_num >= 6 then
                             twinofterror_num = 6
                         end

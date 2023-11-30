@@ -93,6 +93,8 @@ return {
                                     attacker = attacker,
                                     range = inst.components.weapon.attackrange,
                                 })
+                            ----- 吸血
+                                inst:PushEvent("heal_health_by_attack",attacker)
 
                         end
                     end
