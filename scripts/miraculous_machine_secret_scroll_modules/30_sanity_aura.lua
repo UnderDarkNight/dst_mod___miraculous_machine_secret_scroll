@@ -34,7 +34,7 @@ return {
         local function sanityaura_init(inst)
             local eyeofterror_num = inst.components.miraculous_machine_secret_scroll:Get("boss.kill.eyeofterror") or 0
             if eyeofterror_num >= 1 then
-                inst.components.equippable.dapperness = SANITYAURA_DURATION[eyeofterror_num] or TUNING.SANITYAURA_SUPERHUGE
+                inst.components.equippable.dapperness = ( SANITYAURA_DURATION[eyeofterror_num] or TUNING.SANITYAURA_SUPERHUGE )/10
             end
         end
 
