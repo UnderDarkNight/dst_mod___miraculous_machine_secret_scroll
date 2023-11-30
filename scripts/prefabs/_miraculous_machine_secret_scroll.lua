@@ -29,8 +29,8 @@ local function onequip(inst, owner)
             pt = Vector3(x+offset_x,0,z+offset_z),
             target = owner,
             owner = inst,
-            speed = 6,
-            range = 5,
+            speed = 12,  -- 6
+            range = 5,  -- 5
         })
 
         if inst:HasTag("max_level") then
@@ -66,6 +66,7 @@ local function fn()
     inst.AnimState:SetBank("miraculous_machine_secret_scroll_fx")
     inst.AnimState:SetBuild("miraculous_machine_secret_scroll_fx")
     inst.AnimState:PlayAnimation("ground_idle")
+    -- inst.AnimState:PlayAnimation("open_idle",true)
 
 
     inst:AddTag("weapon")

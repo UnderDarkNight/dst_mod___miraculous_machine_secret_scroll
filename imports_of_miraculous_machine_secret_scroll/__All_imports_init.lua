@@ -28,3 +28,7 @@ modimport("imports_of_miraculous_machine_secret_scroll/10_unlocked_widget.lua")	
 modimport("imports_of_miraculous_machine_secret_scroll/11_strings_and_recipe.lua")	---- 文本和制作
 
 modimport("imports_of_miraculous_machine_secret_scroll/12_mod_config.lua")	---- MOD 设置
+
+modimport("imports_of_miraculous_machine_secret_scroll/13_farm_till_action_change.lua")	---- 园艺锄相关的HOOK
+
+modimport("imports_of_miraculous_machine_secret_scroll/14_componentactions_crash_fix.lua")	---- 园艺锄相关的HOOK

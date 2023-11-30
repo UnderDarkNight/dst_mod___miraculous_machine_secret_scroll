@@ -70,9 +70,35 @@ return {
                     tools_modules_upgrade_event_fn()
 
                     ---- 园艺锄(默认拥有)
+                        inst:AddTag("special_till")
                         inst:AddComponent("farmtiller")
                         inst:AddInherentAction(ACTIONS.TILL)
-                    
+                        inst.components.farmtiller.__mms_scroll = inst.components.farmtiller.Till
+                        inst.components.farmtiller.Till = function(self,pt,doer)
+                            local x,y,z = TheWorld.Map:GetTileCenterPoint(pt:Get())
+                            -- SpawnPrefab("log").Transform:SetPosition(x, y, z)
+                            local musthavetags = nil
+                            local canthavetags = nil
+                            local musthaveoneoftags = {"plantedsoil","soil"}
+                            local ents = TheSim:FindEntities(x, y, z, 3, musthavetags, canthavetags, musthaveoneoftags)
+                            for k, temp_soil in pairs(ents) do
+                                local tx,ty,tz = temp_soil.Transform:GetWorldPosition()
+                                if math.abs(tx-x) <= 2 and math.abs(tz-z) <= 2 then
+                                    temp_soil:Remove()
+                                end
+                            end
+                            local delta = 1.2
+                            local locations = {
+                                Vector3(-delta,0,-delta) , Vector3(0,0,-delta) , Vector3(delta,0,-delta) ,
+                                Vector3(-delta,0,   0  ) , Vector3(0,0,0) , Vector3(delta,0,0) ,
+                                Vector3(-delta,0,delta) , Vector3(0,0,delta) , Vector3(delta,0,delta) ,
+                            }
+                            for k, t_pt in pairs(locations) do
+                                SpawnPrefab("farm_soil").Transform:SetPosition(x+t_pt.x, 0, z+t_pt.z)
+                            end
+
+                            return true
+                        end
 
                 -----------------------------------------------------------------------------
 
@@ -96,6 +122,7 @@ return {
                     inst:RemoveInherentAction(ACTIONS.TILL)
 
                     inst:RemoveEventCallback("tools_modules_upgrade",tools_modules_upgrade_event_fn)
+                    inst:RemoveTag("special_till")
 
                 ------------------------------------------------------------------------
 
