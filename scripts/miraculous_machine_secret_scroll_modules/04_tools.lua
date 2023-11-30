@@ -75,6 +75,9 @@ return {
                         inst:AddInherentAction(ACTIONS.TILL)
                         inst.components.farmtiller.__mms_scroll = inst.components.farmtiller.Till
                         inst.components.farmtiller.Till = function(self,pt,doer)
+                            if not TheWorld.Map:IsFarmableSoilAtPoint(pt:Get()) then
+                                return false
+                            end
                             local x,y,z = TheWorld.Map:GetTileCenterPoint(pt:Get())
                             -- SpawnPrefab("log").Transform:SetPosition(x, y, z)
                             local musthavetags = nil
@@ -96,7 +99,9 @@ return {
                             for k, t_pt in pairs(locations) do
                                 SpawnPrefab("farm_soil").Transform:SetPosition(x+t_pt.x, 0, z+t_pt.z)
                             end
-
+                            if doer then
+                                doer:PushEvent("tilling")
+                            end
                             return true
                         end
 
