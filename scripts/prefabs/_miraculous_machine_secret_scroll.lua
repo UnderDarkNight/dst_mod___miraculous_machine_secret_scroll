@@ -1,6 +1,8 @@
 local assets =
 {
 
+    Asset("ANIM", "anim/longfeng.zip"),
+
     Asset("ANIM", "anim/miraculous_machine_secret_scroll_fx.zip"),
     Asset("ANIM", "anim/miraculous_machine_secret_scroll_fx_red.zip"),
     Asset( "IMAGE", "images/inventoryimages/miraculous_machine_secret_scroll.tex" ), 
@@ -66,6 +68,8 @@ local function fn()
     inst.AnimState:SetBank("miraculous_machine_secret_scroll_fx")
     inst.AnimState:SetBuild("miraculous_machine_secret_scroll_fx")
     inst.AnimState:PlayAnimation("ground_idle")
+    -- inst.AnimState:SetBank("longfeng")
+    -- inst.AnimState:SetBuild("longfeng")
     -- inst.AnimState:PlayAnimation("open_idle",true)
 
 

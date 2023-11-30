@@ -17,7 +17,7 @@ return {
                     if inst.components.miraculous_machine_secret_scroll:Get("pickaxe_level.num") then
                         local base_pickaxe_percentages = 1
                         local pickaxe_level_num = inst.components.miraculous_machine_secret_scroll:Get("pickaxe_level.num") or 0
-                        inst.components.tool:SetAction(ACTIONS.MINE,base_pickaxe_percentages + pickaxe_level_num/1000)
+                        inst.components.tool:SetAction(ACTIONS.MINE,(base_pickaxe_percentages + pickaxe_level_num/1000)*5)
                     end
                 ---- 铲子
                     if inst.components.miraculous_machine_secret_scroll:Get("shovel_level.full") then
