@@ -60,9 +60,7 @@ local keys_option = {
     {description = "KEY_F7", data = "KEY_F7"},
     {description = "KEY_F8", data = "KEY_F8"},
     {description = "KEY_F9", data = "KEY_F9"},
-    {description = "KEY_F10", data = "KEY_F10"},
-    {description = "KEY_F11", data = "KEY_F11"},
-    {description = "KEY_F12", data = "KEY_F12"},
+
 }
 
 configuration_options =
@@ -80,6 +78,16 @@ configuration_options =
       hover = "解锁进度界面，查看当前武器的解锁进度",
       options = keys_option,
       default = "KEY_F3",
+    },
+    {
+      name = "DEBUG_MODE",
+      label = "测试模式",
+      hover = "进入测试模式，解锁某些东西",
+      options = {
+        {description = "开", data = true},
+        {description = "关", data = false},
+      },
+      default = false,
     },
   
 }

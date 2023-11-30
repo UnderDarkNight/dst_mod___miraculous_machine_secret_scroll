@@ -22,34 +22,34 @@ return {
             end
             ------------------------------------------------------------------------------------------------
             -------------------- 秒杀、上毒
-                inst:ListenForEvent("player_onhitother",function(_,_table)
-                    if not inst:HasTag("switch.long_range_weapon") then
-                        return
-                    end
-                    local target = _table.target
-                    local attacker = _table.attacker
-                    local damage = _table.damage
-                    local weapon = _table.weapon
-                    -- print(" double attack event",attacker,target,damage,weapon)
-                    if not (target and attacker and damage and weapon) then
-                        return
-                    end
-                    if weapon ~= inst then
-                        return
-                    end
+                -- inst:ListenForEvent("player_onhitother",function(_,_table)
+                --     if not inst:HasTag("switch.long_range_weapon") then
+                --         return
+                --     end
+                --     local target = _table.target
+                --     local attacker = _table.attacker
+                --     local damage = _table.damage
+                --     local weapon = _table.weapon
+                --     -- print(" double attack event",attacker,target,damage,weapon)
+                --     if not (target and attacker and damage and weapon) then
+                --         return
+                --     end
+                --     if weapon ~= inst then
+                --         return
+                --     end
 
-                    -----------------------------------------------------------------------
-                    --- 秒杀
-                        inst:PushEvent("spike_target",target)
-                    -----------------------------------------------------------------------
-                    --- 上毒
-                        inst:PushEvent("bee_venom_2_target",target)
-                        inst:PushEvent("toadstool_venom_2_target",target)
-                    -----------------------------------------------------------------------
-                    --- 吸血
-                        inst:PushEvent("heal_health_by_attack",attacker)
-                    -----------------------------------------------------------------------
-                end)
+                --     -----------------------------------------------------------------------
+                --     --- 秒杀
+                --         inst:PushEvent("spike_target",target)
+                --     -----------------------------------------------------------------------
+                --     --- 上毒
+                --         inst:PushEvent("bee_venom_2_target",target)
+                --         inst:PushEvent("toadstool_venom_2_target",target)
+                --     -----------------------------------------------------------------------
+                --     --- 吸血
+                --         inst:PushEvent("heal_health_by_attack",attacker)
+                --     -----------------------------------------------------------------------
+                -- end)
 
 
 
@@ -86,6 +86,7 @@ return {
                             local damage = 30 + weapon_level*2 
                             target.components.combat:GetAttacked(attacker,damage,inst)    --- 每级伤害 +2
 
+                            -----------------------------------------------------------------------
                             ----- 弹射影怪
                                 inst:PushEvent("shadow_monster_kill.bow",{  
                                     target = target,
@@ -93,8 +94,17 @@ return {
                                     attacker = attacker,
                                     range = inst.components.weapon.attackrange,
                                 })
-                            ----- 吸血
+                            -----------------------------------------------------------------------
+                            --- 秒杀
+                                inst:PushEvent("spike_target",target)
+                            -----------------------------------------------------------------------
+                            --- 上毒
+                                inst:PushEvent("bee_venom_2_target",target)
+                                inst:PushEvent("toadstool_venom_2_target",target)
+                            -----------------------------------------------------------------------
+                            --- 吸血
                                 inst:PushEvent("heal_health_by_attack",attacker)
+                            -----------------------------------------------------------------------
 
                         end
                     end

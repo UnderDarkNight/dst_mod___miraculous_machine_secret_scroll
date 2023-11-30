@@ -17,7 +17,7 @@ return {
                     if toadstool_num >= 5 then
                         toadstool_num = 5
                     end
-                            local base_probability = 0.1
+                            local base_probability = TUNING.MIRACULOUS_MACHINE_SECRET_SCROLL.DEBUG_MODE and 0.5 or 0.1
                             if math.random(1000)/1000 <= ( base_probability + (toadstool_num-1)*0.05 ) then
                                         for i = 1, 10, 1 do
                                             target:DoTaskInTime(i,function()
