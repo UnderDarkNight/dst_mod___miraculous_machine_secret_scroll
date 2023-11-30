@@ -596,7 +596,7 @@ return function(root,inst)
 
             -------------------------------------------------------------------------------------
             --- 灯光
-                    if (com:Get("boss.kill.num") or 0) == 0 then
+                    if (com:Get("boss.kill.alterguardian_phase3") or 0) == 0 then
 
                         local box_frame_blue = create_image({base = page , x = -100 , y = -20 , image = "box_frame_blue" ,scale = 0.5})
                         create_image({base = box_frame_blue , x = 0 , y = 0 , image = "alterguardian_phase3" ,scale = 0.7})

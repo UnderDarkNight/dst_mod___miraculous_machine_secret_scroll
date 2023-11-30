@@ -201,12 +201,24 @@ local flg,error_code = pcall(function()
             -- print(ret)
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
             -- inst:PushEvent("snow_spriter_unlock")
-            ThePlayer.AnimState:OverrideSymbol("clipboard_prop", "player_notes", "clipboard_prop")
-            ThePlayer.AnimState:OverrideSymbol("chalk", "player_notes", "chalk")
-            ThePlayer.AnimState:PlayAnimation("notes_loop",true)
+            -- ThePlayer.AnimState:OverrideSymbol("clipboard_prop", "player_notes", "clipboard_prop")
+            -- ThePlayer.AnimState:OverrideSymbol("chalk", "player_notes", "chalk")
+            -- ThePlayer.AnimState:PlayAnimation("notes_loop",true)
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
             -- ThePlayer.components.talker:Say(tostring(c_select().components.equippable.walkspeedmult))
             -- print(c_select().components.equippable.walkspeedmult)
+
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+            local monster = SpawnPrefab("daywalker")
+            monster.Transform:SetPosition(x,y,z)
+            monster:ListenForEvent("minhealth",function(_,_table)
+                print("++++++++++++++++++++++++++++++++++++++")
+                print("error daywalker")
+                for k, v in pairs(_table) do
+                    print(k,v)
+                end
+                print("++++++++++++++++++++++++++++++++++++++")
+            end)
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
