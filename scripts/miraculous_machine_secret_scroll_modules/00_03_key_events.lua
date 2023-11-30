@@ -188,7 +188,7 @@ return function(inst,key,down)
                 inst.replica.miraculous_machine_secret_scroll:RPC_PushEvent("func.ocean_walking_switch","__")
             end,
             locked = function()
-                if ( inst.replica.miraculous_machine_secret_scroll:Get("boss.kill.malbatross") or 0  ) > 3 then
+                if ( inst.replica.miraculous_machine_secret_scroll:Get("boss.kill.malbatross") or 0  ) >= 3 then
                     return false
                 else
                     return true
