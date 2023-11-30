@@ -19,8 +19,10 @@ return {
                 
                 local heal_num = 0.5 + (boss_num - 1) * 0.3
                 if heal_num > 2 then
-                    player.components.health:DoDelta(heal_num,true)
+                    heal_num = 2
                 end
+                player.components.health:DoDelta(heal_num,true)
+
             end
         end)
 
