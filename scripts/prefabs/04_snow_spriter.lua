@@ -40,6 +40,8 @@ local function fn()
     inst.AnimState:SetBuild("mms_scroll_snow_spriter")
     inst.AnimState:PlayAnimation("idle", true)
     -- inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
+    local scale = 2/3
+    inst.AnimState:SetScale(scale,scale,scale)
 
     inst.Transform:SetFourFaced()
 
@@ -59,7 +61,8 @@ local function fn()
 
     inst:DoTaskInTime(0,function()
         local fx = inst:SpawnChild("cane_candy_fx")
-        fx.Transform:SetPosition(0,3,0)
+        -- fx.Transform:SetPosition(0,3,0)
+        fx.Transform:SetPosition(0,1.5,0)
     end)
 
 	inst.persists = false
@@ -158,8 +161,8 @@ local function fn()
         --------------------------------------------------------------------------------------------
             local range = 10
             local point_num = 15
-            inst.__follow_num = 1
-            inst:DoPeriodicTask(5,function()                ---- 定时刷个环绕目标点
+            inst.__follow_num = math.random(point_num)
+            inst:DoPeriodicTask(10,function()                ---- 定时刷个环绕目标点
                 -- inst.__follow_num = inst.__follow_num + 1
                 -- if inst.__follow_num > point_num then
                 --     inst.__follow_num = 1
