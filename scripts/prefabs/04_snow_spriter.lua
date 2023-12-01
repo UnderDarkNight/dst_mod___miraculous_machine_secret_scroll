@@ -159,11 +159,12 @@ local function fn()
             local range = 10
             local point_num = 15
             inst.__follow_num = 1
-            inst:DoPeriodicTask(0.5,function()                ---- 定时刷个环绕目标点
-                inst.__follow_num = inst.__follow_num + 1
-                if inst.__follow_num > point_num then
-                    inst.__follow_num = 1
-                end
+            inst:DoPeriodicTask(5,function()                ---- 定时刷个环绕目标点
+                -- inst.__follow_num = inst.__follow_num + 1
+                -- if inst.__follow_num > point_num then
+                --     inst.__follow_num = 1
+                -- end
+                inst.__follow_num = math.random(point_num)
             end)
         --------------------------------------------------------------------------------------------
             inst:DoPeriodicTask(FRAMES,function()
