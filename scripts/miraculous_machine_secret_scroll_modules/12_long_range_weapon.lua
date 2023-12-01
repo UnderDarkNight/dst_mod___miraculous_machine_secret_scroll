@@ -92,7 +92,7 @@ return {
                                     target = target,
                                     damage = damage,
                                     attacker = attacker,
-                                    range = inst.components.weapon.attackrange,
+                                    range = inst.components.weapon.attackrange*2,
                                 })
                             -----------------------------------------------------------------------
                             --- 秒杀
