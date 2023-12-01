@@ -159,8 +159,8 @@ local function fn()
                 end
             end)
         --------------------------------------------------------------------------------------------
-            local range = 10
-            local point_num = 15
+            local range = 4
+            local point_num = 6
             inst.__follow_num = math.random(point_num)
             inst:DoPeriodicTask(10,function()                ---- 定时刷个环绕目标点
                 -- inst.__follow_num = inst.__follow_num + 1
