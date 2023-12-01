@@ -104,8 +104,24 @@ return {
                             -----------------------------------------------------------------------
                             --- 吸血
                                 inst:PushEvent("heal_health_by_attack",attacker)
-                            -----------------------------------------------------------------------
+                            -----------------------------------------------------------------------                                                
+                            ---- 判断能否触发双重攻击
+                                if inst.components.miraculous_machine_secret_scroll:Get("boss.kill.antlion") then
+                                    -- 初始几率10%，每击杀一只，【二连击】的几率增加2%，最高20% 。 最多击杀 5 只 满
+                                    local base_antlion_percent = 0.1
+                                    local antlion_num = inst.components.miraculous_machine_secret_scroll:Get("boss.kill.antlion")
+                                    if antlion_num >= 5 then
+                                        antlion_num = 5
+                                    end
 
+                                    if math.random(10000)/10000 <= (base_antlion_percent + antlion_num * 0.02) then
+                                        -- print("成功判断 双重攻击")
+                                        target:DoTaskInTime(0.2,function()
+                                            target.components.combat:GetAttacked(attacker,damage,inst)    --- 每级伤害 +2
+                                        end)
+                                    end               
+                                end
+                            -----------------------------------------------------------------------
                         end
                     end
 

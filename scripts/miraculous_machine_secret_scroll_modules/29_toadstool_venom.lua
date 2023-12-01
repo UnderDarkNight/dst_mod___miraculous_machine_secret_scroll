@@ -19,10 +19,11 @@ return {
                     end
                             local base_probability = TUNING.MIRACULOUS_MACHINE_SECRET_SCROLL.DEBUG_MODE and 0.3 or 0.1
                             local the_probability = math.random(1000)/1000
+                            local the_target_probability = ( base_probability + (toadstool_num-1)*0.05 ) 
                             if TUNING.MIRACULOUS_MACHINE_SECRET_SCROLL.DEBUG_MODE then
-                                TheNet:Announce("当前蟾蜍毒ROLL到:"..tostring(the_probability*100).."%")
+                                TheNet:Announce("当前蟾蜍毒ROLL到:"..tostring(the_probability*100).."%，需要小于"..tostring(the_target_probability*100).."%才能触发")
                             end
-                            if the_probability <= ( base_probability + (toadstool_num-1)*0.05 ) then
+                            if the_probability <= the_target_probability then
                                 if TUNING.MIRACULOUS_MACHINE_SECRET_SCROLL.DEBUG_MODE then
                                     TheNet:Announce("成功给目标打上蟾蜍毒")
                                 end
