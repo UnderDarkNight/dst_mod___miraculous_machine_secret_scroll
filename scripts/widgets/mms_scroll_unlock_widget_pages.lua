@@ -831,10 +831,10 @@ return function(root,inst)
                     local box_frame_red = create_image({base = page , x = 130 , y = -20 ,scale = 0.5})
                     create_image({base = box_frame_red , x = 0 , y = 0 , image = "eyeofterror" ,scale = 1 })
                     local eyeofterror_num = (com:Get("boss.kill.eyeofterror") or 0)
-                    if eyeofterror_num >= 7 then
-                        eyeofterror_num = 7
+                    if eyeofterror_num >= 3 then
+                        eyeofterror_num = 3
                     end
-                    local eyeofterror_num_str = tostring(eyeofterror_num) .. " / 7 "
+                    local eyeofterror_num_str = tostring(eyeofterror_num) .. " / 3 "
                     create_text({base = box_frame_red, x = 0, y = -200, str = eyeofterror_num_str, size = 80})
 
 
