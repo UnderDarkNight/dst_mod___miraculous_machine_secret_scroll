@@ -88,7 +88,6 @@ return {
                             end
                             local damage = 30 + weapon_level*12 
                             target.components.combat:GetAttacked(attacker,damage,inst)    --- 每级伤害 +2
-
                             -----------------------------------------------------------------------
                             ----- 百分比伤害
                                 -- inst:PushEvent("shadow_monster_kill.bow",{  

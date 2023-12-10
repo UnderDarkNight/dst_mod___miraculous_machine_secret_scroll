@@ -429,7 +429,7 @@ return function(root,inst)
 
             -------------------------------------------------------------------------------------
             --- 矿镐
-                    if (com:Get("pickaxe_level.num") or 0) == 0 then
+                    if com:Get("pickaxe_level.num") == nil then
 
                         local box_frame_blue2 = create_image({base = page , x = -50 , y = -20 , image = "box_frame_blue" ,scale = 0.5})
                         local pickaxe = create_image({base = box_frame_blue2 , x = 0 , y = 0 , image = "pickaxe" ,scale = 2})

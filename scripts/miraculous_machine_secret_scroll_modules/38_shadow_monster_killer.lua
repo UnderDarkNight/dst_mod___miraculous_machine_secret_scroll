@@ -121,6 +121,27 @@ return {
 
             end
         end)
+
+        ------------- 没法调用官方的击杀影怪回San 函数，只能自己写一个
+        local shadow_monsters = {
+            ["crawlingnightmare"] = 20,       -- 洞里打架的影怪
+            ["nightmarebeak"] = 20,           -- 洞里打架的影怪
+        
+            ["crawlinghorror"] = 20,       -- 低San的影怪
+            ["terrorbeak"] = 20,           -- 低San的影怪
+        
+            ["shadow_leech"] = 20,              -- 影怪
+            ["ruins_shadeling"] = 20,           -- 影怪
+            ["fused_shadeling"] = 20,           -- 影怪
+        }
+        inst:ListenForEvent("monster_killed",function(_,target) 
+            if target and shadow_monsters[target.prefab] then
+                local owner = inst.components.inventoryitem:GetGrandOwner()
+                if owner and owner.components.sanity then
+                    owner.components.sanity:DoDelta(shadow_monsters[target.prefab])
+                end
+            end        
+        end)
     end,
     -----------------------------------------------------------------------------------------------------------------
     replica = function(inst)
