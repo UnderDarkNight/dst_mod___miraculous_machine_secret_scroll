@@ -74,13 +74,13 @@ AddComponentPostInit("playercontroller", function(self)
             -- for k, v in pairs(act or {}) do
             --     print(k,v)
             -- end
-            pcall(function()    --- 关闭地图
-                        if act.rmb and act.id == "MMS_SCROLL_BLINK_MAP" and TheFrontEnd then
-                            local map = TheFrontEnd:GetOpenScreenOfType("MapScreen")
-                            map:Hide()
-                            TheFrontEnd:PopScreen(map)
-                        end
-            end)
+            -- pcall(function()    --- 关闭地图
+            --             if act.rmb and act.id == "MMS_SCROLL_BLINK_MAP" and TheFrontEnd then
+            --                 local map = TheFrontEnd:GetOpenScreenOfType("MapScreen")
+            --                 map:Hide()
+            --                 TheFrontEnd:PopScreen(map)
+            --             end
+            -- end)
 
         ------------------------------------------------------------------------------------------
 

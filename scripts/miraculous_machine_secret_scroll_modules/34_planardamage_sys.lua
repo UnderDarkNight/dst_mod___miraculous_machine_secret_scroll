@@ -11,7 +11,7 @@
 
     · 击杀【天体英雄】：alterguardian_phase3
         · 击杀解锁【灯光】开启功能（快捷键）
-        · 增加8点位面伤害，首次击杀有效。解锁位面伤害目标：shadow_aligned
+        · 增加20点位面伤害，首次击杀有效。解锁位面伤害目标：shadow_aligned
 
     · 击杀【地下暗影三基佬】：  shadowthrall_hands  shadowthrall_wings  shadowthrall_horns
         ·每击杀一种，增加2点位面伤害，首次击杀有效。共计6点位面伤害加成。解锁位面伤害目标 ：lunar_aligned
@@ -26,7 +26,7 @@ return {
             ["shadow_rook"] = {level = 3,damage = 8},
             ["shadow_bishop"] = {level = 3,damage = 8},
 
-            ["alterguardian_phase3"] = {level = 0,damage = 8},
+            ["alterguardian_phase3"] = {level = 0,damage = 20},
 
             ["shadowthrall_hands"] = {level = 0,damage = 2},
             ["shadowthrall_wings"] = {level = 0,damage = 2},

@@ -204,30 +204,30 @@ return function(root,inst)
 
                 local opalpreciousgem = create_image({base = page , x = -100, y = -20, image = "opalpreciousgem", scale = 2 , a = 1})
                 local num = com:Get("weapon_level.num") or 0
-                local str = tostring(num) .. " / 60"
+                local str = tostring(num) .. " / 10"
                 create_text({base = opalpreciousgem, x = 0, y = -50, str = str, size = 20})
 
             -------------------------------------------------------------------------------------
             ---- 移动速度
-                if not ( com:Get("monster.kill.walrus") and com:Get("monster.kill.little_walrus") ) then
+                if ( com:Get("cane.num") or 0 ) == 0 then
 
                         local box = create_image({base = page , x = 130 , y = -30 , image = "box_frame_red" ,scale = 0.5})
                         local cane =  create_image({base = box , x = 0 , y = 0 , image = "cane" ,scale = 2})
                         local lock =  create_image({base = box , x = 0 , y = 0 , image = "lock_red" ,scale = 1 ,a = 0.5})
 
-                        if ( com:Get("monster.kill.walrus") or 0 ) == 0 then
-                            local walrus = create_image({base = box , x = -50 , y = -200 , image = "walrus" ,scale = 0.5})
-                        end
-                        if ( com:Get("monster.kill.little_walrus") or 0) == 0 then
-                            local little_walrus = create_image({base = box , x = 50 , y = -200 , image = "little_walrus" ,scale = 0.5})
-                        end
+                        -- if ( com:Get("monster.kill.walrus") or 0 ) == 0 then
+                        --     local walrus = create_image({base = box , x = -50 , y = -200 , image = "walrus" ,scale = 0.5})
+                        -- end
+                        -- if ( com:Get("monster.kill.little_walrus") or 0) == 0 then
+                        --     local little_walrus = create_image({base = box , x = 50 , y = -200 , image = "little_walrus" ,scale = 0.5})
+                        -- end
                 
                 else
 
 
                         local cane =  create_image({base = page , x = 130 , y = -30 , image = "cane" ,scale = 1.5})
                         local cane_num = com:Get("cane.num") or 0
-                        local cane_str = tostring(cane_num) .. " / 14"
+                        local cane_str = tostring(cane_num) .. " / 5"
                         create_text({base = page, x = 130, y = -120, str = cane_str, size = 40})
 
                 end
@@ -1062,7 +1062,7 @@ return function(root,inst)
                 local page = root:AddChild(Widget())
                 page:SetPosition(-50,0)
             -------------------------------------------------------------------------------------
-                create_text({base = page, x = 20, y = 100, str = "影怪、暴击", size = 60})
+                create_text({base = page, x = 20, y = 100, str = "百分伤、暴击", size = 60})
 
             -------------------------------------------------------------------------------------
             --- 影怪
@@ -1071,11 +1071,11 @@ return function(root,inst)
                         local box_frame_blue = create_image({base = page , x = -100 , y = -20 ,scale = 0.5})
                         create_image({base = box_frame_blue , x = 0 , y = 0 , image = "stalker_atrium" ,scale = 0.8 , a = 1})
                         local stalker_atrium_num = (com:Get("boss.kill.stalker_atrium") or 0)
-                        if stalker_atrium_num >= 10 then
-                            stalker_atrium_num = 10
+                        if stalker_atrium_num >= 2 then
+                            stalker_atrium_num = 2
                         end
 
-                        local stalker_atrium_num_str = tostring(stalker_atrium_num) .. " / 10 "
+                        local stalker_atrium_num_str = tostring(stalker_atrium_num) .. " / 2 "
                         create_text({base = box_frame_blue, x = 0, y = -200, str = stalker_atrium_num_str, size = 80})
 
 

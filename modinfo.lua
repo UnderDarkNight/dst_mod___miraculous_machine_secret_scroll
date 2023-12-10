@@ -70,14 +70,14 @@ configuration_options =
       label = "轮盘界面",
       hover = "轮盘界面,切换模式",
       options = keys_option,
-      default = "KEY_F1",
+      default = "KEY_Z",
     },
     {
       name = "UNLOCK_WIDGET_KEY",
       label = "解锁进度界面",
       hover = "解锁进度界面，查看当前武器的解锁进度",
       options = keys_option,
-      default = "KEY_F3",
+      default = "KEY_X",
     },
     {
       name = "DEBUG_MODE",

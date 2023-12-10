@@ -7,7 +7,10 @@ return {
 
             local function weapon_level_changed_event_fn()
                 local weapon_level = inst.components.miraculous_machine_secret_scroll:Add("weapon_level.num",0)
-                inst.components.weapon:SetDamage(45 + weapon_level*2 )
+                if weapon_level > 10 then
+                    weapon_level = 10
+                end
+                inst.components.weapon:SetDamage(45 + weapon_level*12 )
 
 
                 local goldnugget_num = inst.components.miraculous_machine_secret_scroll:Add("goldnugget.num",0)
@@ -51,9 +54,13 @@ return {
                                 inst:PushEvent("heal_health_by_attack",attacker)
                         end
                     -----------------------------------------------------------------------
-                    --- 影怪
+                    --- 百分比伤害
                         if not inst:HasTag("switch.short_range_weapon.is_double_attack") then --- 不会被双重攻击触发
-                                inst:PushEvent("shadow_monster_kill.sword",target)
+                                -- inst:PushEvent("shadow_monster_kill.sword",target)
+                                inst:PushEvent("dmg_target_by_percent",{
+                                    target = target,
+                                    attacker = attacker,
+                                })
                         end
                     -----------------------------------------------------------------------
                     -----------------------------------------------------------------------

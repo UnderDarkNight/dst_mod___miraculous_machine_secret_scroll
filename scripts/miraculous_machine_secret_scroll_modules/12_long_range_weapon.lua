@@ -83,16 +83,23 @@ return {
                     inst._mms_scroll_arrow_onhit_fn = function(arrow_inst, attacker, target)    --- 给弹药 onhit 的函数（配合 弹药prefab ）
                         if target.components.combat then
                             local weapon_level = inst.components.miraculous_machine_secret_scroll:Add("weapon_level.num",0)
-                            local damage = 30 + weapon_level*2 
+                            if weapon_level > 10 then
+                                weapon_level = 10
+                            end
+                            local damage = 30 + weapon_level*12 
                             target.components.combat:GetAttacked(attacker,damage,inst)    --- 每级伤害 +2
 
                             -----------------------------------------------------------------------
-                            ----- 弹射影怪
-                                inst:PushEvent("shadow_monster_kill.bow",{  
+                            ----- 百分比伤害
+                                -- inst:PushEvent("shadow_monster_kill.bow",{  
+                                --     target = target,
+                                --     damage = damage,
+                                --     attacker = attacker,
+                                --     range = inst.components.weapon.attackrange*2,
+                                -- })
+                                inst:PushEvent("dmg_target_by_percent",{
                                     target = target,
-                                    damage = damage,
                                     attacker = attacker,
-                                    range = inst.components.weapon.attackrange*2,
                                 })
                             -----------------------------------------------------------------------
                             --- 秒杀

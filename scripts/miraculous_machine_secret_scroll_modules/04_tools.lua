@@ -27,6 +27,7 @@ return {
                 ---- 锤子
                     if inst.components.miraculous_machine_secret_scroll:Get("hammer_level.full") then
                         inst.components.tool:SetAction(ACTIONS.HAMMER)
+                        inst:AddTag("hammer")
                     end
             end
 
@@ -39,8 +40,9 @@ return {
                 -----------------------------------------------------------------------------
                     inst:AddTag("tool")
                     inst:AddTag("weapon")
+                    inst:AddTag("sharp")
                     inst:AddComponent("tool")
-
+                    inst.components.weapon:SetDamage(1)
                     -- ---- 斧头
                     --     -- local axe_percentages  = inst.components.miraculous_machine_secret_scroll:Get("axe") or 1
                     --     -- inst.components.tool:SetAction(ACTIONS.CHOP,axe_percentages)
@@ -120,6 +122,8 @@ return {
                 ------------------------------------------------------------------------
                     inst:RemoveTag("tool")
                     inst:RemoveTag("weapon")
+                    inst:RemoveTag("hammer")
+                    inst:RemoveTag("sharp")
 
                     inst:RemoveComponent("farmtiller")
                     inst:RemoveComponent("tool")

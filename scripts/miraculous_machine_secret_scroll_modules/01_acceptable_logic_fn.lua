@@ -17,7 +17,7 @@ return {
             on_accept_fn = function(inst,item,doer)
                     local item_num = item.components.stackable.stacksize
                     local current_num = inst.components.miraculous_machine_secret_scroll:Add("weapon_level.num",0)
-                    local max_num = 60
+                    local max_num = 10
                     if item_num + current_num > max_num then
                         local added_num = max_num - current_num
                         inst.components.miraculous_machine_secret_scroll:Set("weapon_level.num",max_num)
@@ -316,9 +316,7 @@ return {
     -- 手杖
         ["cane"] = {
             test_fn = function(inst,item,doer)
-                if inst.replica.miraculous_machine_secret_scroll:Get("monster.kill.walrus")  
-                    and inst.replica.miraculous_machine_secret_scroll:Get("monster.kill.little_walrus") 
-                    and inst.replica.miraculous_machine_secret_scroll:Get("cane.full") ~= true  then
+                if inst.replica.miraculous_machine_secret_scroll:Get("cane.full") ~= true  then
                     return true
                 else
                     return false
@@ -327,7 +325,7 @@ return {
             on_accept_fn = function(inst,item,doer)
 
                 local current_num = inst.components.miraculous_machine_secret_scroll:Add("cane.num",1)
-                local max_num = 14
+                local max_num = 5
                 if current_num >= max_num then
                     inst.components.miraculous_machine_secret_scroll:Set("cane.full",true)
                     inst.components.miraculous_machine_secret_scroll:Set("cane.num",max_num)
