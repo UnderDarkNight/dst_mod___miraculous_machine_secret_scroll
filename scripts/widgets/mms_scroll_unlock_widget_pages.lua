@@ -404,7 +404,7 @@ return function(root,inst)
 
             -------------------------------------------------------------------------------------
             --- 斧头
-                    if (com:Get("axe_level.num") or 0) == 0 then
+                    if com:Get("axe_level.num") == nil then
 
                         local box_frame_blue = create_image({base = page , x = -180 , y = -20 , image = "box_frame_blue" ,scale = 0.5})
                         local axe = create_image({base = box_frame_blue , x = 0 , y = 0 , image = "axe" ,scale = 2})
