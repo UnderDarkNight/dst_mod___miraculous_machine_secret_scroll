@@ -23,8 +23,8 @@ return {
     -----------------------------------------------------------------------------------------------------------------
     main = function(inst)
         local SANITYAURA_DURATION = {
-            [1] = TUNING.SANITYAURA_TINY,
-            [2] = TUNING.SANITYAURA_SMALL_TINY,
+            [1] = TUNING.SANITYAURA_TINY*2,
+            [2] = TUNING.SANITYAURA_SMALL_TINY*1.5,
             [3] = TUNING.SANITYAURA_SMALL,
             [4] = TUNING.SANITYAURA_MED,
             [5] = TUNING.SANITYAURA_LARGE,
