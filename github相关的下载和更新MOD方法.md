@@ -40,3 +40,9 @@
 
 意外情况：
     1、 SSL 验证失败，关闭git验证SSL：  git config --global http.sslverify false
+
+强制完全同步远程版本：
+    git fetch --all
+    git reset --hard origin/main
+    git pull 
+    git pull origin main

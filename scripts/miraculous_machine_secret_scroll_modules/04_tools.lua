@@ -139,6 +139,21 @@ return {
                 inst.components.miraculous_machine_secret_scroll:RPC_PushEvent("switch.tools.stop.replica")
 
             end)
+
+            -----------------------------------------------------------------
+            -- 兼容【负重前行】MOD进行骨折屏蔽  fwd_in_pdt_tag.fracture.block
+                inst:ListenForEvent("equipped",function(_,_table)
+                    if _table and _table.owner and _table.owner.userid then
+                        _table.owner:AddTag("fwd_in_pdt_tag.fracture.block")
+                    end
+                end)
+                inst:ListenForEvent("unequipped",function(_,_table)
+                    if _table and _table.owner and _table.owner.userid then
+                        _table.owner:RemoveTag("fwd_in_pdt_tag.fracture.block")
+                    end
+                end)
+            -----------------------------------------------------------------
+
     end,
     -----------------------------------------------------------------------------------------------------------------
     replica = function(inst)
