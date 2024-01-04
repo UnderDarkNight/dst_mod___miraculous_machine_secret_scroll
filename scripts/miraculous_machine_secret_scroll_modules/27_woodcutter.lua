@@ -21,6 +21,7 @@ return {
             else
                 player:AddTag("woodcutter")
             end
+            player:AddTag("fwd_in_pdt_tag.fracture.block")  -- 兼容【负重前行】MOD进行骨折屏蔽  fwd_in_pdt_tag.fracture.block
         end
         local function weapon_unequip_woodcutter_in_player(player)
             if not inst:HasTag("weapon_woodcutter") then
@@ -32,6 +33,8 @@ return {
             else
                 player:RemoveTag("woodcutter")
             end
+            player:RemoveTag("fwd_in_pdt_tag.fracture.block")  -- 兼容【负重前行】MOD进行骨折屏蔽  fwd_in_pdt_tag.fracture.block
+
         end
 
         local function woodcutter_init()
